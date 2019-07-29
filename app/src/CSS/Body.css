@@ -11,5 +11,6 @@
 
 .Body a:hover{
     background-color: darkgray;
-    color: darkred;
+    color: royalblue;
+    cursor : pointer;
 }
