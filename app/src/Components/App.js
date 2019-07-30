@@ -1,6 +1,6 @@
-import React from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import Detail from './Detail'
+import React from 'react';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Detail from './Detail';
 import '../CSS/App.css';
   
 const App = () => {
