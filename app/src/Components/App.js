@@ -9,15 +9,9 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Header />
-        </div>
-        <div>
-          <Main />
-        </div>
-        <div>
-          <Footer />
-        </div>
+        <Header />
+        <Main />
+        <Footer />
       </BrowserRouter>
     );
   }
