@@ -18,8 +18,7 @@ class Header extends React.Component {
     return (
       <div class="header">
         <div class="header-left">
-          {/*<img src="./image/logo.png" alt="" class="logo" />*/}
-          <img src="./image/title.png" alt="" class="title" />
+          <img src="./title.png" alt="" class="title" />
           <div id="ham-menu">
             <ul>
               <button

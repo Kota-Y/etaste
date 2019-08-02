@@ -1,0 +1,9 @@
+.footer {
+  background-color: rgb(70, 68, 68);
+  height: 300px;
+  color: white;
+}
+
+.footer button {
+  margin-right: 10px;
+}
