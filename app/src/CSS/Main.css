@@ -1,0 +1,6 @@
+.main {
+  height: 1200px;
+  background-image: url(../image/photo_1.jpg);
+  background-size: cover;
+  opacity: 0.3;
+}
