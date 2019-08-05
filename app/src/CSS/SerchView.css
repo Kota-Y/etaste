@@ -1,0 +1,45 @@
+.view {
+  top: 160px;
+  left: 300px;
+  padding-left: 8px;
+  position: absolute;
+  background-color: white;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.box-view {
+  width: 390px;
+  height: 480px;
+}
+
+.serch-area p {
+  color: #202122;
+  margin-top: 32px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.serch-area input {
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #8491a5;
+  width: 300px;
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border: 1px solid #bac6d3;
+  border-radius: 3px;
+  display: block;
+}
+
+.serch-area input[type="submit"] {
+  color: #fff;
+  width: 150px;
+  height: 48px;
+  font-size: 13px;
+  background-color: #f5c020;
+  border: none;
+  margin-top: 32px;
+  margin-left: 200px;
+}
