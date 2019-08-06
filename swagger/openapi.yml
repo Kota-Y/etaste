@@ -1,0 +1,161 @@
+openapi: 3.0.2
+
+info:
+  title: ETASTE API
+  description: ETASTE API.
+  version: 1.0.0
+
+servers:
+  - url: https://etaste.net/v1
+    description: Release server
+  - url: https://develop.etaste.net/v1
+    description: Develop server
+    
+paths:
+  /stores/{storeId}:
+    get:
+      tags: 
+        - stores
+      summary: Get Store by ID.
+      operationId: getStore
+      parameters:
+        - name: storeId
+          in: path
+          description: Store Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+                
+components:
+  schemas:
+    Store:
+      type: object
+      required:
+        - id
+        - name
+        - image
+        - foodNum
+        - foods
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+        foodNum:
+          type: integer
+          format: int32
+          description: 'Number of items in foods.'
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/items'
+      example:
+        id: 1
+        name: '滝川パン'
+        image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg'
+        foodNum: 5
+        foods: [
+          {
+            id: 1,
+            name: 'あんぱん',
+            originalPrice: 600,
+            salePrice: 300,
+            startTime: '13-00',
+            endTime: '15-45',
+            image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg',
+          },
+          {
+            id: 2,
+            name: 'サンドイッチ',
+            originalPrice: 500,
+            salePrice: 100,
+            startTime: '14-15',
+            endTime: '16-45',
+            image: 'https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg',
+          },
+          {
+            id: 3,
+            name: 'クリームパン',
+            originalPrice: 300,
+            salePrice: 100,
+            startTime: '14-30',
+            endTime: '18-00',
+            image: 'https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg',
+          },
+          {
+            id: 4,
+            name: '食パン',
+            originalPrice: 500,
+            salePrice: 100,
+            startTime: '13-45',
+            endTime: '15-45',
+            image: 'https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg',
+          },
+          {
+            id: 5,
+            name: 'フランスパン',
+            originalPrice: 500,
+            salePrice: 100,
+            startTime: '13-15',
+            endTime: '16-00',
+            image: 'https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg',
+          },
+          ]
+        
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        originalPrice:
+          type: integer
+          format: int32
+        salePrice:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        image:
+          type: string
+
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example: 
+        code: 1
+        message: 'Default Error.'
+
+tags:
+  - name: users
+    description: About Users
+  - name: stores
+    description: About Stores
