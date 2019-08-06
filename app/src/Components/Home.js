@@ -1,5 +1,6 @@
 import { withRouter } from "react-router";
 import React from "react";
+import SerchView from "./SerchView";
 
 class Home extends React.Component {
   handleToSettingPage = () => {
@@ -9,7 +10,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Homeです</h1>
+        <SerchView />
         <button onClick={this.handleToSettingPage}>設定ページへ遷移する</button>
       </div>
     );

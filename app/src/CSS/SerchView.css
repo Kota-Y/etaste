@@ -4,7 +4,7 @@
   padding-left: 8px;
   position: absolute;
   background-color: white;
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 6px;
 }
 
 .box-view {
@@ -12,22 +12,27 @@
   height: 480px;
 }
 
+.box-view h1 {
+  text-align: center;
+}
+
 .serch-area p {
   color: #202122;
+  font-weight: 10px;
   margin-top: 32px;
-  margin-left: 8px;
+  margin-left: 18px;
   margin-bottom: 8px;
 }
 
 .serch-area input {
   box-sizing: border-box;
   background-color: #fff;
-  color: #8491a5;
+  color: #0c0d0e;
   width: 300px;
   font-size: 16px;
   padding: 10px;
   margin-right: 10px;
-  margin-left: 10px;
+  margin-left: 18px;
   border: 1px solid #bac6d3;
   border-radius: 3px;
   display: block;
@@ -37,7 +42,7 @@
   color: #fff;
   width: 150px;
   height: 48px;
-  font-size: 13px;
+  font-size: 17px;
   background-color: #f5c020;
   border: none;
   margin-top: 32px;
