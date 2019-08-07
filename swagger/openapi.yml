@@ -8,14 +8,16 @@ info:
 servers:
   - url: https://etaste.net/v1
     description: Release server
+  - url: https://staging.etaste.net/v1
+    description: Staging server
   - url: https://develop.etaste.net/v1
     description: Develop server
     
 paths:
-  /stores/{storeId}:
+  /store/{storeId}:
     get:
       tags: 
-        - stores
+        - store
       summary: Get Store by ID.
       operationId: getStore
       parameters:
@@ -33,6 +35,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Store'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /store/detail/{storeId}:
+    get:
+      tags: 
+        - store
+      summary: Get StoreDetail by ID.
+      operationId: getStoreDetail
+      parameters:
+        - name: storeId
+          in: path
+          description: Store Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreDetail'
         default:
           description: Failed.
           content:
@@ -77,8 +106,8 @@ components:
             name: 'あんぱん',
             originalPrice: 600,
             salePrice: 300,
-            startTime: '13-00',
-            endTime: '15-45',
+            startTime: '1300',
+            endTime: '1545',
             image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg',
           },
           {
@@ -86,8 +115,8 @@ components:
             name: 'サンドイッチ',
             originalPrice: 500,
             salePrice: 100,
-            startTime: '14-15',
-            endTime: '16-45',
+            startTime: '1415',
+            endTime: '1645',
             image: 'https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg',
           },
           {
@@ -95,8 +124,8 @@ components:
             name: 'クリームパン',
             originalPrice: 300,
             salePrice: 100,
-            startTime: '14-30',
-            endTime: '18-00',
+            startTime: '1430',
+            endTime: '1800',
             image: 'https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg',
           },
           {
@@ -104,8 +133,8 @@ components:
             name: '食パン',
             originalPrice: 500,
             salePrice: 100,
-            startTime: '13-45',
-            endTime: '15-45',
+            startTime: '1345',
+            endTime: '1545',
             image: 'https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg',
           },
           {
@@ -113,12 +142,69 @@ components:
             name: 'フランスパン',
             originalPrice: 500,
             salePrice: 100,
-            startTime: '13-15',
-            endTime: '16-00',
+            startTime: '1315',
+            endTime: '1600',
             image: 'https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg',
           },
           ]
-        
+    StoreDetail:
+      type: object
+      required:
+        - id
+        - name
+        - image
+        - openTime
+        - closeTime
+        - zip
+        - address
+        - tel
+        - holiday
+        - parking
+        - access
+        - map
+        - url
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+        openTime:
+          type: string
+        closeTime:
+          type: string
+        zip:
+          type: string
+        address:
+          type: string
+        tel:
+          type: string
+        holiday:
+          type: string
+        parking:
+          type: string
+        access:
+          type: string
+        map:
+          type: string
+        url:
+          type: string
+      example:
+        id: 1
+        name: '滝川パン'
+        image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg'
+        openTime: '0800'
+        closeTime: '2000'
+        zip: '860-0801'
+        address: '熊本県熊本市中央区安政町2-34 HILLS KAGOMACHIビル1F'
+        tel: '096-342-4398'
+        holiday: '不定休(店休)'
+        parking: '駐車場 徒歩5分にあり(有料)'
+        access: '通町筋から徒歩10分'
+        map: '[32.815183,130.727428]'
+        url: 'http://takigawapan.jp/'
     items:
       type: object
       properties:
@@ -155,7 +241,7 @@ components:
         message: 'Default Error.'
 
 tags:
-  - name: users
-    description: About Users
-  - name: stores
-    description: About Stores
+  - name: user
+    description: About User.
+  - name: store
+    description: About Store.
