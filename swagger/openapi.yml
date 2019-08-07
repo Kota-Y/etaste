@@ -68,7 +68,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-                
+  /food:
+    get:
+      tags: 
+        - food
+      summary: Get Food.
+      operationId: getfood
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Food'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 components:
   schemas:
     Store:
@@ -94,7 +113,7 @@ components:
         foods:
           type: array
           items:
-            $ref: '#/components/schemas/items'
+            $ref: '#/components/schemas/StoreItem'
       example:
         id: 1
         name: '滝川パン'
@@ -147,6 +166,34 @@ components:
             image: 'https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg',
           },
           ]
+    StoreItem:
+      type: object
+      required:
+        - id
+        - name
+        - originalPrice
+        - salePrice
+        - startTime
+        - endTime
+        - image
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        originalPrice:
+          type: integer
+          format: int32
+        salePrice:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        image:
+          type: string
     StoreDetail:
       type: object
       required:
@@ -205,8 +252,90 @@ components:
         access: '通町筋から徒歩10分'
         map: '[32.815183,130.727428]'
         url: 'http://takigawapan.jp/'
-    items:
+    Food:
       type: object
+      required:
+        - id
+        - foodNum
+        - foods
+      properties:
+        id:
+          type: integer
+          format: int64
+        foodNum:
+          type: integer
+          format: int32
+          description: 'Number of items in foods.'
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodItem'
+      example:
+        id: 111
+        foodNum: 5
+        foods: [
+          {
+            id: 1,
+            name: 'あんぱん',
+            originalPrice: 600,
+            salePrice: 300,
+            startTime: '1300',
+            endTime: '1545',
+            image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg',
+            storeMap: '[32.815183,130.727428]'
+          },
+          {
+            id: 2,
+            name: 'サンドイッチ',
+            originalPrice: 500,
+            salePrice: 100,
+            startTime: '1415',
+            endTime: '1645',
+            image: 'https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg',
+            storeMap: '[32.814949,130.727842]',
+          },
+          {
+            id: 3,
+            name: 'クリームパン',
+            originalPrice: 300,
+            salePrice: 100,
+            startTime: '1430',
+            endTime: '1800',
+            image: 'https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg',
+            storeMap: '[32.814419,130.726572]',   
+          },
+          {
+            id: 4,
+            name: '食パン',
+            originalPrice: 500,
+            salePrice: 100,
+            startTime: '1345',
+            endTime: '1545',
+            image: 'https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg',
+            storeMap: '[32.813823,130.724649]',
+          },
+          {
+            id: 5,
+            name: 'フランスパン',
+            originalPrice: 500,
+            salePrice: 100,
+            startTime: '1315',
+            endTime: '1600',
+            image: 'https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg',
+            storeMap: '[32.814625,130.723919]',
+          },
+          ]
+    FoodItem:
+      type: object
+      required:
+        - id
+        - name
+        - originalPrice
+        - salePrice
+        - startTime
+        - endTime
+        - image
+        - storeMap
       properties:
         id:
           type: integer
@@ -224,6 +353,8 @@ components:
         endTime:
           type: string
         image:
+          type: string
+        storeMap:
           type: string
 
     Error:
@@ -245,3 +376,5 @@ tags:
     description: About User.
   - name: store
     description: About Store.
+  - name: food
+    description: About Food.
