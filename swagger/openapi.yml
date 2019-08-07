@@ -73,7 +73,7 @@ paths:
       tags: 
         - food
       summary: Get Food.
-      operationId: getfood
+      operationId: getAllFood
       responses:
         '200':
           description: Success.
@@ -81,6 +81,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Food'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /food/{foodId}:
+    get:
+      tags: 
+        - food
+      summary: Get Food by ID.
+      operationId: getFood
+      parameters:
+      - name: foodId
+        in: path
+        description: Food Id.
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodDetail'
         default:
           description: Failed.
           content:
@@ -356,7 +383,62 @@ components:
           type: string
         storeMap:
           type: string
-
+    FoodDetail:
+      type: object
+      required:
+        - id
+        - whySale
+        - allergy
+        - foodInfo
+        - storeInfo
+      properties:
+        id:
+          type: integer
+          format: int64
+        whySale:
+          type: string
+        allergy:
+          type: string
+        foodInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreItem'
+        storeInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreDetail'       
+      example:
+        id: 1
+        whySale: '本日はゲリラ豪雨により、お客さんがいらっしゃいいらっしゃいませんでした。このあんぱんは渾身のできです。'
+        allergy: '[卵,乳,小麦]'
+        foodIndo: [
+          {
+            id: 1,
+            name: 'あんぱん',
+            originalPrice: 600,
+            salePrice: 300,
+            startTime: '1300',
+            endTime: '1545',
+            image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg',
+          }
+        ]
+        storeInfo: [
+          {
+            id: 1,
+            name: '滝川パン',
+            image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+            openTime: '0800',
+            closeTime: '2000',
+            zip: '860-0801',
+            address: '熊本県熊本市中央区安政町2-34 HILLS KAGOMACHIビル1F',
+            tel: '096-342-4398',
+            holiday: '不定休(店休)',
+            parking: '駐車場 徒歩5分にあり(有料)',
+            access: '通町筋から徒歩10分',
+            map: '[32.815183,130.727428]',
+            url: 'http://takigawapan.jp/',
+          }
+        ]
     Error:
       required:
         - code
