@@ -24,13 +24,19 @@
   margin-bottom: 8px;
 }
 
-.serch-area input {
+.key-word h3 {
+  padding-top: 5px;
+  margin-left: 17px;
+}
+
+.key-word input {
   box-sizing: border-box;
   background-color: #fff;
   color: #0c0d0e;
   width: 300px;
+  height: 35px;
   font-size: 16px;
-  padding: 10px;
+  padding: 5px;
   margin-right: 10px;
   margin-left: 18px;
   border: 1px solid #bac6d3;
@@ -38,7 +44,7 @@
   display: block;
 }
 
-.serch-area input[type="submit"] {
+.box-view input[type="submit"] {
   color: #fff;
   width: 150px;
   height: 48px;
@@ -47,4 +53,11 @@
   border: none;
   margin-top: 32px;
   margin-left: 200px;
+  cursor: pointer;
+}
+
+.select-box {
+  width: 300px;
+  margin-left: 18px;
+  font-weight: 2px;
 }
