@@ -1,5 +1,9 @@
-.bg-image {
+.main{
   height: 1200px;
+}
+
+.bg-image {
+  height: 900px;
   background-image: url(../image/photo_1.jpg);
   background-size: cover;
 }
@@ -7,4 +11,8 @@
 .bg-mask {
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
+}
+
+.recommend{
+  height: 200px;
 }
