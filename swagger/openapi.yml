@@ -41,6 +41,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    delete:
+      tags: 
+        - store
+      summary: Delete Store.
+      operationId: deleteStore
+      parameters:
+      - name: storeId
+        in: path
+        description: Store Id.
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /store/detail/{storeId}:
     get:
       tags: 
