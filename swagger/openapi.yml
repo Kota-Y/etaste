@@ -129,6 +129,58 @@ paths:
         '201':
           description: Success Created.
         default:
+          description: Failed Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/login:
+    post:
+      tags: 
+        - user
+      summary: Login User.
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Success Login.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/logout:
+    get:
+      tags: 
+        - user
+      summary: Logout User.
+      operationId: logoutUser
+      responses:
+        '200':
+          description: Success Logout.
+  /user/{userId}:
+    delete:
+      tags: 
+        - user
+      summary: Delete User.
+      operationId: deleteUser
+      parameters:
+      - name: userId
+        in: path
+        description: User Id.
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
           description: Failed.
           content:
             application/json:
@@ -491,6 +543,19 @@ components:
         lastName: '昂太'
         firstNameKana: 'ヤマシタ'
         lastNameKana: 'コウタ'
+        mail: 'etaste.food@gmail.com'
+        password: 'KBa45fdg'        
+    UserLogin:
+      type: array
+      required:
+        - mail
+        - password
+      properties:
+        mail:
+          type: string
+        password:
+          type: string          
+      example: 
         mail: 'etaste.food@gmail.com'
         password: 'KBa45fdg'        
     Error:
