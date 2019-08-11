@@ -114,6 +114,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /favorite/{userId}:
+    get:
+      tags: 
+        - favorite
+      summary: Get favorite by ID.
+      operationId: getFavorite
+      parameters:
+      - name: userId
+        in: path
+        description: user Id.
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorite'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'   
+  /favorite:
+    post:
+      tags: 
+        - favorite
+      summary: Create Favorite.
+      operationId: createFavorite
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavoriteCreate'
+      responses:
+        '201':
+          description: Success Created.
+        default:
+          description: Failed Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /favorite/{storeId}:
+    delete:
+      tags: 
+        - favorite
+      summary: Delete Favorite.
+      operationId: deleteFavorite
+      parameters:
+      - name: storeId
+        in: path
+        description: Store Id.
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /user:
     post:
       tags: 
@@ -511,6 +581,76 @@ components:
             url: 'http://takigawapan.jp/',
           }
         ]
+    Favorite:
+      type: object
+      required: 
+        - userId
+        - favoriteNum
+        - favoriteStores
+      properties:
+        userId:
+          type: integer
+          format: int64
+        favoriteNum:
+          type: integer
+          format: int32
+        favoriteStores:
+          type: array
+          items:
+            $ref: '#/components/schemas/FavoriteStore'
+      example:
+        userId: 1
+        foodNum: 3
+        favoriteStores: [
+          {
+            id: 1,
+            name: '滝川パン1',
+            image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+          },
+          {
+            id: 2,
+            name: '滝川パン2',
+            image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+          },
+          {
+            id: 3,
+            name: '滝川パン3',
+            image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+          },
+        ]
+    FavoriteStore:
+      type: object
+      required: 
+        - id
+        - name
+        - image
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+    FavoriteCreate:
+      type: array
+      required:
+        - userId
+        - storeId
+        - storeName
+      properties:
+        userId:
+          type: integer
+          format: int64
+        storeId:
+          type: integer
+          format: int64            
+        storeName:
+          type: string
+      example: 
+        userId: 1
+        storeId: 2
+        storeName: '滝川パン'       
     User:
       type: array
       required:
@@ -577,5 +717,7 @@ tags:
     description: About Store.
   - name: food
     description: About Food.
+  - name: favorite
+    description: About favorite.
   - name: user
     description: About User.
