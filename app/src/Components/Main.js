@@ -22,9 +22,7 @@ class Main extends React.Component {
               </Switch>
             </div>
           </div>
-          <div className='recommend'>
-            <Recommend />
-          </div>
+          <Recommend />
         </div>
       </div>
     );

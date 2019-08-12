@@ -3,7 +3,7 @@
 }
 
 .bg-image {
-  height: 900px;
+  height: 800px;
   background-image: url(../image/photo_1.jpg);
   background-size: cover;
 }
