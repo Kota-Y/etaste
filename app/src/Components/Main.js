@@ -4,7 +4,7 @@ import "../CSS/Main.css";
 import Home from "./Home";
 import Setting from "./Setting";
 import Item from "./Item";
-import Recommend from "./Recommend";
+//import Recommend from "./Recommend";
 
 class Main extends React.Component {
   render() {
@@ -22,7 +22,6 @@ class Main extends React.Component {
               </Switch>
             </div>
           </div>
-          <Recommend />
         </div>
       </div>
     );
