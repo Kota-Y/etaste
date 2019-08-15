@@ -1,5 +1,5 @@
 .main{
-  height: 1000px;
+  height: 800px;
 }
 
 .bg-image {
@@ -11,8 +11,4 @@
 .bg-mask {
   height: 100%;
   background: rgba(255, 255, 255, 0.5);
-}
-
-.recommend{
-  height: 100px;
 }
