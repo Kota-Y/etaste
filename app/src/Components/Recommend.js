@@ -1,46 +1,24 @@
-import React from "react";
-import Slider from 'react-slick';
-//import ReactDom from 'react-dom';
+import React from 'react';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import "../CSS/Recommend.css";
-//import "slick-carousel/slick/slick.css";
-//import "slick-carousel/slick/slick-theme.css";
-  
-  class Recommend extends React.Component {
-    render(){
-        const settings = {
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-        swipeToSlide:true,
-            swipe:true,
-            arrows:false
-        };
-        return(
-            <div className='slick-slider'>
-                <h2> Single Item</h2>
-                <Slider {...settings}>
-                    <div className='slick-list'>
-                        <div>
-                            <img src="./image/pan1.png" alt='' />
-                        </div>
-                        <div>
-                            <img src="./image/pan2.png" alt='' />
-                        </div>
-                        <div>
-                            <img src="./image/pan3.png" alt='' />
-                        </div>
-                        <div>
-                            <img src="./image/pan4.png" alt='' />
-                        </div>
-                        <div>
-                            <img src="./image/pan5.png" alt='' />
-                        </div>
-                    </div>
+ 
+export default class Recommend extends React.Component {
+  render() {
+    return (
+            <CarouselProvider
+                naturalSlideWidth={100}
+                naturalSlideHeight={125}
+                totalSlides={3}
+            >
+                <Slider>
+                    <Slide index={0}>I am the first Slide.</Slide>
+                    <Slide index={1}>I am the second Slide.</Slide>
+                    <Slide index={2}>I am the third Slide.</Slide>
                 </Slider>
-            </div>
-        );
-    }
-
+                <ButtonBack>Back</ButtonBack>
+                <ButtonNext>Next</ButtonNext>
+            </CarouselProvider>
+    );
   }
-
-export default Recommend;
+}

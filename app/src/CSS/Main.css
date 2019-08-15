@@ -4,7 +4,7 @@
 
 .bg-image {
   height: 800px;
-  background-image: url(../image/photo_1.jpg);
+  background-image: url(../bg_photo/photo_1.jpg);
   background-size: cover;
 }
 
@@ -14,5 +14,5 @@
 }
 
 .recommend{
-  height: 200px;
+  height: 300px;
 }

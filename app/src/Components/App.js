@@ -10,8 +10,12 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Header />
-        <Main />
-        <Footer />
+        <body>
+          <div id="wrapper">
+            <Main />
+            <Footer />
+          </div>
+        </body>
       </BrowserRouter>
     );
   }
