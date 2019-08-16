@@ -1,8 +1,6 @@
 import React from 'react';
-//import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-//import 'pure-react-carousel/dist/react-carousel.es.css';
+//simport PropTypes from 'prop-types';
 import "../CSS/Recommend.css";
- 
 import Carousel from 'nuka-carousel';
 
 export default class Recommend extends React.Component {
@@ -11,7 +9,7 @@ export default class Recommend extends React.Component {
         <div className='recommend-items'>
             <h3>近くで人気の商品</h3>
             <div className='food-image'>
-                <Carousel slidesToShow={5} cellAlign="left" cellSpacing={10}>
+                <Carousel slidesToShow={5} cellAlign="left" cellSpacing={20}>
                     <img src="./image/pan1.png" alt='' />
                     <img src="./image/pan2.png" alt='' />
                     <img src="./image/pan3.png" alt='' />
@@ -22,11 +20,11 @@ export default class Recommend extends React.Component {
                     <img src="./image/sand.jpg" alt='' />
                 </Carousel>
             </div>
-            <h4>すべての商品を表示</h4>
+            <h4>すべての商品を表示 &rsaquo;</h4>
 
             <h3>近くで人気のお店</h3>
             <div className='shop-image'>
-                <Carousel slidesToShow={5} cellAlign="left" cellSpacing={10}>
+                <Carousel slidesToShow={5} cellAlign="left" cellSpacing={20}>
                     <img src="./image/shop1.png" alt='' />
                     <img src="./image/shop2.png" alt='' />
                     <img src="./image/shop3.png" alt='' />
@@ -37,7 +35,7 @@ export default class Recommend extends React.Component {
                     <img src="./image/shop4.png" alt='' />
                 </Carousel>
             </div>
-            <h4>すべてのお店を表示</h4>
+            <h4>すべてのお店を表示 &rsaquo;</h4>
         </div>
     );
   }

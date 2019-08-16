@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import "../CSS/App.css";
 import Header from "./Header";
 import Main from "./Main";
-import Recommend from "./Recommend";
+//import Recommend from "./Recommend";
 import Footer from "./Footer";
 
 class App extends React.Component {
@@ -14,10 +14,9 @@ class App extends React.Component {
         <body>
           <div id="wrapper">
             <Main />
-            <Recommend />
-            <Footer />
           </div>
         </body>
+        <Footer />
       </BrowserRouter>
     );
   }

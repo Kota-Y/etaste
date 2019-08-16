@@ -8,8 +8,15 @@
 }
 
 .recommend-items h4{
+    color: gray;
     float: right;
     margin-right: 20px;
+}
+
+.recommend-items h4:hover{
+    color: #FF6666;
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .recommend-items img{

@@ -2,8 +2,9 @@
   background-color: rgb(70, 68, 68);
   height: 300px;
   color: white;
-  position: 'fixed';
+  
   margin-top: auto;
+  bottom: 0;
 }
 
 .footer button {
