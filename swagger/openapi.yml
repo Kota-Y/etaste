@@ -1,0 +1,803 @@
+openapi: 3.0.2
+info:
+  title: ETASTE API
+  description: ETASTE API.
+  version: 1.0.0
+servers:
+  - url: 'https://etaste.net/v1'
+    description: Release server
+  - url: 'https://staging.etaste.net/v1'
+    description: Staging server
+  - url: 'https://develop.etaste.net/v1'
+    description: Develop server
+paths:
+  '/store/{storeId}':
+    get:
+      tags:
+        - store
+      summary: Get Store by ID.
+      operationId: getStore
+      parameters:
+        - name: storeId
+          in: path
+          description: Store Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - store
+      summary: Delete Store.
+      operationId: deleteStore
+      parameters:
+        - name: storeId
+          in: path
+          description: Store Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/store/detail/{storeId}':
+    get:
+      tags:
+        - store
+      summary: Get StoreDetail by ID.
+      operationId: getStoreDetail
+      parameters:
+        - name: storeId
+          in: path
+          description: Store Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreDetail'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /food:
+    get:
+      tags:
+        - food
+      summary: Get Food.
+      operationId: getAllFood
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Food'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      tags:
+        - food
+      summary: Create Food.
+      operationId: createFood
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FoodCreate'
+      responses:
+        '201':
+          description: Success Created.
+        default:
+          description: Failed Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/food/{foodId}':
+    get:
+      tags:
+        - food
+      summary: Get Food by ID.
+      operationId: getFood
+      parameters:
+        - name: foodId
+          in: path
+          description: Food Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodDetail'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      tags:
+        - food
+      summary: Delete Food.
+      operationId: deleteFood
+      parameters:
+        - name: foodId
+          in: path
+          description: Food Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/favorite/{userId}':
+    get:
+      tags:
+        - favorite
+      summary: Get favorite by ID.
+      operationId: getFavorite
+      parameters:
+        - name: userId
+          in: path
+          description: user Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorite'
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /favorite:
+    post:
+      tags:
+        - favorite
+      summary: Create Favorite.
+      operationId: createFavorite
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavoriteCreate'
+      responses:
+        '201':
+          description: Success Created.
+        default:
+          description: Failed Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/favorite/{storeId}':
+    delete:
+      tags:
+        - favorite
+      summary: Delete Favorite.
+      operationId: deleteFavorite
+      parameters:
+        - name: storeId
+          in: path
+          description: Store Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user:
+    post:
+      tags:
+        - user
+      summary: Create User.
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Success Created.
+        default:
+          description: Failed Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/login:
+    post:
+      tags:
+        - user
+      summary: Login User.
+      operationId: loginUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Success Login.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /user/logout:
+    get:
+      tags:
+        - user
+      summary: Logout User.
+      operationId: logoutUser
+      responses:
+        '200':
+          description: Success Logout.
+  '/user/{userId}':
+    delete:
+      tags:
+        - user
+      summary: Delete User.
+      operationId: deleteUser
+      parameters:
+        - name: userId
+          in: path
+          description: User Id.
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success Delete.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Store:
+      type: object
+      required:
+        - id
+        - name
+        - image
+        - foodNum
+        - foods
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+        foodNum:
+          type: integer
+          format: int32
+          description: Number of items in foods.
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreItem'
+      example:
+        id: 1
+        name: 滝川パン
+        image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg'
+        foodNum: 5
+        foods:
+          - id: 1
+            name: あんぱん
+            originalPrice: 600
+            salePrice: 300
+            startTime: '1300'
+            endTime: '1545'
+            image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg'
+          - id: 2
+            name: サンドイッチ
+            originalPrice: 500
+            salePrice: 100
+            startTime: '1415'
+            endTime: '1645'
+            image: 'https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg'
+          - id: 3
+            name: クリームパン
+            originalPrice: 300
+            salePrice: 100
+            startTime: '1430'
+            endTime: '1800'
+            image: >-
+              https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg
+          - id: 4
+            name: 食パン
+            originalPrice: 500
+            salePrice: 100
+            startTime: '1345'
+            endTime: '1545'
+            image: 'https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg'
+          - id: 5
+            name: フランスパン
+            originalPrice: 500
+            salePrice: 100
+            startTime: '1315'
+            endTime: '1600'
+            image: >-
+              https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg
+    StoreItem:
+      type: object
+      required:
+        - id
+        - name
+        - originalPrice
+        - salePrice
+        - startTime
+        - endTime
+        - image
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        originalPrice:
+          type: integer
+          format: int32
+        salePrice:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        image:
+          type: string
+    StoreDetail:
+      type: object
+      required:
+        - id
+        - name
+        - image
+        - openTime
+        - closeTime
+        - zip
+        - address
+        - tel
+        - holiday
+        - parking
+        - access
+        - map
+        - url
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+        openTime:
+          type: string
+        closeTime:
+          type: string
+        zip:
+          type: string
+        address:
+          type: string
+        tel:
+          type: string
+        holiday:
+          type: string
+        parking:
+          type: string
+        access:
+          type: string
+        map:
+          type: string
+        url:
+          type: string
+      example:
+        id: 1
+        name: 滝川パン
+        image: 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg'
+        openTime: 0800
+        closeTime: '2000'
+        zip: 860-0801
+        address: 熊本県熊本市中央区安政町2-34 HILLS KAGOMACHIビル1F
+        tel: 096-342-4398
+        holiday: 不定休(店休)
+        parking: 駐車場 徒歩5分にあり(有料)
+        access: 通町筋から徒歩10分
+        map: '[32.815183,130.727428]'
+        url: 'http://takigawapan.jp/'
+    Food:
+      type: object
+      required:
+        - id
+        - foodNum
+        - foods
+      properties:
+        id:
+          type: integer
+          format: int64
+        foodNum:
+          type: integer
+          format: int32
+          description: Number of items in foods.
+        foods:
+          type: array
+          items:
+            $ref: '#/components/schemas/FoodItem'
+      example:
+        id: 111
+        foodNum: 5
+        foods:
+          - id: 1
+            name: あんぱん
+            originalPrice: 600
+            salePrice: 300
+            startTime: '1300'
+            endTime: '1545'
+            image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg'
+            storeMap: '[32.815183,130.727428]'
+          - id: 2
+            name: サンドイッチ
+            originalPrice: 500
+            salePrice: 100
+            startTime: '1415'
+            endTime: '1645'
+            image: 'https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg'
+            storeMap: '[32.814949,130.727842]'
+          - id: 3
+            name: クリームパン
+            originalPrice: 300
+            salePrice: 100
+            startTime: '1430'
+            endTime: '1800'
+            image: >-
+              https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg
+            storeMap: '[32.814419,130.726572]'
+          - id: 4
+            name: 食パン
+            originalPrice: 500
+            salePrice: 100
+            startTime: '1345'
+            endTime: '1545'
+            image: 'https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg'
+            storeMap: '[32.813823,130.724649]'
+          - id: 5
+            name: フランスパン
+            originalPrice: 500
+            salePrice: 100
+            startTime: '1315'
+            endTime: '1600'
+            image: >-
+              https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg
+            storeMap: '[32.814625,130.723919]'
+    FoodItem:
+      type: object
+      required:
+        - id
+        - name
+        - originalPrice
+        - salePrice
+        - startTime
+        - endTime
+        - image
+        - storeMap
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        originalPrice:
+          type: integer
+          format: int32
+        salePrice:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        image:
+          type: string
+        storeMap:
+          type: string
+    FoodCreate:
+      type: object
+      required:
+        - id
+        - name
+        - originalPrice
+        - salePrice
+        - startTime
+        - endTime
+        - number
+        - allergy
+        - image
+        - storeId
+        - storeName
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        originalPrice:
+          type: integer
+          format: int32
+        salePrice:
+          type: integer
+          format: int32
+        startTime:
+          type: string
+        endTime:
+          type: string
+        number:
+          type: integer
+          format: int32
+        allergy:
+          type: string
+        image:
+          type: string
+        storeId:
+          type: integer
+          format: int64
+        storeName:
+          type: string
+      example:
+        id: 1
+        name: あんぱん
+        originalPrice: 600
+        salePrice: 300
+        startTime: '1300'
+        endTime: '1545'
+        number: 3
+        allergy: '[卵,乳,小麦]'
+        image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg'
+        storeId: 2
+        storeName: 滝川パン
+    FoodDetail:
+      type: object
+      required:
+        - id
+        - whySale
+        - allergy
+        - foodInfo
+        - storeInfo
+      properties:
+        id:
+          type: integer
+          format: int64
+        whySale:
+          type: string
+        allergy:
+          type: string
+        foodInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreItem'
+        storeInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/StoreDetail'
+      example:
+        id: 1
+        whySale: 本日はゲリラ豪雨により、お客さんがいらっしゃいいらっしゃいませんでした。このあんぱんは渾身のできです。
+        allergy: '[卵,乳,小麦]'
+        foodIndo:
+          - id: 1
+            name: あんぱん
+            originalPrice: 600
+            salePrice: 300
+            startTime: '1300'
+            endTime: '1545'
+            image: 'https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg'
+        storeInfo:
+          - id: 1
+            name: 滝川パン
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+            openTime: 0800
+            closeTime: '2000'
+            zip: 860-0801
+            address: 熊本県熊本市中央区安政町2-34 HILLS KAGOMACHIビル1F
+            tel: 096-342-4398
+            holiday: 不定休(店休)
+            parking: 駐車場 徒歩5分にあり(有料)
+            access: 通町筋から徒歩10分
+            map: '[32.815183,130.727428]'
+            url: 'http://takigawapan.jp/'
+    Favorite:
+      type: object
+      required:
+        - userId
+        - favoriteNum
+        - favoriteStores
+      properties:
+        userId:
+          type: integer
+          format: int64
+        favoriteNum:
+          type: integer
+          format: int32
+        favoriteStores:
+          type: array
+          items:
+            $ref: '#/components/schemas/FavoriteStore'
+      example:
+        userId: 1
+        foodNum: 3
+        favoriteStores:
+          - id: 1
+            name: 滝川パン1
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+          - id: 2
+            name: 滝川パン2
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+          - id: 3
+            name: 滝川パン3
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+    FavoriteStore:
+      type: object
+      required:
+        - id
+        - name
+        - image
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        image:
+          type: string
+    FavoriteCreate:
+      type: object
+      required:
+        - userId
+        - storeId
+        - storeName
+      properties:
+        userId:
+          type: integer
+          format: int64
+        storeId:
+          type: integer
+          format: int64
+        storeName:
+          type: string
+      example:
+        userId: 1
+        storeId: 2
+        storeName: 滝川パン
+    User:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - firstNameKana
+        - lastNameKana
+        - mail
+        - password
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        firstNameKana:
+          type: string
+        lastNameKana:
+          type: string
+        mail:
+          type: string
+        password:
+          type: string
+      example:
+        firstName: 山下
+        lastName: 昂太
+        firstNameKana: ヤマシタ
+        lastNameKana: コウタ
+        mail: etaste.food@gmail.com
+        password: KBa45fdg
+    UserLogin:
+      type: object
+      required:
+        - mail
+        - password
+      properties:
+        mail:
+          type: string
+        password:
+          type: string
+      example:
+        mail: etaste.food@gmail.com
+        password: KBa45fdg
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        code: 1
+        message: Default Error.
+tags:
+  - name: store
+    description: About Store.
+  - name: food
+    description: About Food.
+  - name: favorite
+    description: About favorite.
+  - name: user
+    description: About User.
