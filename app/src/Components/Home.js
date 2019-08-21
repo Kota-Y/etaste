@@ -1,7 +1,8 @@
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 import React from "react";
 import SerchView from "./SerchView";
 import '../CSS/Main.css';
+import Recommend from "./Recommend";
 
 class Home extends React.Component {
   handleToSettingPage = () => {
@@ -10,9 +11,14 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className='home'>
-        <SerchView />
-        <button onClick={this.handleToSettingPage}>設定ページへ遷移する</button>
+      <div>
+        <div class="bg-image">
+          <div class="bg-mask">
+            <SerchView />
+            <button onClick={this.handleToSettingPage}>設定ページへ遷移する</button>
+          </div>
+        </div>
+        <Recommend />
       </div>
     );
   }
