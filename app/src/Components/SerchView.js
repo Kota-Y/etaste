@@ -21,17 +21,6 @@ const styleKeys = [{ key: "indicatorsContainer" }];
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
 class SerchView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      beSerched: false,
-      areas: "",
-      hasAreasError: false,
-      times: "",
-      hasTimesError: false
-    };
-  }
-
   render() {
     return (
       <div className="view">

@@ -1,6 +1,10 @@
+.main{
+  height: 100%;
+}
+
 .bg-image {
-  height: 1200px;
-  background-image: url(../image/photo_1.jpg);
+  height: 800px;
+  background-image: url(../bg_photo/photo_1.jpg);
   background-size: cover;
 }
 

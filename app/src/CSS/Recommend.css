@@ -1,0 +1,51 @@
+.recommend-items{
+    height: 1000px;
+    width: auto;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.recommend-items h3{
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.recommend-items h4{
+    color: gray;
+    float: right;
+    margin-right: 20px;
+}
+
+.recommend-items h4:hover{
+    color: #FF6666;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.recommend-items img{
+    height: auto;
+    width: auto;
+}
+
+.top{
+    top: 0;
+}
+
+.all-recommend-items-top{
+    height: 300px;
+    background-image: url(../bg_photo/items-back.jpg);
+    background-size: cover;
+}
+
+.all-recommend-items-top h1{
+    color: gray;
+    font-size: 30pt;
+    margin-left: 30px;
+}
+
+.all-recommend-items img{
+    float: center;
+    height: 400px;
+    width: 400px;
+    margin: 40px 40px 40px 40px;
+}

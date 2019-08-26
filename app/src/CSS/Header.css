@@ -24,7 +24,7 @@
   box-sizing: border-box;
   height: 100%;
   padding: 10px 40px; /*メニュー内部上下左右余白*/
-  position: fixed;
+  position: fixed; /*ハンバーガーメニューの固定*/
   right: -300px; /*メニュー横幅①と合わせる*/
   top: 0;
   transition: transform 0.3s linear 0s; /*0.3s は変化するのにかかる時間*/
