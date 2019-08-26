@@ -19,7 +19,11 @@ class Recommend extends React.Component {
             <div className='recommend-items'>
                 <h3>近くで人気の商品</h3>
                 <div className='food-image'>
-                    <Carousel slidesToShow={5} cellAlign="left" cellSpacing={20}>
+                    <Carousel 
+                        slidesToShow={4} 
+                        cellAlign="left" 
+                        cellSpacing={50}
+                        renderBottomCenterControls = { false }>
                         <img src="./image/pan1.png" alt='' />
                         <img src="./image/pan2.png" alt='' />
                         <img src="./image/pan3.png" alt='' />
@@ -41,7 +45,11 @@ class Recommend extends React.Component {
 
                 <h3>近くで人気のお店</h3>
                 <div className='shop-image'>
-                    <Carousel slidesToShow={5} cellAlign="left" cellSpacing={20}>
+                    <Carousel 
+                        slidesToShow={4}
+                        cellAlign="left"
+                        cellSpacing={50}
+                        renderBottomCenterControls = { false }>
                         <img src="./image/shop1.png" alt='' />
                         <img src="./image/shop2.png" alt='' />
                         <img src="./image/shop3.png" alt='' />
