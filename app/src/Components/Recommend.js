@@ -6,6 +6,20 @@ import AllRecommends from './allRecommends';
 import SuperKlass from './DefineConst';
 import axios from 'axios';
 
+const foodData = {
+    id: 1,
+    name: "あんぱん",
+    originalPrice: 600,
+    salePrice: 300,
+    startTime: "1300",
+    endTime: "1545",
+    number: 3,
+    allergy: "[卵,乳,小麦]",
+    image: "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
+    storeId: 2,
+    storeName: "滝川パン"
+};
+
 
 class Recommend extends React.Component {
     constructor(props) {
@@ -39,22 +53,8 @@ class Recommend extends React.Component {
     }
     
     handlePostFoodInfo(){
-        const foodData = {
-            id: 1,
-            name: "あんぱん",
-            originalPrice: 600,
-            salePrice: 300,
-            startTime: "1300",
-            endTime: "1545",
-            number: 3,
-            allergy: "[卵,乳,小麦]",
-            image: "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
-            storeId: 2,
-            storeName: "滝川パン"
-        };
-
         axios
-            .post('http://127.0.0.1:8084/food/', foodData)
+            .post( SuperKlass.CONST.DOMAIN + '/food/', foodData)
             .then((res) => {
                 alert("「" + foodData.name + "」登録完了");
                 console.log(foodData.name);
