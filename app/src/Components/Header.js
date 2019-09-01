@@ -1,9 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-//import Home from "./Home";
-//import Setting from "./Setting";
 import "../CSS/Header.css";
-//import title_log from "../image/title.png";
 
 class Header extends React.Component {
   handleToHomePage = () => {
@@ -16,9 +13,9 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div class="header">
-        <div class="header-left">
-          <img src="./title.png" alt="" class="title" />
+      <div className="header">
+        <div className="header-left">
+          <img src="./title.png" alt="" className="title" />
           <div id="ham-menu">
             <ul>
               <button
