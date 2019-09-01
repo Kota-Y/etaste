@@ -12,8 +12,8 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <div class="bg-image">
-          <div class="bg-mask">
+        <div className="bg-image">
+          <div className="bg-mask">
             <SerchView />
             <button onClick={this.handleToSettingPage}>設定ページへ遷移する</button>
           </div>

@@ -35,7 +35,7 @@
 /*メニューアイコン部分は疑似要素で*/
 #ham-menu::before {
   background-color: #ffdb73; /*ボタン部分背景色*/
-  border-radius: 0 0 0 10px; /*左下角丸*/
+  border-radius: 10px 0 0 10px; /*左下と左上角丸*/
   color: rgb(65, 61, 61); /*アイコン（フォント）色*/
   content: "≡"; /*メニューアイコン*/
   display: block;

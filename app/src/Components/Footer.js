@@ -20,7 +20,7 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <div class="footer">
+      <div className="footer">
         <h1>↓　Footer　↓</h1>
         <button
           onClick={() => {
