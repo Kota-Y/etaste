@@ -3,8 +3,8 @@ import { withRouter, Switch, Route } from 'react-router';
 import "../CSS/Recommend.css";
 import Carousel from 'nuka-carousel';
 import AllRecommends from './allRecommends';
+import SuperKlass from './DefineConst';
 import axios from 'axios';
-//axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 
 class Recommend extends React.Component {
@@ -26,7 +26,7 @@ class Recommend extends React.Component {
 
     handleGetFoodInfo() { 
         axios
-            .get('http://127.0.0.1:8084/food/1/',{
+            .get(　SuperKlass.CONST.DOMAIN + '/food/1/'　,{
                     headers: { "Content-Type": "application/json" },
                     data: {}  
                 })
@@ -57,9 +57,9 @@ class Recommend extends React.Component {
             .post('http://127.0.0.1:8084/food/', foodData)
             .then((res) => {
                 alert("「" + foodData.name + "」登録完了");
-                this.$router.push({path: '/articles/list'});
+                console.log(foodData.name);
             })
-            .catch(error => {
+            .catch( (error) => {
                 alert("「" + foodData.name + "」登録失敗");
                 console.log(error, foodData);
             });
