@@ -1,0 +1,13 @@
+.store-detail h1{
+    margin-left: 30px;
+}
+
+.store-info{
+    display: inline-flex;
+}
+
+.store-info img{
+    margin: 20px;
+    height: 400px;
+    width: 600px;
+}

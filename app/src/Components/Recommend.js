@@ -3,6 +3,7 @@ import { withRouter, Switch, Route } from 'react-router';
 import "../CSS/Recommend.css";
 import Carousel from 'nuka-carousel';
 import AllRecommends from './allRecommends';
+import StoreDetail from './StoreDetail';
 import SuperKlass from './DefineConst';
 import axios from 'axios';
 
@@ -20,24 +21,20 @@ const foodData = {
     storeName: "滝川パン"
 };
 
-
 class Recommend extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            price: ''
-        };
-    }
+    handleToStoreDetailPage = () => {
+        this.props.history.push("/StoreDetail");
+    };
 
     handleToAllRecommendsPage = () => {
         this.props.history.push("/allRecommends");
-      };
+    };
 
     handleToAllRecommendsStorePage = () => {
     this.props.history.push("/allRecommendsStore");
     };
 
+    /* Foodの情報のGETメソッド */
     handleGetFoodInfo() { 
         axios
             .get(　SuperKlass.CONST.DOMAIN + '/food/1/'　,{
@@ -45,13 +42,17 @@ class Recommend extends React.Component {
                     data: {}  
                 })
             .then( (res) => {
-                console.log(res.data);
+                //これで'あんぱん'という情報を取得できる
+                //console.log(res.data.foodIndo[0].name);
+                const name = res.data.foodIndo[0].name;
+                console.log(name);
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
     }
     
+    /* Foodの情報のPOSTメソッド */
     handlePostFoodInfo(){
         axios
             .post( SuperKlass.CONST.DOMAIN + '/food/', foodData)
@@ -101,9 +102,14 @@ class Recommend extends React.Component {
                         cellSpacing={50}
                         renderBottomCenterControls = { false }>
                         <img src="./image/shop1.png" alt='' 
+                            onClick = { () =>{
+                                //this.props.getStoreInfo();
+                                this.handleToStoreDetailPage();
+                            } }
+                        />
+                        <img src="./image/shop2.png" alt='' 
                             onClick = { this.handlePostFoodInfo }
                         />
-                        <img src="./image/shop2.png" alt='' />
                         <img src="./image/shop3.png" alt='' />
                         <img src="./image/shop4.png" alt='' />
                         <img src="./image/shop1.png" alt='' />
@@ -116,9 +122,9 @@ class Recommend extends React.Component {
                 <div>
                     <Switch>
                         <Route exact path={"/allRecommends"} component={AllRecommends} />
+                        <Route exact path={"/StoreDetail"} component={StoreDetail} />
                     </Switch>
                 </div>
-                <h2>{this.handleGetFoodInfo}</h2>
             </div>
         );
     }

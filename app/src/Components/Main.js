@@ -5,6 +5,7 @@ import Home from "./Home";
 import Setting from "./Setting";
 import Item from "./Item";
 import AllRecommends from "./allRecommends";
+import StoreDetail from "./StoreDetail";
 
 class Main extends React.Component {
   render() {
@@ -17,7 +18,8 @@ class Main extends React.Component {
                 <Route exact path={"/"} component={Home} />
                 <Route exact path={"/item"} component={Item} />
                 <Route exact path={"/setting"} component={Setting} />
-                <Route path={"/allRecommends"} component={AllRecommends} />
+                <Route exact path={"/allRecommends"} component={AllRecommends} />
+                <Route exact path={"/StoreDetail"} component={StoreDetail} />
               </Switch>
             </div>
           </div>
