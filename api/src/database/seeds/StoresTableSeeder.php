@@ -27,6 +27,8 @@ class StoresTableSeeder extends Seeder
               'access' => '通町筋から徒歩10分',
               'tel' => '096-342-4398',
               'image_url' => 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+              'created_at' => new DateTime(),
+              'updated_at' => new DateTime(),
             ],
             [
                 'name' => 'Manly 熊本',
@@ -43,6 +45,8 @@ class StoresTableSeeder extends Seeder
                 'access' => '藤崎宮前駅から203m',
                 'tel' => '096-223-5388',
                 'image_url' => 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
               ],
               [
                 'name' => 'rojipan 並木坂店',
@@ -59,6 +63,8 @@ class StoresTableSeeder extends Seeder
                 'access' => '藤崎宮前駅から321m',
                 'tel' => '050-5594-4846',
                 'image_url' => 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
               ],
               [
                 'name' => 'チャオリー',
@@ -75,6 +81,8 @@ class StoresTableSeeder extends Seeder
                 'access' => '藤崎宮前駅から299m',
                 'tel' => '096-351-5015',
                 'image_url' => 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
               ],
               [
                 'name' => 'ゴキゲン家G.O',
@@ -91,6 +99,8 @@ class StoresTableSeeder extends Seeder
                 'access' => '通町筋駅から254mm',
                 'tel' => '096-328-8288',
                 'image_url' => 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
+                'created_at' => new DateTime(),
+                'updated_at' => new DateTime(),
               ],
           ]);
     }
