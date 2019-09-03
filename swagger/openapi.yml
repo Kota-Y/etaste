@@ -427,7 +427,8 @@ components:
         - holiday
         - parking
         - access
-        - map
+        - mapLatitude
+        - mapLongitude
         - url
       properties:
         id:
@@ -453,7 +454,9 @@ components:
           type: string
         access:
           type: string
-        map:
+        mapLatitude:
+          type: string
+        mapLongitude:
           type: string
         url:
           type: string
@@ -469,7 +472,8 @@ components:
         holiday: 不定休(店休)
         parking: 駐車場 徒歩5分にあり(有料)
         access: 通町筋から徒歩10分
-        map: '[32.815183,130.727428]'
+        mapLatitude: '32.815183'
+        mapLongitude: '130.727428'
         url: 'http://takigawapan.jp/'
     Food:
       type: object
@@ -669,7 +673,8 @@ components:
             holiday: 不定休(店休)
             parking: 駐車場 徒歩5分にあり(有料)
             access: 通町筋から徒歩10分
-            map: '[32.815183,130.727428]'
+            mapLatitude: '32.815183'
+            mapLongitude: '130.727428'
             url: 'http://takigawapan.jp/'
     Favorite:
       type: object
