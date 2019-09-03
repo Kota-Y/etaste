@@ -23,11 +23,11 @@ const foodData = {
 
 class Recommend extends React.Component {
     handleToStoreDetailPage = () => {
-        this.props.history.push("/StoreDetail");
+        this.props.history.push("/store-detail");
     };
 
     handleToAllRecommendsPage = () => {
-        this.props.history.push("/allRecommends");
+        this.props.history.push("/all-recommends");
     };
 
     handleToAllRecommendsStorePage = () => {
@@ -121,8 +121,8 @@ class Recommend extends React.Component {
                 <h4>すべてのお店を表示 &rsaquo;</h4>
                 <div>
                     <Switch>
-                        <Route exact path={"/allRecommends"} component={AllRecommends} />
-                        <Route exact path={"/StoreDetail"} component={StoreDetail} />
+                        <Route exact path={"/all-recommends"} component={AllRecommends} />
+                        <Route exact path={"/store-detail"} component={StoreDetail} />
                     </Switch>
                 </div>
             </div>

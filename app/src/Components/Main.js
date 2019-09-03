@@ -18,8 +18,8 @@ class Main extends React.Component {
                 <Route exact path={"/"} component={Home} />
                 <Route exact path={"/item"} component={Item} />
                 <Route exact path={"/setting"} component={Setting} />
-                <Route exact path={"/allRecommends"} component={AllRecommends} />
-                <Route exact path={"/StoreDetail"} component={StoreDetail} />
+                <Route exact path={"/all-recommends"} component={AllRecommends} />
+                <Route exact path={"/store-detail"} component={StoreDetail} />
               </Switch>
             </div>
           </div>
