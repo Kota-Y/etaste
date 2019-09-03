@@ -1,3 +1,14 @@
+.store-container{
+    margin-top: 15px;
+    width: 800px;
+    height: 100vh;
+    border-right:1px solid gray;
+}
+
+.store-detail{
+    display: inline-flex;
+}
+
 .store-detail h1{
     margin-left: 30px;
 }
@@ -8,6 +19,15 @@
 
 .store-info img{
     margin: 20px;
-    height: 400px;
-    width: 550px;
+    height: 300px;
+    width: 400px;
+}
+
+.onSale-container{
+    width: 400px;
+    height: 100vh;
+}
+
+.onSale-container h1{
+    margin-top: 35px;
 }
