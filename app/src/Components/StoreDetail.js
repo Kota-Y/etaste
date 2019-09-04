@@ -13,6 +13,7 @@ class StoreDetail extends React.Component{
         this.state = {
             /* Store情報のstate */
             name: '',
+            storeId: '',
             storeImage: '',
             access: '',
             address: '',
@@ -29,7 +30,7 @@ class StoreDetail extends React.Component{
             /* 出品中のFoodの情報state */
             foodName:'',
             endTime: '',
-            id: '',
+            foodId: '',
             foodImage: '',
             originalPrice: '',
             salePrice: '',
@@ -37,57 +38,59 @@ class StoreDetail extends React.Component{
         };
     }
 
-componentDidMount() { 
-    /* Storeの情報をGETするメソッド(id1について) */
-    axios
-        .get(　SuperKlass.CONST.DOMAIN + '/store/detail/1/', {
-                headers: { "Content-Type": "application/json" },
-                data: {}  
+    componentWillMount() { 
+        /* Storeの情報をGETするメソッド(id1について) */
+        axios
+            .get(　SuperKlass.CONST.DOMAIN + '/store/detail/', {
+                    headers: { "Content-Type": "application/json" },
+                    data: {},
+                    param: this.state.storeId
+                })
+            .then( (res) => {
+                this.setState({
+                    name: res.data.name,
+                    storeId: res.data.id,
+                    storeImage: res.data.image,
+                    access: res.data.access,
+                    address: res.data.address,
+                    openTime: res.data.openTime,
+                    closeTime: res.data.closeTime,
+                    holiday: res.data.holiday,
+                    map: res.data.map,
+                    mapLatitude: res.data.mapLatitude,
+                    mapLongitude: res.data.mapLongitude,
+                    parking: res.data.parking,
+                    tel: res.data.tel,
+                    url: res.data.url,
+                    zip: res.data.zip
+                });
+                //console.log(this.state.storeId);
             })
-        .then( (res) => {
-            this.setState({
-                name: res.data.name,
-                storeImage: res.data.image,
-                access: res.data.access,
-                address: res.data.address,
-                openTime: res.data.openTime,
-                closeTime: res.data.closeTime,
-                holiday: res.data.holiday,
-                map: res.data.map,
-                mapLatitude: res.data.mapLatitude,
-                mapLongitude: res.data.mapLongitude,
-                parking: res.data.parking,
-                tel: res.data.tel,
-                url: res.data.url,
-                zip: res.data.zip
+            .catch( (error) => {
+                console.log('通信に失敗しました');
             });
-        })
-        .catch( (error) => {
-            console.log('通信に失敗しました');
-        });
-    /*　Storeの出品中の商品をGETするメソッド */
-    axios
-        .get(　SuperKlass.CONST.DOMAIN + '/store/1/', {
-                headers: { "Content-Type": "application/json" },
-                data: {}  
+        /*　Storeの出品中の商品をGETするメソッド */
+        axios
+            .get(　SuperKlass.CONST.DOMAIN + '/store/', {
+                    headers: { "Content-Type": "application/json" },
+                    data: {},
+                    param: this.state.storeId
+                })
+            .then( (res) => {
+                this.setState({
+                    foodName: res.data.foods[0].name,
+                    endTime: res.data.foods[0].endTime,
+                    foodId: res.data.foods[0].id,
+                    foodImage: res.data.foods[0].image,
+                    originalPrice: res.data.foods[0].originalPrice,
+                    salePrice: res.data.foods[0].salePrice,
+                    startTime: res.data.foods[0].startTime
+                });
             })
-        .then( (res) => {
-            this.setState({
-                foodName: res.data.foods[0].name,
-                endTime: res.data.foods[0].endTime,
-                id: res.data.foods[0].id,
-                foodImage: res.data.foods[0].image,
-                originalPrice: res.data.foods[0].originalPrice,
-                salePrice: res.data.foods[0].salePrice,
-                startTime: res.data.foods[0].startTime
+            .catch( (error) => {
+                console.log('通信に失敗しました');
             });
-            
-            //console.log(sellTime);
-        })
-        .catch( (error) => {
-            console.log('通信に失敗しました');
-        });
-}
+    }
 
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
@@ -151,6 +154,8 @@ componentDidMount() {
         );
     }
 }
+
+
 
 const mapStyles = {
     width: '38vw',

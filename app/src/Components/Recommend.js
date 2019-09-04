@@ -99,8 +99,7 @@ class Recommend extends React.Component {
                         slidesToShow={4}
                         cellAlign="left"
                         cellSpacing={50}
-                        renderBottomCenterControls = { false }
-                        className='store-component' >
+                        renderBottomCenterControls = {false}>
                         <StoreComponent />
                         <img src="./image/shop1.png" alt='' 
                             onClick = { this.handleToStoreDetailPage }

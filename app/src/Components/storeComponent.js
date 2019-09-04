@@ -21,15 +21,22 @@ class StoreComponent extends React.Component{
     /* Storeの情報をGETするメソッド(id1について) */
     componentDidMount() { 
         axios
-            .get(　SuperKlass.CONST.DOMAIN + '/store/detail/1/', {
+            .get(　SuperKlass.CONST.DOMAIN + '/store/detail/', {
                     headers: { "Content-Type": "application/json" },
                     data: {}  
                 })
             .then( (res) => {
-                this.setState({
-                    name: res.data.name,
-                    image: res.data.image,
-                });
+                axios.get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
+                          headers: { "Content-Type": "application/json" },
+                          data: {},
+                          param: this.state.storeId
+                    })
+                    .then( (res) => {
+                        this.setState({
+                            name: res.data.name,
+                            image: res.data.image,
+                        });
+                    } );
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');
@@ -38,17 +45,14 @@ class StoreComponent extends React.Component{
 
     render (){
         return(
-            <div>
-                <div className='container'>
+                <div className='container' onClick = { this.handleToStoreDetailPage } >
                     <div className='info'>
-                        <img src={this.state.image} alt='' 
-                            onClick = { this.handleToStoreDetailPage }
-                        />
+                        <img src={this.state.image} alt='' />
                         <h2>{ this.state.name }</h2>
                         <h3>熊本</h3>
                     </div>
                 </div>
-            </div>
+            
         );
     }
 }
