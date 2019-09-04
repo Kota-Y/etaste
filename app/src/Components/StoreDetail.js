@@ -3,12 +3,14 @@ import { withRouter } from "react-router";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 import SuperKlass from './DefineConst';
+import StoreComponent from './storeComponent';
 import "../CSS/StoreDetail.css";
 
 class StoreDetail extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            /* Store情報のstate */
             name: '',
             storeImage: '',
             access: '',
@@ -23,7 +25,7 @@ class StoreDetail extends React.Component{
             tel: '',
             url: '',
             zip: '',
-
+            /* 出品中のFoodの情報state */
             foodName:'',
             endTime: '',
             id: '',
@@ -63,8 +65,8 @@ componentDidMount() {
         .catch( (error) => {
             console.log('通信に失敗しました');
         });
-        /*　Storeの出品中の商品をGETするメソッド */
-        axios
+    /*　Storeの出品中の商品をGETするメソッド */
+    axios
         .get(　SuperKlass.CONST.DOMAIN + '/store/1/', {
                 headers: { "Content-Type": "application/json" },
                 data: {}  
@@ -95,10 +97,11 @@ componentDidMount() {
                     </div>
                     <div className='store-info'>
                         <div>
-                            <img
+                            {/*<img
                                 src={this.state.storeImage}
                                 alt=''
-                            />
+                            />*/}
+                            <StoreComponent />
                         </div>
                         <div className='store-name'>
                             <h2>{ this.state.name }</h2>
@@ -108,7 +111,7 @@ componentDidMount() {
                             <h3 className='address'>{ this.state.address }</h3>
                             <h3>{ this.state.tel }</h3>
                             <h3>
-                            <a href={this.state.url}>{ this.state.name + 'のHP' }</a>
+                            <a href={this.state.url}>{ this.state.url }</a>
                             </h3>
                         </div>
                     </div>

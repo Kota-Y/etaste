@@ -49,3 +49,8 @@
     width: 400px;
     margin: 40px 40px 40px 40px;
 }
+
+.store-component StoreComponent{
+    height: 300px;
+    width: 300px;
+}

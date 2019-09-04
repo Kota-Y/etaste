@@ -5,6 +5,7 @@ import Carousel from 'nuka-carousel';
 import AllRecommends from './allRecommends';
 import StoreDetail from './StoreDetail';
 import SuperKlass from './DefineConst';
+import StoreComponent from './storeComponent';
 import axios from 'axios';
 
 const foodData = {
@@ -22,16 +23,16 @@ const foodData = {
 };
 
 class Recommend extends React.Component {
-    handleToStoreDetailPage = () => {
-        this.props.history.push("/store-detail");
-    };
-
     handleToAllRecommendsPage = () => {
         this.props.history.push("/all-recommends");
     };
 
     handleToAllRecommendsStorePage = () => {
     this.props.history.push("/allRecommendsStore");
+    };
+
+    handleToStoreDetailPage = () => {
+        this.props.history.push("/store-detail");
     };
 
     /* Foodの情報のGETメソッド */
@@ -42,8 +43,6 @@ class Recommend extends React.Component {
                     data: {}  
                 })
             .then( (res) => {
-                //これで'あんぱん'という情報を取得できる
-                //console.log(res.data.foodIndo[0].name);
                 const name = res.data.foodIndo[0].name;
                 console.log(name);
             })
@@ -100,12 +99,11 @@ class Recommend extends React.Component {
                         slidesToShow={4}
                         cellAlign="left"
                         cellSpacing={50}
-                        renderBottomCenterControls = { false }>
+                        renderBottomCenterControls = { false }
+                        className='store-component' >
+                        <StoreComponent />
                         <img src="./image/shop1.png" alt='' 
-                            onClick = { () =>{
-                                //this.props.getStoreInfo();
-                                this.handleToStoreDetailPage();
-                            } }
+                            onClick = { this.handleToStoreDetailPage }
                         />
                         <img src="./image/shop2.png" alt='' 
                             onClick = { this.handlePostFoodInfo }
