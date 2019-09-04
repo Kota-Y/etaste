@@ -9,15 +9,17 @@ import Footer from "./Footer";
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
-        <Header />
-        <body>
-          <div id="wrapper">
-            <Main />
-          </div>
-        </body>
-        <Footer />
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <Header />
+          <body>
+            <div id="wrapper">
+              <Main />
+            </div>
+          </body>
+          <Footer />
+        </BrowserRouter>
+      </div>
     );
   }
 }

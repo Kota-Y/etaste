@@ -60,7 +60,6 @@ componentDidMount() {
                 url: res.data.url,
                 zip: res.data.zip
             });
-            //console.log(res.data.access);
         })
         .catch( (error) => {
             console.log('通信に失敗しました');
@@ -147,7 +146,7 @@ componentDidMount() {
                         <h1>店舗詳細</h1>
                     </div>
                     <div className='store-info'>
-                        <div class='store-component'>
+                        <div className='store-component'>
                             <StoreComponent />
                         </div>
                         <div className='store-name'>
@@ -183,9 +182,9 @@ componentDidMount() {
                             <img src={this.state.foodImage} alt='' />
                             <h2>{ this.state.foodName }</h2>
                             <div className='price'>
-                                <h3 class='deleat'>{ this.state.originalPrice + '円'}</h3>
+                                <h3 className='deleat'>{ this.state.originalPrice + '円'}</h3>
                                 <h3> → </h3>
-                                <h3 class='salePrice'>{this.state.salePrice + '円' }</h3>
+                                <h3 className='salePrice'>{this.state.salePrice + '円' }</h3>
                             </div>
                             <h3>{ sellTime }</h3>
                         </div>
