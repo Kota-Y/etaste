@@ -4,6 +4,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 import SuperKlass from './DefineConst';
 import StoreComponent from './storeComponent';
+import { str_Time01, str_Time23 } from '../function/storeTime';
 import "../CSS/StoreDetail.css";
 
 class StoreDetail extends React.Component{
@@ -90,54 +91,10 @@ componentDidMount() {
 
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
-        const str_openTime = ( () => {
-            if(this.state.openTime.slice(0, 1) === '0'){
-                const openTime_hour = this.state.openTime.slice(1, 2);
-                const openTime_min = this.state.openTime.slice(2, 4);
-                return openTime_hour + ':' + openTime_min;  
-            } else {
-                const openTime_hour = this.state.openTime.slice(0, 2);
-                const openTime_min = this.state.openTime.slice(2, 4);
-                return openTime_hour + ':' + openTime_min;
-            }
-        })();
-        const str_closeTime = ( () => {
-            if(this.state.closeTime.slice(0, 1) === '0'){
-                const closeTime_hour = this.state.closeTime.slice(1, 2);
-                const closeTime_min = this.state.closeTime.slice(2, 4);
-                return closeTime_hour + ':' + closeTime_min;    
-            } else {
-                const closeTime_hour = this.state.closeTime.slice(0, 2);
-                const closeTime_min = this.state.closeTime.slice(2, 4);
-                return closeTime_hour + ':' + closeTime_min;
-            }
-        })();
-        const business_hours = str_openTime + '〜' + str_closeTime;
+        const business_hours = str_Time01( this.state.openTime ) + '〜' + str_Time23( this.state.closeTime );
         
         /* 販売時刻の先頭が0の場合に消す処理 */
-        const str_startTime = ( () => { 
-            if(this.state.startTime.slice(0, 1) === '0'){
-                const startTime_hour = this.state.startTime.slice(1, 2);
-                const startTime_min = this.state.startTime.slice(2, 4);
-                return startTime_hour + ':' + startTime_min;    
-            } else {
-                const startTime_hour = this.state.startTime.slice(0, 2);
-                const startTime_min = this.state.startTime.slice(2, 4);
-                return startTime_hour + ':' + startTime_min;
-            }
-        })();
-        const str_endTime = ( () => { 
-            if(this.state.endTime.slice(0, 1) === '0'){
-                const endTime_hour = this.state.endTime.slice(1, 2);
-                const endTime_min = this.state.endTime.slice(2, 4);
-                return endTime_hour + ':' + endTime_min;    
-            } else {
-                const endTime_hour = this.state.endTime.slice(0, 2);
-                const endTime_min = this.state.endTime.slice(2, 4);
-                return endTime_hour + ':' + endTime_min;
-            }
-        })();
-        const sellTime = str_startTime + '〜' + str_endTime;
+        const sellTime = str_Time01( this.state.startTime ) + '〜' + str_Time23( this.state.endTime );
 
         return(
             <div className='store-detail'>
