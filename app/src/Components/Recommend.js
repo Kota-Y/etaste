@@ -1,10 +1,13 @@
 import React from 'react';
 import { withRouter, Switch, Route } from 'react-router';
-import "../CSS/Recommend.css";
-import Carousel from 'nuka-carousel';
-import AllRecommends from './allRecommends';
-import SuperKlass from './DefineConst';
 import axios from 'axios';
+import Carousel from 'nuka-carousel';
+
+import "../CSS/Recommend.css";
+import AllRecommends from './allRecommends';
+import StoreDetail from './StoreDetail';
+import SuperKlass from './DefineConst';
+import StoreComponent from './storeComponent';
 
 const foodData = {
     id: 1,
@@ -20,24 +23,20 @@ const foodData = {
     storeName: "滝川パン"
 };
 
-
 class Recommend extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            price: ''
-        };
-    }
-
     handleToAllRecommendsPage = () => {
-        this.props.history.push("/allRecommends");
-      };
+        this.props.history.push("/all-recommends");
+    };
 
     handleToAllRecommendsStorePage = () => {
     this.props.history.push("/allRecommendsStore");
     };
 
+    handleToStoreDetailPage = () => {
+        this.props.history.push("/store-detail");
+    };
+
+    /* Foodの情報のGETメソッド */
     handleGetFoodInfo() { 
         axios
             .get(　SuperKlass.CONST.DOMAIN + '/food/1/'　,{
@@ -45,13 +44,15 @@ class Recommend extends React.Component {
                     data: {}  
                 })
             .then( (res) => {
-                console.log(res.data);
+                const name = res.data.foodIndo[0].name;
+                console.log(name);
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
     }
     
+    /* Foodの情報のPOSTメソッド */
     handlePostFoodInfo(){
         axios
             .post( SuperKlass.CONST.DOMAIN + '/food/', foodData)
@@ -99,11 +100,14 @@ class Recommend extends React.Component {
                         slidesToShow={4}
                         cellAlign="left"
                         cellSpacing={50}
-                        renderBottomCenterControls = { false }>
+                        renderBottomCenterControls = {false}>
+                        <StoreComponent />
                         <img src="./image/shop1.png" alt='' 
+                            onClick = { this.handleToStoreDetailPage }
+                        />
+                        <img src="./image/shop2.png" alt='' 
                             onClick = { this.handlePostFoodInfo }
                         />
-                        <img src="./image/shop2.png" alt='' />
                         <img src="./image/shop3.png" alt='' />
                         <img src="./image/shop4.png" alt='' />
                         <img src="./image/shop1.png" alt='' />
@@ -115,10 +119,10 @@ class Recommend extends React.Component {
                 <h4>すべてのお店を表示 &rsaquo;</h4>
                 <div>
                     <Switch>
-                        <Route exact path={"/allRecommends"} component={AllRecommends} />
+                        <Route exact path={"/all-recommends"} component={AllRecommends} />
+                        <Route exact path={"/store-detail"} component={StoreDetail} />
                     </Switch>
                 </div>
-                <h2>{this.handleGetFoodInfo}</h2>
             </div>
         );
     }

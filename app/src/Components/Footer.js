@@ -1,8 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-//import { Switch, Route } from "react-router-dom";
-//import Home from "./Home";
-//import Setting from "./Setting";
+
 import "../CSS/Footer.css";
 
 class Footer extends React.Component {
