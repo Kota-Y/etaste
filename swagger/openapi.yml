@@ -695,7 +695,7 @@ components:
             $ref: '#/components/schemas/FavoriteStore'
       example:
         userId: 1
-        foodNum: 3
+        foodNum: 5
         favoriteStores:
           - id: 1
             name: 滝川パン1
@@ -707,6 +707,14 @@ components:
               https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
           - id: 3
             name: 滝川パン3
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+          - id: 4
+            name: 滝川パン4
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+          - id: 5
+            name: 滝川パン5
             image: >-
               https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
     FavoriteStore:
