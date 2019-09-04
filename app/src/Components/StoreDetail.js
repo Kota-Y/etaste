@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import SuperKlass from './DefineConst';
 import StoreComponent from './storeComponent';
-import { str_Time_open, str_Time_close } from '../function/storeTime';
+import { strTimeOpen, strTimeClose } from '../function/storeTime';
 import "../CSS/StoreDetail.css";
 
 class StoreDetail extends React.Component{
@@ -101,10 +101,10 @@ class StoreDetail extends React.Component{
 
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
-        const business_hours = str_Time_open( this.state.openTime ) + '〜' + str_Time_close( this.state.closeTime );
+        const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
         
         /* 販売時刻の先頭が0の場合に消す処理 */
-        const sellTime = str_Time_open( this.state.startTime ) + '〜' + str_Time_close( this.state.endTime );
+        const sellTime = strTimeOpen( this.state.startTime ) + '〜' + strTimeClose( this.state.endTime );
 
         return(
             <div className='store-detail'>
