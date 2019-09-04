@@ -44,26 +44,32 @@ class StoreDetail extends React.Component{
             .get(　SuperKlass.CONST.DOMAIN + '/store/detail/', {
                     headers: { "Content-Type": "application/json" },
                     data: {},
-                    param: this.state.storeId
                 })
             .then( (res) => {
-                this.setState({
-                    name: res.data.name,
-                    storeId: res.data.id,
-                    storeImage: res.data.image,
-                    access: res.data.access,
-                    address: res.data.address,
-                    openTime: res.data.openTime,
-                    closeTime: res.data.closeTime,
-                    holiday: res.data.holiday,
-                    map: res.data.map,
-                    mapLatitude: res.data.mapLatitude,
-                    mapLongitude: res.data.mapLongitude,
-                    parking: res.data.parking,
-                    tel: res.data.tel,
-                    url: res.data.url,
-                    zip: res.data.zip
-                });
+                axios.get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
+                    headers: { "Content-Type": "application/json" },
+                    data: {},
+                    param: this.state.storeId
+                    })
+                    .then( (res) => {
+                        this.setState({
+                            name: res.data.name,
+                            storeId: res.data.id,
+                            storeImage: res.data.image,
+                            access: res.data.access,
+                            address: res.data.address,
+                            openTime: res.data.openTime,
+                            closeTime: res.data.closeTime,
+                            holiday: res.data.holiday,
+                            map: res.data.map,
+                            mapLatitude: res.data.mapLatitude,
+                            mapLongitude: res.data.mapLongitude,
+                            parking: res.data.parking,
+                            tel: res.data.tel,
+                            url: res.data.url,
+                            zip: res.data.zip
+                        });
+                    } );
                 //console.log(this.state.storeId);
             })
             .catch( (error) => {
