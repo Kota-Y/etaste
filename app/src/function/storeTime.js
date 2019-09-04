@@ -1,5 +1,5 @@
 /* 営業時間の先頭が0の場合に消す処理 */
-export const str_Time01 = ( ( openTime ) => {
+export const str_Time_open = ( ( openTime ) => {
     if(openTime.slice(0, 1) === '0'){
         const openTime_hour = openTime.slice(1, 2);
         const openTime_min = openTime.slice(2, 4);
@@ -11,7 +11,7 @@ export const str_Time01 = ( ( openTime ) => {
     }
 });
 
-export const str_Time23 = ( ( closeTime ) => {
+export const str_Time_close = ( ( closeTime ) => {
     if(closeTime.slice(0, 1) === '0'){
         const closeTime_hour = closeTime.slice(1, 2);
         const closeTime_min = closeTime.slice(2, 4);

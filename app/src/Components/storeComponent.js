@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-//import StoreDetail from './StoreDetail';
+import { withRouter } from 'react-router';
+
 import SuperKlass from './DefineConst';
 import '../CSS/StoreDetail.css';
-import { withRouter } from 'react-router';
 
 class StoreComponent extends React.Component{
     constructor(props) {

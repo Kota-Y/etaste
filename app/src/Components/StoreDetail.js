@@ -2,9 +2,10 @@ import React from 'react';
 import { withRouter } from "react-router";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
+
 import SuperKlass from './DefineConst';
 import StoreComponent from './storeComponent';
-import { str_Time01, str_Time23 } from '../function/storeTime';
+import { str_Time_open, str_Time_close } from '../function/storeTime';
 import "../CSS/StoreDetail.css";
 
 class StoreDetail extends React.Component{
@@ -100,10 +101,10 @@ class StoreDetail extends React.Component{
 
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
-        const business_hours = str_Time01( this.state.openTime ) + '〜' + str_Time23( this.state.closeTime );
+        const business_hours = str_Time_open( this.state.openTime ) + '〜' + str_Time_close( this.state.closeTime );
         
         /* 販売時刻の先頭が0の場合に消す処理 */
-        const sellTime = str_Time01( this.state.startTime ) + '〜' + str_Time23( this.state.endTime );
+        const sellTime = str_Time_open( this.state.startTime ) + '〜' + str_Time_close( this.state.endTime );
 
         return(
             <div className='store-detail'>

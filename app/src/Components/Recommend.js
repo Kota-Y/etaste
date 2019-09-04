@@ -1,12 +1,13 @@
 import React from 'react';
 import { withRouter, Switch, Route } from 'react-router';
-import "../CSS/Recommend.css";
+import axios from 'axios';
 import Carousel from 'nuka-carousel';
+
+import "../CSS/Recommend.css";
 import AllRecommends from './allRecommends';
 import StoreDetail from './StoreDetail';
 import SuperKlass from './DefineConst';
 import StoreComponent from './storeComponent';
-import axios from 'axios';
 
 const foodData = {
     id: 1,
