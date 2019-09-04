@@ -24,6 +24,10 @@
     width: 400px;
 }
 
+.store-component{
+    margin-left: 20px;
+}
+
 .zip{
     margin-block-end: 0px;
 }
@@ -89,4 +93,22 @@
     margin-left: 30px;
     margin-block-start: 0px;
     color: gray;
+}
+
+.price{
+    margin-left: 17px;
+}
+
+.price h3{
+    margin-left: 3px;
+    display: inline-flex;
+}
+
+.deleat{
+    text-decoration: line-through;
+}
+
+.salePrice{
+    color: red;
+    font-size: 24px;
 }

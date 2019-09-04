@@ -81,7 +81,8 @@ componentDidMount() {
                 salePrice: res.data.foods[0].salePrice,
                 startTime: res.data.foods[0].startTime
             });
-            //console.log(res.data.foods[0].image);
+            
+            //console.log(sellTime);
         })
         .catch( (error) => {
             console.log('通信に失敗しました');
@@ -89,6 +90,56 @@ componentDidMount() {
 }
 
     render() {
+        /* 営業時間の先頭が0の場合に消す処理 */
+        const str_openTime = ( () => {
+            if(this.state.openTime.slice(0, 1) === '0'){
+                const openTime_hour = this.state.openTime.slice(1, 2);
+                const openTime_min = this.state.openTime.slice(2, 4);
+                return openTime_hour + ':' + openTime_min;  
+            } else {
+                const openTime_hour = this.state.openTime.slice(0, 2);
+                const openTime_min = this.state.openTime.slice(2, 4);
+                return openTime_hour + ':' + openTime_min;
+            }
+        })();
+        const str_closeTime = ( () => {
+            if(this.state.closeTime.slice(0, 1) === '0'){
+                const closeTime_hour = this.state.closeTime.slice(1, 2);
+                const closeTime_min = this.state.closeTime.slice(2, 4);
+                return closeTime_hour + ':' + closeTime_min;    
+            } else {
+                const closeTime_hour = this.state.closeTime.slice(0, 2);
+                const closeTime_min = this.state.closeTime.slice(2, 4);
+                return closeTime_hour + ':' + closeTime_min;
+            }
+        })();
+        const business_hours = str_openTime + '〜' + str_closeTime;
+        
+        /* 販売時刻の先頭が0の場合に消す処理 */
+        const str_startTime = ( () => { 
+            if(this.state.startTime.slice(0, 1) === '0'){
+                const startTime_hour = this.state.startTime.slice(1, 2);
+                const startTime_min = this.state.startTime.slice(2, 4);
+                return startTime_hour + ':' + startTime_min;    
+            } else {
+                const startTime_hour = this.state.startTime.slice(0, 2);
+                const startTime_min = this.state.startTime.slice(2, 4);
+                return startTime_hour + ':' + startTime_min;
+            }
+        })();
+        const str_endTime = ( () => { 
+            if(this.state.endTime.slice(0, 1) === '0'){
+                const endTime_hour = this.state.endTime.slice(1, 2);
+                const endTime_min = this.state.endTime.slice(2, 4);
+                return endTime_hour + ':' + endTime_min;    
+            } else {
+                const endTime_hour = this.state.endTime.slice(0, 2);
+                const endTime_min = this.state.endTime.slice(2, 4);
+                return endTime_hour + ':' + endTime_min;
+            }
+        })();
+        const sellTime = str_startTime + '〜' + str_endTime;
+
         return(
             <div className='store-detail'>
                 <div className='store-container'>
@@ -96,16 +147,12 @@ componentDidMount() {
                         <h1>店舗詳細</h1>
                     </div>
                     <div className='store-info'>
-                        <div>
-                            {/*<img
-                                src={this.state.storeImage}
-                                alt=''
-                            />*/}
+                        <div class='store-component'>
                             <StoreComponent />
                         </div>
                         <div className='store-name'>
                             <h2>{ this.state.name }</h2>
-                            <h3>{ this.state.openTime + '-' + this.state.closeTime}</h3>
+                            <h3>{ business_hours }</h3>
                             <h3>{ this.state.holiday }</h3>
                             <h3 className='zip'>{ '〒' + this.state.zip }</h3>
                             <h3 className='address'>{ this.state.address }</h3>
@@ -135,8 +182,12 @@ componentDidMount() {
                         <div className='items-info'>
                             <img src={this.state.foodImage} alt='' />
                             <h2>{ this.state.foodName }</h2>
-                            <h3>{ this.state.originalPrice + '円 →' + this.state.salePrice + '円' }</h3>
-                            <h3>{ this.state.startTime + '〜' + this.state.endTime }</h3>
+                            <div className='price'>
+                                <h3 class='deleat'>{ this.state.originalPrice + '円'}</h3>
+                                <h3> → </h3>
+                                <h3 class='salePrice'>{this.state.salePrice + '円' }</h3>
+                            </div>
+                            <h3>{ sellTime }</h3>
                         </div>
                     </div>
                 </div>
