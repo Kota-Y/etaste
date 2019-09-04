@@ -36,6 +36,11 @@
     margin-top: 0px;
 }
 
+.map {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+}
 .onSale-container{
     margin-left: 55px;
     width: 400px;
