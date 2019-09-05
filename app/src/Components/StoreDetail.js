@@ -167,8 +167,7 @@ class StoreDetail extends React.Component{
 const mapStyles = {
     width: '38vw',
     height: '28vw',
-    margin: '20px',
-    position: 'absolute',
+    margin: '20px'
   };
 
 export default withRouter(GoogleApiWrapper({

@@ -6,6 +6,7 @@ import Setting from "./Setting";
 import Item from "./Item";
 import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
+import FavoriteList from "./favoriteList";
 import "../CSS/Main.css";
 
 class Main extends React.Component {
@@ -21,6 +22,7 @@ class Main extends React.Component {
                 <Route exact path={"/setting"} component={Setting} />
                 <Route exact path={"/all-recommends"} component={AllRecommends} />
                 <Route exact path={"/store-detail"} component={StoreDetail} />
+                <Route exact path={"/favorite-list"} component={FavoriteList} />
               </Switch>
             </div>
           </div>
