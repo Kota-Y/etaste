@@ -6,3 +6,7 @@
 .list-container{
     margin-left: 50px;
 }
+
+.grid:hover{
+    cursor: pointer;
+}

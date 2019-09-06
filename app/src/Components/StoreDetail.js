@@ -3,8 +3,8 @@ import { withRouter } from "react-router";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 
-import SuperKlass from './DefineConst';
-import StoreComponent from './storeComponent';
+import SuperKlass from '../function/DefineConst';
+import StoreComponent from '../function/storeComponent';
 import { strTimeOpen, strTimeClose } from '../function/storeTime';
 import "../CSS/StoreDetail.css";
 
