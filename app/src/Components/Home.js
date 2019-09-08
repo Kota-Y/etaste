@@ -15,7 +15,6 @@ class Home extends React.Component {
         <div className="bg-image">
           <div className="bg-mask">
             <SerchView />
-            <button onClick={this.handleToSettingPage}>設定ページへ遷移する</button>
           </div>
         </div>
         <Recommend />

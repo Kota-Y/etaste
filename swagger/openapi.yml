@@ -938,6 +938,14 @@ components:
             name: 滝川パン3
             image: >-
               https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+          - id: 4
+            name: 滝川パン4
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
+          - id: 5
+            name: 滝川パン5
+            image: >-
+              https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg
     FavoriteStore:
       type: object
       required:
