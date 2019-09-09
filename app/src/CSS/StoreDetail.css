@@ -61,6 +61,11 @@
     box-shadow: 2px 2px 4px #dddddd;
 }
 
+.items-info img{
+    width: 276px;
+    height: 160px;
+}
+
 .items-info h2{
     margin-left: 20px;
     margin-block-start: 0px;

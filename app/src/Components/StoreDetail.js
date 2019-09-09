@@ -31,14 +31,13 @@ class StoreDetail extends React.Component{
             url: '',
             zip: '',
             /* 出品中のFoodの情報state */
-            foodName:'',
             endTime: '',
-            foodId: '',
+            //id: '',
             foodImage: '',
+            foodName: '',
             originalPrice: '',
             salePrice: '',
-            startTime: '',
-            whySale: ''
+            startTime: ''
         };
     }
 
@@ -80,20 +79,18 @@ class StoreDetail extends React.Component{
             .get(　SuperKlass.CONST.DOMAIN + '/food/', {
                     headers: { "Content-Type": "application/json" },
                     data: {},
-                    param: this.state.storeId
+                    param: this.state.id
                 })
             .then( (res) => {
+                console.log(res.data.foods[this.state.id].name);
                 this.setState({
-                    foodName: res.data.foodInfo[0].name,
-                    endTime: res.data.foodInfo[0].endTime,
-                    foodId: res.data.foodInfo[0].id,
-                    foodImage: res.data.foodInfo[0].image,
-                    originalPrice: res.data.foodInfo[0].originalPrice,
-                    salePrice: res.data.foodInfo[0].salePrice,
-                    startTime: res.data.foodInfo[0].startTime,
-                    whySale: res.data.foodInfo[0].whySale
+                    foodName: res.data.foods[this.state.id].name,
+                    endTime: res.data.foods[this.state.id].endTime,
+                    foodImage: res.data.foods[this.state.id].image,
+                    originalPrice: res.data.foods[this.state.id].originalPrice,
+                    salePrice: res.data.foods[this.state.id].salePrice,
+                    startTime: res.data.foods[this.state.id].startTime,
                 });
-                console.log(this.state.whySale);
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');
