@@ -3,8 +3,8 @@ import React from "react";
 import "../CSS/Setting.css";
 
 class Setting extends React.Component {
-  handleToSettingPage = () => {
-    this.props.history.push("/setting");
+  handleToOpensourcePage = () => {
+    this.props.history.push("/opensource");
   };
 
   render() {
@@ -15,7 +15,7 @@ class Setting extends React.Component {
         <h2>プロフィール設定</h2>
         <h2>Q&A</h2>
         <h2>お問い合わせ</h2>
-        <h2>オープンソース</h2>
+        <h2 onClick={this.handleToOpensourcePage}>オープンソース</h2>
         <h2>ログアウト</h2>
         <h2>退会について</h2>
       </div>
