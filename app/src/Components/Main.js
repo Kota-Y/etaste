@@ -9,6 +9,11 @@ import StoreDetail from "./StoreDetail";
 import Opensource from "./Opensource";
 import "../CSS/Main.css";
 import TradeHistory from "./TradeHistory";
+import Profileset from "./Profileset";
+import QandA from "./QandA";
+import Contact from "./Contact";
+import Unsubscribe from "./Unsubscribe";
+
 
 class Main extends React.Component {
   render() {
@@ -25,6 +30,10 @@ class Main extends React.Component {
                 <Route exact path={"/store-detail"} component={StoreDetail} />
                 <Route exact path={"/opensource"} component={Opensource} />
                 <Route exact path={"/tradehistory"} component={TradeHistory} />
+                <Route exact path={"/profileset"} component={Profileset} />
+                <Route exact path={"/qanda"} component={QandA} />
+                <Route exact path={"/contact"} component={Contact} />
+                <Route exact path={"/unsubscribe"} component={Unsubscribe} />
               </Switch>
             </div>
           </div>
