@@ -8,6 +8,7 @@ import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
 import Opensource from "./Opensource";
 import "../CSS/Main.css";
+import TradeHistory from "./TradeHistory";
 
 class Main extends React.Component {
   render() {
@@ -23,6 +24,7 @@ class Main extends React.Component {
                 <Route exact path={"/all-recommends"} component={AllRecommends} />
                 <Route exact path={"/store-detail"} component={StoreDetail} />
                 <Route exact path={"/opensource"} component={Opensource} />
+                <Route exact path={"/tradehistory"} component={TradeHistory} />
               </Switch>
             </div>
           </div>
