@@ -16,7 +16,7 @@ class StoreInput extends React.Component {
 
       <div>
       <h1>店舗側入力</h1>
-        <div className="box-view">
+        <div className="box-store-input">
          <div>
             <h2>商品画像</h2>
           </div>
