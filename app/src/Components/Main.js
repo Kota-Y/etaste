@@ -13,6 +13,9 @@ import Profileset from "./Profileset";
 import QandA from "./QandA";
 import Contact from "./Contact";
 import Unsubscribe from "./Unsubscribe";
+import StoreInput from "./Store-Input";
+import StoreSyuppin from "./Store-Syuppin";
+import Storefin from "./Store-fin";
 
 
 class Main extends React.Component {
@@ -34,6 +37,9 @@ class Main extends React.Component {
                 <Route exact path={"/qanda"} component={QandA} />
                 <Route exact path={"/contact"} component={Contact} />
                 <Route exact path={"/unsubscribe"} component={Unsubscribe} />
+                <Route exact path={"/store-input"} component={StoreInput} />
+                <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
+                <Route exact path={"/store-fin"} component={Storefin} />
               </Switch>
             </div>
           </div>
