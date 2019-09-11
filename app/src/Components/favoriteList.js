@@ -17,15 +17,6 @@ class FavoriteList extends React.Component{
                 <div className='list-container'>
                     <Grid container className='grid'>
                         <Grid item xs={3}><FavStore /></Grid>
-                        <Grid item xs={3}><FavStore /></Grid>
-                        <Grid item xs={3}><FavStore /></Grid>
-                        <Grid item xs={3}><FavStore /></Grid>
-                        <Grid item xs={3}><FavStore /></Grid>
-                        {/*<Grid item xs={3}><StoreComponent /></Grid>
-                        <Grid item xs={3}><StoreComponent /></Grid>
-                        <Grid item xs={3}><StoreComponent /></Grid>
-                        <Grid item xs={3}><StoreComponent /></Grid>
-                        <Grid item xs={3}><StoreComponent /></Grid>*/}
                     </Grid>
                 </div>
             </div>

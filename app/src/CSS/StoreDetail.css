@@ -124,3 +124,7 @@
     color: red;
     font-size: 24px;
 }
+
+.favorite-store{
+    display: inline-flex;
+}

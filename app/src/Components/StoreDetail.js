@@ -74,7 +74,7 @@ class StoreDetail extends React.Component{
                 console.log('通信に失敗しました');
             });
 
-        /*　Storeの出品中の商品をGETするメソッド (** 要修正 **)*/
+        /*　Storeの出品中の商品をGETするメソッド */
         axios
             .get(　SuperKlass.CONST.DOMAIN + '/food/', {
                     headers: { "Content-Type": "application/json" },
