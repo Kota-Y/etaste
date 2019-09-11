@@ -25,7 +25,7 @@ class CreateStoresTable extends Migration
             $table->string('holiday',50)->nullable();
             $table->string('store_url')->nullable();
             $table->string('map_latitude',25);
-            $table->string('map_Longitude',25);
+            $table->string('map_longitude',25);
             $table->string('zip',10);
             $table->string('access',100)->nullable();
             $table->string('tel',20)->unique();

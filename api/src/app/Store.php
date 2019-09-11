@@ -22,18 +22,18 @@ class Store extends Model
       $data = $query->select(
                         'id'
                         , 'name'
-                        , 'image_url'
-                        , 'open_time'
-                        , 'close_time'
+                        , 'image_url as image'
+                        , 'open_time as openTime'
+                        , 'close_time as closeTime'
                         , 'zip'
                         , 'address'
                         , 'tel'
                         , 'holiday'
                         , 'parking'
                         , 'access'
-                        , 'map_latitude'
-                        , 'map_Longitude'
-                        , 'store_url'
+                        , 'map_latitude as mapLatitude'
+                        , 'map_Longitude as mapLongitude'
+                        , 'store_url as url'
                         )->get();
 
       return $data;
