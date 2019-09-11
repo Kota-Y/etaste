@@ -1,7 +1,6 @@
 /* お気入り店舗で使用するストアコンポーネント */
 import React from 'react';
 import axios from 'axios';
-//import Grid from '@material-ui/core/Grid';
 
 import SuperKlass from '../function/DefineConst';
 import '../CSS/StoreDetail.css';

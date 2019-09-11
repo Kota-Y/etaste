@@ -4,11 +4,9 @@
 }
 
 .list-container{
-    margin-left: 50px;
-}
-
-.grid{
-
+    align-content: center;
+    margin-left: 80px;
+    flex-wrap: wrap;
 }
 
 .grid:hover{
