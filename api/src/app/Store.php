@@ -31,7 +31,8 @@ class Store extends Model
                         , 'holiday'
                         , 'parking'
                         , 'access'
-                        , 'map'
+                        , 'map_latitude'
+                        , 'map_Longitude'
                         , 'store_url'
                         )->get();
 
