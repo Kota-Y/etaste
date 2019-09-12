@@ -32,23 +32,10 @@ class StoresController extends Controller
         );
     }
 
-    public function showDetail($id)
-    {
-        $md = new Store();
-        $data = $md->getData($id);
-        return response()->json(
-            $data,
-            200,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
-    }
-
-
     public function destroy($id)
     {
         $store = Store::find($id);
         $store->delete();
-        return redirect('/store');
+        return redirect('/stores');
     }
 }

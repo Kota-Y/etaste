@@ -23,5 +23,4 @@ use Illuminate\Http\Request;
 
 Route::get('/stores', 'Api\StoresController@index');
 Route::get('/store/{id}', 'Api\StoresController@show');
-Route::get('/store/detail/{id}', 'Api\StoresController@showDetail');
 
