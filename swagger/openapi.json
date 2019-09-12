@@ -97,49 +97,6 @@
         }
       }
     },
-    "/store/detail/{storeId}": {
-      "get": {
-        "tags": [
-          "store"
-        ],
-        "summary": "Get StoreDetail by ID.",
-        "operationId": "getStoreDetail",
-        "parameters": [
-          {
-            "name": "storeId",
-            "in": "path",
-            "description": "Store Id.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/StoreDetail"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Failed.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/food": {
       "get": {
         "tags": [
@@ -265,6 +222,170 @@
         "responses": {
           "200": {
             "description": "Success Delete."
+          },
+          "default": {
+            "description": "Failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trade": {
+      "post": {
+        "tags": [
+          "trade"
+        ],
+        "summary": "Create Trade.",
+        "operationId": "createTrade",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TradeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success Created."
+          },
+          "default": {
+            "description": "Failed Created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trade/{userId}": {
+      "get": {
+        "tags": [
+          "trade"
+        ],
+        "summary": "Get Trade by ID.",
+        "operationId": "getTrade",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "User Id.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trade"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trade/complete/{tradeId}": {
+      "patch": {
+        "tags": [
+          "trade"
+        ],
+        "summary": "Update Trade is Completed.",
+        "operationId": "updateTrade",
+        "parameters": [
+          {
+            "name": "tradeId",
+            "in": "path",
+            "description": "trade Id.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TradeComplete"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Success Created."
+          },
+          "default": {
+            "description": "Failed Created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trade/store/{storeId}": {
+      "get": {
+        "tags": [
+          "trade"
+        ],
+        "summary": "Get Trade for Store by ID.",
+        "operationId": "getTradeStore",
+        "parameters": [
+          {
+            "name": "storeId",
+            "in": "path",
+            "description": "Store Id.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TradeStore"
+                }
+              }
+            }
           },
           "default": {
             "description": "Failed.",
@@ -516,132 +637,11 @@
           "id",
           "name",
           "image",
-          "foodNum",
-          "foods"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          },
-          "foodNum": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Number of items in foods."
-          },
-          "foods": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/StoreItem"
-            }
-          }
-        },
-        "example": {
-          "id": 1,
-          "name": "滝川パン",
-          "image": "https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg",
-          "foodNum": 5,
-          "foods": [
-            {
-              "id": 1,
-              "name": "あんぱん",
-              "originalPrice": 600,
-              "salePrice": 300,
-              "startTime": "1300",
-              "endTime": "1545",
-              "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg"
-            },
-            {
-              "id": 2,
-              "name": "サンドイッチ",
-              "originalPrice": 500,
-              "salePrice": 100,
-              "startTime": "1415",
-              "endTime": "1645",
-              "image": "https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg"
-            },
-            {
-              "id": 3,
-              "name": "クリームパン",
-              "originalPrice": 300,
-              "salePrice": 100,
-              "startTime": "1430",
-              "endTime": "1800",
-              "image": "https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg"
-            },
-            {
-              "id": 4,
-              "name": "食パン",
-              "originalPrice": 500,
-              "salePrice": 100,
-              "startTime": "1345",
-              "endTime": "1545",
-              "image": "https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg"
-            },
-            {
-              "id": 5,
-              "name": "フランスパン",
-              "originalPrice": 500,
-              "salePrice": 100,
-              "startTime": "1315",
-              "endTime": "1600",
-              "image": "https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg"
-            }
-          ]
-        }
-      },
-      "StoreItem": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "originalPrice",
-          "salePrice",
-          "startTime",
-          "endTime",
-          "image"
-        ],
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "originalPrice": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "salePrice": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "startTime": {
-            "type": "string"
-          },
-          "endTime": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          }
-        }
-      },
-      "StoreDetail": {
-        "type": "object",
-        "required": [
-          "id",
-          "name",
-          "image",
           "openTime",
           "closeTime",
+          "areaPref",
+          "areaCity",
+          "areaOther",
           "zip",
           "address",
           "tel",
@@ -667,6 +667,15 @@
             "type": "string"
           },
           "closeTime": {
+            "type": "string"
+          },
+          "areaPref": {
+            "type": "string"
+          },
+          "areaCity": {
+            "type": "string"
+          },
+          "areaOther": {
             "type": "string"
           },
           "zip": {
@@ -703,6 +712,9 @@
           "image": "https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg",
           "openTime": "0800",
           "closeTime": "2000",
+          "areaPref": "熊本県",
+          "areaCity": "熊本市中央区",
+          "areaOther": "下通",
           "zip": "860-0801",
           "address": "熊本県熊本市中央区安政町2-34 HILLS KAGOMACHIビル1F",
           "tel": "096-342-4398",
@@ -750,7 +762,8 @@
               "startTime": "1300",
               "endTime": "1545",
               "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
-              "storeMap": "[32.815183,130.727428]"
+              "mapLatitude": "32.815183",
+              "mapLongitude": "130.727428"
             },
             {
               "id": 2,
@@ -760,7 +773,8 @@
               "startTime": "1415",
               "endTime": "1645",
               "image": "https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg",
-              "storeMap": "[32.814949,130.727842]"
+              "mapLatitude": "32.814949",
+              "mapLongitude": "130.727842"
             },
             {
               "id": 3,
@@ -770,7 +784,8 @@
               "startTime": "1430",
               "endTime": "1800",
               "image": "https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg",
-              "storeMap": "[32.814419,130.726572]"
+              "mapLatitude": "32.814419",
+              "mapLongitude": "130.726572"
             },
             {
               "id": 4,
@@ -780,7 +795,8 @@
               "startTime": "1345",
               "endTime": "1545",
               "image": "https://dl.dropboxusercontent.com/s/ytg953kgpnxwe90/shoku-pan.jpg",
-              "storeMap": "[32.813823,130.724649]"
+              "mapLatitude": "32.813823",
+              "mapLongitude": "130.724649"
             },
             {
               "id": 5,
@@ -790,7 +806,8 @@
               "startTime": "1315",
               "endTime": "1600",
               "image": "https://dl.dropboxusercontent.com/s/a5myp1ouw89v4he/furansu-pan.jpg",
-              "storeMap": "[32.814625,130.723919]"
+              "mapLatitude": "32.814625",
+              "mapLongitude": "130.723919"
             }
           ]
         }
@@ -804,8 +821,11 @@
           "salePrice",
           "startTime",
           "endTime",
+          "allergy",
+          "whySale",
           "image",
-          "storeMap"
+          "mapLatitude",
+          "mapLongitude"
         ],
         "properties": {
           "id": {
@@ -829,10 +849,19 @@
           "endTime": {
             "type": "string"
           },
+          "allergy": {
+            "type": "string"
+          },
+          "whySale": {
+            "type": "string"
+          },
           "image": {
             "type": "string"
           },
-          "storeMap": {
+          "mapLatitude": {
+            "type": "string"
+          },
+          "mapLongitude": {
             "type": "string"
           }
         }
@@ -846,7 +875,7 @@
           "salePrice",
           "startTime",
           "endTime",
-          "number",
+          "amount",
           "allergy",
           "image",
           "storeId",
@@ -874,7 +903,7 @@
           "endTime": {
             "type": "string"
           },
-          "number": {
+          "amount": {
             "type": "integer",
             "format": "int32"
           },
@@ -899,7 +928,7 @@
           "salePrice": 300,
           "startTime": "1300",
           "endTime": "1545",
-          "number": 3,
+          "amount": 3,
           "allergy": "[卵,乳,小麦]",
           "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
           "storeId": 2,
@@ -910,8 +939,7 @@
         "type": "object",
         "required": [
           "id",
-          "whySale",
-          "allergy",
+          "isSaling",
           "foodInfo",
           "storeInfo"
         ],
@@ -920,30 +948,26 @@
             "type": "integer",
             "format": "int64"
           },
-          "whySale": {
-            "type": "string"
-          },
-          "allergy": {
+          "isSaling": {
             "type": "string"
           },
           "foodInfo": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/StoreItem"
+              "$ref": "#/components/schemas/FoodItem"
             }
           },
           "storeInfo": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/StoreDetail"
+              "$ref": "#/components/schemas/Store"
             }
           }
         },
         "example": {
           "id": 1,
-          "whySale": "本日はゲリラ豪雨により、お客さんがいらっしゃいいらっしゃいませんでした。このあんぱんは渾身のできです。",
-          "allergy": "[卵,乳,小麦]",
-          "foodIndo": [
+          "isSaling": "true",
+          "foodInfo": [
             {
               "id": 1,
               "name": "あんぱん",
@@ -951,6 +975,8 @@
               "salePrice": 300,
               "startTime": "1300",
               "endTime": "1545",
+              "allergy": "[卵,乳,小麦]",
+              "whySale": "本日はゲリラ豪雨により、お客さんがいらっしゃいいらっしゃいませんでした。このあんぱんは渾身のできです。",
               "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg"
             }
           ],
@@ -972,6 +998,303 @@
               "url": "http://takigawapan.jp/"
             }
           ]
+        }
+      },
+      "TradeCreate": {
+        "type": "object",
+        "required": [
+          "id",
+          "userId",
+          "stodeId",
+          "foodId",
+          "amount",
+          "receiveTime"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stodeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "foodId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "receiveTime": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 111,
+          "userId": 1,
+          "stodeId": 2,
+          "foodId": 3,
+          "amount": 2,
+          "receiveTime": "1830"
+        }
+      },
+      "Trade": {
+        "type": "object",
+        "required": [
+          "id",
+          "tradeNum",
+          "trades"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tradeNum": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Number of items in trades."
+          },
+          "trades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TradeItem"
+            }
+          }
+        },
+        "example": {
+          "id": 111,
+          "tradeNum": 3,
+          "trades": [
+            {
+              "id": 1,
+              "foodId": 1,
+              "storeId": 1,
+              "foodName": "あんぱん",
+              "storeName": "滝川パン",
+              "amount": 2,
+              "totalPrice": 500,
+              "recieveTime": "1545",
+              "isCompleted": "true",
+              "foodImage": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg"
+            },
+            {
+              "id": 2,
+              "foodId": 2,
+              "storeId": 2,
+              "foodName": "サンドイッチ",
+              "storeName": "ロジパン",
+              "amount": 1,
+              "totalPrice": 450,
+              "recieveTime": "1745",
+              "isCompleted": "false",
+              "foodImage": "https://dl.dropboxusercontent.com/s/u56mt4ts994ci4n/sandwich.jpg"
+            },
+            {
+              "id": 3,
+              "foodId": 3,
+              "storeId": 3,
+              "foodName": "クリームパン",
+              "storeName": "奇跡の手羽先",
+              "amount": 3,
+              "totalPrice": 700,
+              "recieveTime": "1900",
+              "isCompleted": "false",
+              "foodImage": "https://dl.dropboxusercontent.com/s/me9ch6kmvwevelk/curimu%3Dpan.jpg"
+            }
+          ]
+        }
+      },
+      "TradeItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "foodId",
+          "stodeId",
+          "foodName",
+          "storeName",
+          "amount",
+          "totalPrice",
+          "recieveTime",
+          "isCompleted",
+          "foodImage"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "foodId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "stodeId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "foodName": {
+            "type": "string"
+          },
+          "storeName": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recieveTime": {
+            "type": "string"
+          },
+          "isCompleted": {
+            "type": "string"
+          },
+          "foodImage": {
+            "type": "string"
+          }
+        }
+      },
+      "TradeComplete": {
+        "type": "object",
+        "required": [
+          "userId",
+          "tradeId"
+        ],
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "tradeId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "example": {
+          "userId": 1,
+          "tradeId": 1
+        }
+      },
+      "TradeStore": {
+        "type": "object",
+        "required": [
+          "id",
+          "foodName",
+          "amount",
+          "startTime",
+          "endTime",
+          "foodImage",
+          "storeTrades"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "foodName": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "foodImage": {
+            "type": "string"
+          },
+          "tradeNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storeTrades": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TradeStoreItem"
+            }
+          }
+        },
+        "example": {
+          "id": 111,
+          "foodName": "あんぱん",
+          "amount": 12,
+          "startTime": "1700",
+          "endTime": "2000",
+          "foodImage": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
+          "tradeNum": 3,
+          "storeTrades": [
+            {
+              "id": 1,
+              "orderAmount": 2,
+              "totalPrice": 300,
+              "recieveTime": "1900",
+              "userName": "kyamashita",
+              "isCompleted": "false"
+            },
+            {
+              "id": 2,
+              "orderAmount": 3,
+              "totalPrice": 450,
+              "recieveTime": "1930",
+              "userName": "tkawabata",
+              "isCompleted": "true"
+            },
+            {
+              "id": 3,
+              "orderAmount": 4,
+              "totalPrice": 600,
+              "recieveTime": "1715",
+              "userName": "eichikawa",
+              "isCompleted": "false"
+            }
+          ]
+        }
+      },
+      "TradeStoreItem": {
+        "type": "object",
+        "required": [
+          "id",
+          "orderAmount",
+          "totalPrice",
+          "recieveTime",
+          "userName",
+          "isCompleted"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderAmount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPrice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "recieveTime": {
+            "type": "string"
+          },
+          "userName": {
+            "type": "string"
+          },
+          "isCompleted": {
+            "type": "string"
+          }
         }
       },
       "Favorite": {
@@ -1000,6 +1323,7 @@
         "example": {
           "userId": 1,
           "foodNum": 5,
+          "favoriteNum": 5,
           "favoriteStores": [
             {
               "id": 1,
@@ -1162,6 +1486,10 @@
     {
       "name": "food",
       "description": "About Food."
+    },
+    {
+      "name": "trade",
+      "description": "About Trade."
     },
     {
       "name": "favorite",
