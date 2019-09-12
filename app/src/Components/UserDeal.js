@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
 
 import "../CSS/UserDeal.css";
 
@@ -7,7 +7,7 @@ class UserDeal extends React.Component {
   
   render() {
     return (
-        <div className='main'>
+        <div className='main-deal'>
             <div className='book-container'>
                 <h1>受け取り予定</h1>
             </div>
