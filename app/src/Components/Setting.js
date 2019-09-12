@@ -7,9 +7,6 @@ class Setting extends React.Component {
     this.props.history.push("/opensource");
   };
   handleToTradeHistoryPage = () => {
-    this.props.history.push("/tradeHistory");
-  };
-  handleToTradeHistoryPage = () => {
     this.props.history.push("/profileset");
   };
   handleToQandAPage = () => {
@@ -26,7 +23,6 @@ class Setting extends React.Component {
     return (
       <div>
         <h1>設定</h1>
-        <h2 onClick={this.handleToTradeHistoryPage}>取引履歴</h2>
         <h2 onClick={this.handleToTradeHistoryPage}>プロフィール設定</h2>
         <h2 onClick={this.handleToQandAPage}>Q&A</h2>
         <h2 onClick={this.handleToContactPage}>お問い合わせ</h2>

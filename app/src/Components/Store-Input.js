@@ -11,6 +11,8 @@ class StoreInput extends React.Component {
     this.props.history.push("/store-syuppin");
   };
 
+  
+
   render() {
     return (
 
@@ -36,7 +38,7 @@ class StoreInput extends React.Component {
           <div className="item-number">
             <input placeholder="個数"/>
           </div>
-          <input onClick={this.handleToStoreSyuppinPage} type="submit" value="出品確認" />
+          <input onClick={this.handleToStoreSyuppinPage} type="submit" value="出品確認"/>
         </div>
       </div>
     );
