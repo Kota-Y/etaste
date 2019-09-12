@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 
-import "../CSS/Deal.css";
+import "../CSS/UserDeal.css";
 
 class UserDeal extends React.Component {
   
@@ -14,7 +14,7 @@ class UserDeal extends React.Component {
             <div className='tradingHistory-container'>
                 <h1>取引履歴</h1>
             </div>
-         </div>
+        </div>
     );
   }
 }

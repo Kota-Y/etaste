@@ -12,7 +12,7 @@ class Header extends React.Component {
   }
 
   handleToUserDealPage = () => {
-    this.props.history.push("/user-deal");
+    this.props.history.push("/userdeal");
   };
 
   handleToSettingPage = () => {
