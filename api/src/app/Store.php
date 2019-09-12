@@ -17,14 +17,17 @@ class Store extends Model
     {
       $query = DB::table($this->table);
 
-      if($id != null) $query->where('id', $id);
+      if($id != null) $query->where('stores.id', $id);
     
       $data = $query->select(
-                        'id'
+                        'stores.id as id'
                         , 'name'
                         , 'image_url as image'
                         , 'open_time as openTime'
                         , 'close_time as closeTime'
+                        , 'areas.pref as areaPref'
+                        , 'areas.city as areaCity'
+                        , 'areas.other as areaOther'
                         , 'zip'
                         , 'address'
                         , 'tel'
@@ -34,7 +37,9 @@ class Store extends Model
                         , 'map_latitude as mapLatitude'
                         , 'map_Longitude as mapLongitude'
                         , 'store_url as url'
-                        )->get();
+                        )
+                    ->join('areas','areas.id','=','stores.area_id')
+                    ->get();
 
       return $data;
     }

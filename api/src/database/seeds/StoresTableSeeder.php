@@ -13,6 +13,7 @@ class StoresTableSeeder extends Seeder
     {
         DB::table('stores')->insert([
             [
+              'area_id' => 2,
               'name' => '滝川パン',
               'detail' => 'コロッケが監修しているパン屋さんです。',
               'genre' => 'パン',
@@ -32,6 +33,7 @@ class StoresTableSeeder extends Seeder
               'updated_at' => new DateTime(),
             ],
             [
+              'area_id' => 1,
               'name' => 'Manly 熊本',
               'detail' => 'オランダ料理が有名です。',
               'genre' => 'カフェ・喫茶',
@@ -51,6 +53,7 @@ class StoresTableSeeder extends Seeder
               'updated_at' => new DateTime(),
             ],
             [
+              'area_id' => 1,
               'name' => 'rojipan 並木坂店',
               'detail' => 'パンがとても美味しいです。',
               'genre' => 'パン',
@@ -70,6 +73,7 @@ class StoresTableSeeder extends Seeder
               'updated_at' => new DateTime(),
             ],
             [
+              'area_id' => 1,
               'name' => 'チャオリー',
               'detail' => '中華料理が美味しいです。',
               'genre' => '中華料理',
@@ -89,6 +93,7 @@ class StoresTableSeeder extends Seeder
               'updated_at' => new DateTime(),
             ],
             [
+              'area_id' => 2,
               'name' => 'ゴキゲン家G.O',
               'detail' => '雰囲気のいい居酒屋です。',
               'genre' => '居酒屋',
