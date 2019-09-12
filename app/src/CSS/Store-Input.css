@@ -1,6 +1,6 @@
 h1{
     font-weight: 400;
-    font-size: 40px
+    font-size: 40px;
 }
 
 .item-name h3 {
@@ -21,6 +21,20 @@ input {
     border: 1px solid #bac6d3;
     border-radius: 3px;
     display: block;
+  }
+
+  .item-price{
+    width:500px;
+    height: 35px;
+    position: relative; /*　.enのabsoluteと作用　*/
+  }
+  .en{
+    font-weight: 400;
+    font-size: 18px;
+    position:absolute; /*　.enのabsoluteと作用　*/
+    left:280px;
+    top:5px;
+    margin:0;
   }
 
   .box-store-input {

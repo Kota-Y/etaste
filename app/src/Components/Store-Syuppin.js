@@ -1,5 +1,5 @@
 import { withRouter } from "react-router";
-import React from "react";
+import React,{Component} from "react";
 
 
 class StoreSyuppin extends React.Component {
@@ -8,6 +8,7 @@ class StoreSyuppin extends React.Component {
     return (
       <div>
         <h1>出品画面です</h1>
+        <p>{this.props.location.state.text}</p>
       </div>
     );
   }
