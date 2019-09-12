@@ -7,6 +7,10 @@ class Header extends React.Component {
     this.props.history.push("/");
   };
 
+  handleToFavoriteListPage = () =>{
+    this.props.history.push('/favorite-list');
+  }
+
   handleToSettingPage = () => {
     this.props.history.push("/setting");
   };
@@ -18,22 +22,28 @@ class Header extends React.Component {
           <img src="./title.png" alt="" className="title" />
           <div id="ham-menu">
             <ul>
-              <button
+              <h3
                 onClick={() => {
                   this.handleToHomePage();
                 }}
               >
                 Home
-              </button>
-              <li>お気に入り店舗</li>
-              <li>受け取り予定・履歴</li>
-              <button
+              </h3>
+              <h3
+                onClick={() => {
+                  this.handleToFavoriteListPage();
+                }}
+              >
+                お気に入り店舗
+              </h3>
+              <h3>受け取り予定・履歴</h3>
+              <h3
                 onClick={() => {
                   this.handleToSettingPage();
                 }}
               >
                 設定
-              </button>
+              </h3>
               <li>ヘルプ</li>
               <li>サインアップ</li>
               <li>ログイン</li>

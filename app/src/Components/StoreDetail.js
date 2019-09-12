@@ -3,8 +3,8 @@ import { withRouter } from "react-router";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 
-import SuperKlass from './DefineConst';
-import StoreComponent from './storeComponent';
+import SuperKlass from '../function/DefineConst';
+import StoreComponent from '../function/storeComponent';
 import { strTimeOpen, strTimeClose } from '../function/storeTime';
 import "../CSS/StoreDetail.css";
 
@@ -14,84 +14,82 @@ class StoreDetail extends React.Component{
         this.state = {
             /* Store情報のstate */
             name: '',
-            storeId: '',
-            storeImage: '',
             access: '',
             address: '',
-            openTime: '',
+            areaCity: '',
+            areaOther: '',
+            areaPref: '',
             closeTime: '',
             holiday: '',
-            map: '',
+            id: '',
+            image: '',
             mapLatitude: '',
             mapLongitude: '',
+            openTime: '',
             parking: '',
             tel: '',
             url: '',
             zip: '',
             /* 出品中のFoodの情報state */
-            foodName:'',
             endTime: '',
-            foodId: '',
+            //id: '',
             foodImage: '',
+            foodName: '',
             originalPrice: '',
             salePrice: '',
             startTime: ''
         };
     }
 
-    componentWillMount() { 
+    componentDidMount() { 
         /* Storeの情報をGETするメソッド(id1について) */
-        axios
-            .get(　SuperKlass.CONST.DOMAIN + '/store/detail/', {
-                    headers: { "Content-Type": "application/json" },
-                    data: {},
-                })
-            .then( (res) => {
-                axios.get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
-                    headers: { "Content-Type": "application/json" },
-                    data: {},
-                    param: this.state.storeId
-                    })
-                    .then( (res) => {
-                        this.setState({
-                            name: res.data.name,
-                            storeId: res.data.id,
-                            storeImage: res.data.image,
-                            access: res.data.access,
-                            address: res.data.address,
-                            openTime: res.data.openTime,
-                            closeTime: res.data.closeTime,
-                            holiday: res.data.holiday,
-                            map: res.data.map,
-                            mapLatitude: res.data.mapLatitude,
-                            mapLongitude: res.data.mapLongitude,
-                            parking: res.data.parking,
-                            tel: res.data.tel,
-                            url: res.data.url,
-                            zip: res.data.zip
-                        });
-                    } );
-                //console.log(this.state.storeId);
-            })
-            .catch( (error) => {
-                console.log('通信に失敗しました');
-            });
-        /*　Storeの出品中の商品をGETするメソッド */
         axios
             .get(　SuperKlass.CONST.DOMAIN + '/store/', {
                     headers: { "Content-Type": "application/json" },
                     data: {},
-                    param: this.state.storeId
                 })
             .then( (res) => {
+                console.log(res.data.name);
+                    this.setState({
+                        name: res.data.name,
+                        access: res.data.access,
+                        address: res.data.address,
+                        areaCity: res.data.areaCity,
+                        areaOther: res.data.areaOther,
+                        areaPref: res.data.areaPref,
+                        closeTime: res.data.closeTime,
+                        holiday: res.data.holiday,
+                        id: res.data.id,
+                        image: res.data.image,
+                        mapLatitude: res.data.mapLatitude,
+                        mapLongitude: res.data.mapLongitude,
+                        openTime: res.data.openTime,
+                        parking: res.data.parking,
+                        tel: res.data.tel,
+                        url: res.data.url,
+                        zip: res.data.zip
+                });
+            })
+            .catch( (error) => {
+                console.log('通信に失敗しました');
+            });
+
+        /*　Storeの出品中の商品をGETするメソッド */
+        axios
+            .get(　SuperKlass.CONST.DOMAIN + '/food/', {
+                    headers: { "Content-Type": "application/json" },
+                    data: {},
+                    param: this.state.id
+                })
+            .then( (res) => {
+                console.log(res.data.foods[this.state.id].name);
                 this.setState({
-                    foodName: res.data.foods[0].name,
-                    endTime: res.data.foods[0].endTime,
-                    foodId: res.data.foods[0].id,
-                    foodImage: res.data.foods[0].image,
-                    originalPrice: res.data.foods[0].originalPrice,
-                    salePrice: res.data.foods[0].salePrice,
-                    startTime: res.data.foods[0].startTime
+                    foodName: res.data.foods[this.state.id].name,
+                    endTime: res.data.foods[this.state.id].endTime,
+                    foodImage: res.data.foods[this.state.id].image,
+                    originalPrice: res.data.foods[this.state.id].originalPrice,
+                    salePrice: res.data.foods[this.state.id].salePrice,
+                    startTime: res.data.foods[this.state.id].startTime,
                 });
             })
             .catch( (error) => {

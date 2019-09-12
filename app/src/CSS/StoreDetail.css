@@ -36,6 +36,11 @@
     margin-top: 0px;
 }
 
+.map {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+}
 .onSale-container{
     margin-left: 55px;
     width: 400px;
@@ -54,6 +59,11 @@
     width: 276px;
     height: 260px;
     box-shadow: 2px 2px 4px #dddddd;
+}
+
+.items-info img{
+    width: 276px;
+    height: 160px;
 }
 
 .items-info h2{
@@ -113,4 +123,9 @@
 .salePrice{
     color: red;
     font-size: 24px;
+}
+
+.favorite-store{
+    display: inline-flex;
+    flex-wrap: wrap;
 }

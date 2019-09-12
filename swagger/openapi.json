@@ -1322,7 +1322,8 @@
         },
         "example": {
           "userId": 1,
-          "favoriteNum": 3,
+          "foodNum": 5,
+          "favoriteNum": 5,
           "favoriteStores": [
             {
               "id": 1,
