@@ -1,3 +1,4 @@
+/* UserDeal.jsのCSS */
 .main-deal{
     width: 100%;
     margin-top: 8px;
@@ -29,5 +30,25 @@
     margin-bottom: 10px;
     margin-left: 20px;
     font-size: 28px;
+}
+
+/* DealFoodComponent.jsのCSS */
+
+.dealfood-container{
+    display: block;
+}
+
+.dealfood-component{
+    width: 100%;
+    display: inline-flex;
+}
+
+.dealfood-image img{
+    width: 250px;
+    height: 250px;
+}
+
+.dealfood-info{
+    width:100%
 }
 
