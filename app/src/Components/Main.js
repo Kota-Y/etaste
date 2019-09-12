@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router";
 
 import Home from "./Home";
 import Setting from "./Setting";
@@ -13,9 +13,6 @@ class Main extends React.Component {
   render() {
     return (
       <div className='main'>
-        <div>
-          <div>
-            <div>
               <Switch>
                 <Route exact path={"/"} component={Home} />
                 <Route exact path={"/item"} component={Item} />
@@ -23,10 +20,13 @@ class Main extends React.Component {
                 <Route exact path={"/all-recommends"} component={AllRecommends} />
                 <Route exact path={"/store-detail"} component={StoreDetail} />
                 <Route exact path={"/favorite-list"} component={FavoriteList} />
+                {/* <Route exact path={"/opensource"} component={Opensource} />
+                <Route exact path={"/tradehistory"} component={TradeHistory} />
+                <Route exact path={"/profileset"} component={Profileset} />
+                <Route exact path={"/qanda"} component={QandA} />
+                <Route exact path={"/contact"} component={Contact} />
+                <Route exact path={"/unsubscribe"} component={Unsubscribe} /> */}
               </Switch>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
