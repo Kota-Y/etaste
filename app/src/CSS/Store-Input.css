@@ -38,4 +38,7 @@ input {
   }
 
   .box-store-input {
+    margin:auto;
+    width:700px;
+    height: 700px;
   }
