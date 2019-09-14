@@ -64,6 +64,9 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
             <div className='dealfood-component'>
                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
+                    <div className='icon-info'>
+                        <img src='./image/infomation_icon.png' alt='' />
+                    </div>
                 </div>
                 <div className='dealfood-info'>
                     <h3>{'商品名　 : ' + food }</h3>
