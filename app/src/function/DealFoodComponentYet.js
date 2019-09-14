@@ -1,8 +1,10 @@
 /* 取引予定商品のコンポーネント */
 import React from 'react';
 import axios from 'axios';
+import { Switch, Route } from 'react-router';
 
 import SuperKlass from '../function/DefineConst';
+import StoreDetail from '../Components/StoreDetail';
 import { recieveTime } from '../function/storeTime';
 import '../CSS/UserDeal.css';
 
@@ -12,9 +14,13 @@ class DealFoodComponentYet extends React.Component{
         this.state = {
             id: '',
             tradeNum: '',
-            trades: []
+            trades: [],
+            detail:{}
         }
     }
+
+    
+    
 
     componentDidMount() { 
         axios
@@ -37,6 +43,9 @@ class DealFoodComponentYet extends React.Component{
 
     render() {
 
+        /* const handleToStoreDetailPage = () => {
+            this.props.history.push("/store-detail");
+        }; */
         const resTime = recieveTime( '1200' );
 
         return(
@@ -75,6 +84,11 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
                     <h3>{'受取時間 : ' + time }</h3>
                     <h3>{'店舗名　 : ' + store }</h3>
                     <h2 onClick={ Alert }>受取完了</h2>
+                </div>
+                <div>
+                    <Switch>
+                        <Route exact path={"/store-detail"} component={StoreDetail} />
+                    </Switch>
                 </div>
             </div>
         }

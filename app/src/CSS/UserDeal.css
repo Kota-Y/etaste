@@ -67,6 +67,14 @@
     right: -10%;
 }
 
+.icon-info:hover{
+    background-color: #000;
+}
+
+.icon-info img:hover{
+    opacity: 0.8;
+}
+
 .dealfood-info{
     width:50%;
     height: auto;
