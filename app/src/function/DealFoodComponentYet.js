@@ -6,7 +6,7 @@ import SuperKlass from '../function/DefineConst';
 import { recieveTime } from '../function/storeTime';
 import '../CSS/UserDeal.css';
 
-class DealFoodComponent extends React.Component{
+class DealFoodComponentYet extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -61,7 +61,7 @@ class DealFoodComponent extends React.Component{
         return(
             <div className='dealfoods-container'>
                 {this.state.trades.map(e =>
-                    <DealFoodsBoxAlready 
+                    <DealFoodsBoxYet 
                         key = {e.id}
                         isCompleted = {e.isCompleted}
                         image = {e.foodImage}
@@ -77,9 +77,9 @@ class DealFoodComponent extends React.Component{
     }
 }
 
-const DealFoodsBoxAlready = ({isCompleted, image, food, amount, price, time, store})  => (
+const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})  => (
     <div>
-        { isCompleted === "true" &&
+        { isCompleted === "false" &&
             <div className='dealfood-component'>
                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
@@ -96,4 +96,4 @@ const DealFoodsBoxAlready = ({isCompleted, image, food, amount, price, time, sto
     </div>
 );
 
-export default DealFoodComponent;
+export default DealFoodComponentYet;
