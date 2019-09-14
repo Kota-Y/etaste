@@ -1,4 +1,4 @@
-/* 取引予定や取引済みの商品のコンポーネント */
+/* 取引予定商品のコンポーネント */
 import React from 'react';
 import axios from 'axios';
 
@@ -13,18 +13,9 @@ class DealFoodComponentYet extends React.Component{
             id: '',
             tradeNum: '',
             trades: []
-            /* amount: '',
-            foodId: '',
-            foodImage: '',
-            foodName: '',
-            id: '',
-            isCompleted: '',
-            recieveTime: '',
-            storeId: '',
-            storeName: '',
-            totalPrice: '' */
         }
     }
+
     componentDidMount() { 
         axios
             .get(　SuperKlass.CONST.DOMAIN + '/trade/', {
@@ -36,16 +27,6 @@ class DealFoodComponentYet extends React.Component{
                         id: res.data.id,
                         tradeNum: res.data.tradeNum,
                         trades: res.data.trades
-                        /* amount: '',
-                        foodId: '',
-                        foodImage: '',
-                        foodName: '',
-                        id: '',
-                        isCompleted: '',
-                        recieveTime: '',
-                        storeId: '',
-                        storeName: '',
-                        totalPrice: '' */
                 });
                 console.log(res.data);
             })
@@ -86,14 +67,19 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
                 </div>
                 <div className='dealfood-info'>
                     <h3>{'商品名　 : ' + food }</h3>
-                    <h3>{'注文個数 : ' + amount }</h3>    
-                    <h3>{'合計　　 : ' + price }</h3>
+                    <h3>{'注文個数 : ' + amount + '個' }</h3>    
+                    <h3>{'合計　　 : ' + price + '円' }</h3>
                     <h3>{'受取時間 : ' + time }</h3>
                     <h3>{'店舗名　 : ' + store }</h3>
+                    <h2 onClick={ Alert }>受取完了</h2>
                 </div>
             </div>
         }
     </div>
 );
+
+const Alert = () => {
+        alert('本当に受け取りましたか？')
+}
 
 export default DealFoodComponentYet;

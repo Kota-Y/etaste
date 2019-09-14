@@ -40,7 +40,7 @@
 }
 
 .dealfood-component{
-    margin: 40px 20px 20px 20px;
+    margin: 40px 20px 20px 130px;
     padding: 10px 10px 10px 10px;
     width: 70%;
     display: inline-flex;
@@ -49,11 +49,63 @@
 }
 
 .dealfood-image img{
+    margin-top: 12px;
     width: 250px;
-    height: 250px;
+    height: 220px;
 }
 
 .dealfood-info{
+    width:50%;
+    height: auto;
     margin-left: 30px;
 }
 
+.dealfood-info h3{
+    margin: 10px 0px 10px 0px;
+}
+
+.dealfood-info h2{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: #ffdb73;
+    border:1px solid #ffdb73;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.dealfood-info h2:hover{
+    cursor: pointer;
+    color: gray;
+}
+
+.dealfood-component-already{
+    margin: 40px 20px 20px 130px;
+    padding: 10px 10px 10px 10px;
+    width: 70%;
+    display: inline-flex;
+    border:1px solid gray;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.dealfood-image-already{
+    width: 250px;
+    height: 220px;
+}
+
+.dealfood-image-already img{
+    margin-top: 12px;
+    width: 250px;
+    height: 220px;
+}
+
+.dealfood-info-already{
+    width:50%;
+    height: auto;
+    margin-left: 30px;
+}
+
+.dealfood-info-already h3{
+    margin-left: 30px;
+}

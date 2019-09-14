@@ -1,4 +1,4 @@
-/* 取引予定や取引済みの商品のコンポーネント */
+/* 取引済みの商品のコンポーネント */
 import React from 'react';
 import axios from 'axios';
 
@@ -13,16 +13,6 @@ class DealFoodComponent extends React.Component{
             id: '',
             tradeNum: '',
             trades: []
-            /* amount: '',
-            foodId: '',
-            foodImage: '',
-            foodName: '',
-            id: '',
-            isCompleted: '',
-            recieveTime: '',
-            storeId: '',
-            storeName: '',
-            totalPrice: '' */
         }
     }
     componentDidMount() { 
@@ -36,16 +26,6 @@ class DealFoodComponent extends React.Component{
                         id: res.data.id,
                         tradeNum: res.data.tradeNum,
                         trades: res.data.trades
-                        /* amount: '',
-                        foodId: '',
-                        foodImage: '',
-                        foodName: '',
-                        id: '',
-                        isCompleted: '',
-                        recieveTime: '',
-                        storeId: '',
-                        storeName: '',
-                        totalPrice: '' */
                 });
                 console.log(res.data);
             })
@@ -80,14 +60,14 @@ class DealFoodComponent extends React.Component{
 const DealFoodsBoxAlready = ({isCompleted, image, food, amount, price, time, store})  => (
     <div>
         { isCompleted === "true" &&
-            <div className='dealfood-component'>
-                <div className='dealfood-image'>
+            <div className='dealfood-component-already'>
+                <div className='dealfood-image-already'>
                     <img src={ image } alt='' />
                 </div>
-                <div className='dealfood-info'>
+                <div className='dealfood-info-already'>
                     <h3>{'商品名　 : ' + food }</h3>
-                    <h3>{'注文個数 : ' + amount }</h3>    
-                    <h3>{'合計　　 : ' + price }</h3>
+                    <h3>{'注文個数 : ' + amount + '個' }</h3>    
+                    <h3>{'合計　　 : ' + price + '円' }</h3>
                     <h3>{'受取時間 : ' + time }</h3>
                     <h3>{'店舗名　 : ' + store }</h3>
                 </div>
