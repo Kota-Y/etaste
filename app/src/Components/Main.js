@@ -8,12 +8,13 @@ import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
 import FavoriteList from "./favoriteList";
 import Opensource from "./Opensource";
-import "../CSS/Main.css";
+import StoreDeal from "./StoreDeal";
 import TradeHistory from "./TradeHistory";
 import Profileset from "./Profileset";
 import QandA from "./QandA";
 import Contact from "./Contact";
 import Unsubscribe from "./Unsubscribe";
+import "../CSS/Main.css";
 
 
 class Main extends React.Component {
@@ -28,7 +29,7 @@ class Main extends React.Component {
                 <Route exact path={"/store-detail"} component={StoreDetail} />
                 <Route exact path={"/favorite-list"} component={FavoriteList} />
                 <Route exact path={"/opensource"} component={Opensource} />
-                <Route exact path={"/opensource"} component={Opensource} />
+                <Route exact path={"/store-deal"} component={StoreDeal} />
                 <Route exact path={"/tradehistory"} component={TradeHistory} />
                 <Route exact path={"/profileset"} component={Profileset} />
                 <Route exact path={"/qanda"} component={QandA} />
