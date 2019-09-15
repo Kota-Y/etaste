@@ -72,3 +72,7 @@
   opacity: 0.5; /*黒背景部分透過度*/
   z-index: 999;
 }
+
+.header-left h3:hover{
+  cursor: pointer;
+}

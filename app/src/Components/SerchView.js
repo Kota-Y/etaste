@@ -1,6 +1,7 @@
 import React from "react";
-import "../CSS/SerchView.css";
 import Select from "react-select";
+
+import "../CSS/SerchView.css";
 
 const areas = [
   { values: "新市街", label: "新市街" },
