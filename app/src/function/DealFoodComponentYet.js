@@ -72,7 +72,7 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
                     <div className='icon-info'> 
-                        <img src='./image/infomation_icon.png' alt='' 
+                        <img src='./image/information_icon.png' alt='' 
                             /* onClick={ this.handleToStoreDetailPage() } */
                         />
                     </div>
