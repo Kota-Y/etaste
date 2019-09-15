@@ -36,8 +36,6 @@ class DealFoodComponent extends React.Component{
 
     render() {
 
-        const resTime = recieveTime( '1200' );
-
         return(
             <div className='dealfoods-container'>
                 {this.state.trades.map(e =>
@@ -48,7 +46,7 @@ class DealFoodComponent extends React.Component{
                         food = {e.foodName}
                         amount = {e.amount}
                         price = {e.totalPrice}
-                        time = {resTime}
+                        time = {recieveTime(e.recieveTime)}
                         store = {e.storeName}
                     />
                 )}

@@ -1,7 +1,7 @@
 /* 取引予定商品のコンポーネント */
 import React from 'react';
 import axios from 'axios';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import SuperKlass from '../function/DefineConst';
 import StoreDetail from '../Components/StoreDetail';
@@ -16,10 +16,6 @@ class DealFoodComponentYet extends React.Component{
             tradeNum: '',
             trades: [],
         }
-    }
-
-    handleToStoreDetailPage(){ 
-        this.props.history.push('/store-detail')
     }
 
     componentDidMount() { 
@@ -43,8 +39,6 @@ class DealFoodComponentYet extends React.Component{
 
     render() {
 
-        const resTime = recieveTime( '1200' );
-
         return(
             <div className='dealfoods-container'>
                 {this.state.trades.map(e =>
@@ -55,7 +49,7 @@ class DealFoodComponentYet extends React.Component{
                         food = {e.foodName}
                         amount = {e.amount}
                         price = {e.totalPrice}
-                        time = {resTime}
+                        time = {recieveTime(e.recieveTime)}
                         store = {e.storeName}
                         link = {e.link}
                     />
@@ -72,9 +66,11 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
                     <div className='icon-info'> 
-                        <img src='./image/information_icon.png' alt='' 
-                            /* onClick={ this.handleToStoreDetailPage() } */
-                        />
+                        <Link to='/store-detail'>
+                            <img src='./image/information_icon.png' alt='' 
+                                /* onClick={ this.handleToStoreDetailPage() } */
+                            />
+                        </Link>
                     </div>
                 </div>
                 <div className='dealfood-info'>
@@ -94,6 +90,10 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
         }
     </div>
 );
+
+/* const handleClick = () =>{ 
+        this.props.history.push('/store-detail')
+} */
 
 const Alert = () => {
         alert('本当に受け取りましたか？')
