@@ -27,13 +27,12 @@ class Main extends React.Component {
                 <Route exact path={"/all-recommends"} component={AllRecommends} />
                 <Route exact path={"/store-detail"} component={StoreDetail} />
                 <Route exact path={"/favorite-list"} component={FavoriteList} />
-                {/* <Route exact path={"/opensource"} component={Opensource} />
+                <Route exact path={"/opensource"} component={Opensource} />
                 <Route exact path={"/opensource"} component={Opensource} />
                 <Route exact path={"/tradehistory"} component={TradeHistory} />
                 <Route exact path={"/profileset"} component={Profileset} />
                 <Route exact path={"/qanda"} component={QandA} />
                 <Route exact path={"/contact"} component={Contact} />
-                <Route exact path={"/unsubscribe"} component={Unsubscribe} /> */
                 <Route exact path={"/unsubscribe"} component={Unsubscribe} />
               </Switch>
       </div>
