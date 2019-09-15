@@ -15,12 +15,12 @@ class DealFoodComponentYet extends React.Component{
             id: '',
             tradeNum: '',
             trades: [],
-            detail:{}
         }
     }
 
-    
-    
+    handleToStoreDetailPage(){ 
+        this.props.history.push('/stire-detail')
+    }
 
     componentDidMount() { 
         axios
@@ -43,9 +43,6 @@ class DealFoodComponentYet extends React.Component{
 
     render() {
 
-        /* const handleToStoreDetailPage = () => {
-            this.props.history.push("/store-detail");
-        }; */
         const resTime = recieveTime( '1200' );
 
         return(
@@ -60,6 +57,7 @@ class DealFoodComponentYet extends React.Component{
                         price = {e.totalPrice}
                         time = {resTime}
                         store = {e.storeName}
+                        link = {e.link}
                     />
                 )}
             </div>
@@ -73,7 +71,7 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
             <div className='dealfood-component'>
                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
-                    <div className='icon-info'>
+                    <div className='icon-info'> 
                         <img src='./image/infomation_icon.png' alt='' />
                     </div>
                 </div>
