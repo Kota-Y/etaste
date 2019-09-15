@@ -21,12 +21,15 @@ class Setting extends React.Component {
   handleToUnsubscribePage = () => {
     this.props.history.push("/unsubscribe");
   };
+  handleToStoreDealPage = () => {
+    this.props.history.push("/store-deal");
+  };
 
   render() {
     return (
       <div>
         <h1>設定</h1>
-        <h2 onClick={this.handleToTradeHistoryPage}>取引履歴</h2>
+        <h2 onClick={this.handleToStoreDealPage}>取引履歴</h2>
         <h2 onClick={this.handleToTradeHistoryPage}>プロフィール設定</h2>
         <h2 onClick={this.handleToQandAPage}>Q&A</h2>
         <h2 onClick={this.handleToContactPage}>お問い合わせ</h2>

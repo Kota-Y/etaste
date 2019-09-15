@@ -9,6 +9,7 @@ import StoreDetail from "./StoreDetail";
 import FavoriteList from "./favoriteList";
 import Opensource from "./Opensource";
 import TradeHistory from "./TradeHistory";
+import StoreDeal from "./StoreDeal";
 import UserDeal from "./UserDeal";
 import Profileset from "./Profileset";
 import QandA from "./QandA";
@@ -29,6 +30,7 @@ class Main extends React.Component {
           <Route exact path={"/favorite-list"} component={FavoriteList} />
           <Route exact path={"/opensource"} component={Opensource} />
           <Route exact path={"/tradehistory"} component={TradeHistory} />
+          <Route exact path={"/store-deal"} component={StoreDeal} />
           <Route exact path={"/userdeal"} component={UserDeal} />
           <Route exact path={"/profileset"} component={Profileset} />
           <Route exact path={"/qanda"} component={QandA} />
