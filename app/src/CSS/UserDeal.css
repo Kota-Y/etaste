@@ -71,8 +71,18 @@
     background-color: #000;
 }
 
+.icon-info img{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
 .icon-info img:hover{
-    opacity: 0.8;
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .dealfood-info{

@@ -19,7 +19,7 @@ class DealFoodComponentYet extends React.Component{
     }
 
     handleToStoreDetailPage(){ 
-        this.props.history.push('/stire-detail')
+        this.props.history.push('/store-detail')
     }
 
     componentDidMount() { 
@@ -72,7 +72,9 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
                     <div className='icon-info'> 
-                        <img src='./image/infomation_icon.png' alt='' />
+                        <img src='./image/infomation_icon.png' alt='' 
+                            /* onClick={ this.handleToStoreDetailPage() } */
+                        />
                     </div>
                 </div>
                 <div className='dealfood-info'>
