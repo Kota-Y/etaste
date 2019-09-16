@@ -10,7 +10,7 @@ class StoreSyuppin extends React.Component {
   
   render() {
     return (
-      <div className='main'>
+      <div className='mainarea'>
 
         <div className='check-area'>
           <p>購入商品：{this.props.location.state.itemName}</p>
