@@ -1,4 +1,4 @@
-/* UserDeal.jsのCSS */
+/* StoreDeal.jsのCSS */
 .main-deal{
     width: 100%;
     margin-top: 8px;
@@ -35,7 +35,7 @@
 
 /* DealFoodComponent.jsのCSS */
 
-.dealfood-container{
+.dealfoods-container{
     display: block;
 }
 
