@@ -11,6 +11,10 @@ class Header extends React.Component {
     this.props.history.push('/favorite-list');
   }
 
+  handleToUserDealPage = () => {
+    this.props.history.push("/deal");
+  };
+
   handleToSettingPage = () => {
     this.props.history.push("/setting");
   };
@@ -36,7 +40,13 @@ class Header extends React.Component {
               >
                 お気に入り店舗
               </h3>
-              <h3>受け取り予定・履歴</h3>
+              <h3
+                onClick={() => {
+                  this.handleToUserDealPage();
+                }}
+              >
+                受け取り予定・履歴
+              </h3>
               <h3
                 onClick={() => {
                   this.handleToSettingPage();

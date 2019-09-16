@@ -24,6 +24,9 @@ class Setting extends React.Component {
   handleToUnsubscribePage = () => {
     this.props.history.push("/unsubscribe");
   };
+  handleToStoreDealPage = () => {
+    this.props.history.push("/deal");
+  };
 
   render() {
     return (

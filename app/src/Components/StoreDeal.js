@@ -20,6 +20,15 @@ class StoreDeal extends React.Component {
                 <h1>販売済み</h1>
                 {/* <div>
                     <DealFoodComponent />
+                <h1>受け取り予定</h1>
+                {/* <div>
+                    <StoreDealFoodComponentYet />
+                </div> */}
+            </div>
+            <div className='tradingHistory-container'>
+                <h1>取引履歴</h1>
+                {/* <div>
+                    <StoreDealFoodComponent />
                 </div> */}
             </div>
         </div>
