@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import SuperKlass from '../function/DefineConst';
 import { recieveTime } from '../function/storeTime';
+import '../CSS/StoreDeal.css';
 
 
 class StoreDealFoodComponent extends React.Component{
@@ -45,7 +46,7 @@ class StoreDealFoodComponent extends React.Component{
     render() {
 
         return(
-            <div>
+            <div className='dealfoods-container'>
                 {this.state.storeTrades.map(e =>
                     <StoreDealFoodsBoxAlready
                         key = {e.id}
@@ -65,8 +66,8 @@ class StoreDealFoodComponent extends React.Component{
 const StoreDealFoodsBoxAlready = ({isCompleted, food, amount, price, time, user})  => (
     <div>
         { isCompleted === "true" &&
-            <div>
-                <div>
+            <div className='dealfood-component'>
+                <div className='dealfood-info'>
                     <h3>{'商品名　 : ' + food }</h3>
                     <h3>{'注文個数 : ' + amount + '個' }</h3>    
                     <h3>{'合計　　 : ' + price + '円' }</h3>

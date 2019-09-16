@@ -68,7 +68,6 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
                     <div className='icon-info'> 
                         <Link to='/store-detail'>
                             <img src='./image/information_icon.png' alt='' 
-                                /* onClick={ this.handleToStoreDetailPage() } */
                             />
                         </Link>
                     </div>
@@ -90,10 +89,6 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
         }
     </div>
 );
-
-/* const handleClick = () =>{ 
-        this.props.history.push('/store-detail')
-} */
 
 const Alert = () => {
         alert('本当に受け取りましたか？')

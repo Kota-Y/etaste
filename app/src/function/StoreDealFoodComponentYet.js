@@ -1,11 +1,10 @@
 /* 販売中の商品のコンポーネント */
 import React from 'react';
 import axios from 'axios';
-//import { Switch, Route } from 'react-router-dom';
 
 import SuperKlass from '../function/DefineConst';
-//import StoreDetail from '../Components/StoreDetail';
 import { recieveTime } from '../function/storeTime';
+import '../CSS/StoreDeal.css';
 
 
 class StoreDealFoodComponentYet extends React.Component{
@@ -48,7 +47,7 @@ class StoreDealFoodComponentYet extends React.Component{
     render() {
 
         return(
-            <div>
+            <div className='dealfoods-container'>
                 {this.state.storeTrades.map(e =>
                     <StoreDealFoodsBoxYet
                         key = {e.id}
@@ -68,8 +67,8 @@ class StoreDealFoodComponentYet extends React.Component{
 const StoreDealFoodsBoxYet = ({isCompleted, food, amount, price, time, user})  => (
     <div>
         { isCompleted === "false" &&
-            <div>
-                <div>
+            <div className='dealfood-component'>
+                <div className='dealfood-info'>
                     <h3>{'商品名　 : ' + food }</h3>
                     <h3>{'注文個数 : ' + amount + '個' }</h3>    
                     <h3>{'合計　　 : ' + price + '円' }</h3>
