@@ -22,7 +22,7 @@ class Setting extends React.Component {
     this.props.history.push("/unsubscribe");
   };
   handleToStoreDealPage = () => {
-    this.props.history.push("/store-deal");
+    this.props.history.push("/deal");
   };
 
   render() {
