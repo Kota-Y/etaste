@@ -37,8 +37,8 @@ class StoreDetail extends React.Component{
             originalPrice: '',
             salePrice: '',
             startTime: '',
-            /* 画像のオンオフ */
-            toggle: false
+            /* 画像の切り替え */
+            open: true
         };
     }
 
@@ -98,6 +98,12 @@ class StoreDetail extends React.Component{
             });
     }
 
+    toggleImage = () => {
+        this.setState(state => ({ open: !state.open }))
+      }
+    
+    getImageName = () => this.state.open ? 'favGray' : 'fav';
+
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
         const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
@@ -105,6 +111,8 @@ class StoreDetail extends React.Component{
         /* 販売時刻の先頭が0の場合に消す処理 */
         const sellTime = strTimeOpen( this.state.startTime ) + '〜' + strTimeClose( this.state.endTime );
 
+        const imageName = this.getImageName();
+        
         return(
             <div className='store-detail'>
                 <div className='store-container'>
@@ -116,7 +124,8 @@ class StoreDetail extends React.Component{
                             <StoreComponent />
                         </div>
                         <div className='favorite-icon-gray'>
-                            <img src='./image/fav-gray.png' alt='' 
+                            <img src={imagesPath[imageName]} alt='' 
+                                onClick={ this.toggleImage }
                             />
                         </div>
                         <div className='store-name'>
@@ -164,6 +173,11 @@ class StoreDetail extends React.Component{
         );
     }
 }
+
+const imagesPath = {
+    fav: "./image/fav.png",
+    favGray: "./image/fav-gray.png"
+  }
 
 const mapStyles = {
     width: '38vw',
