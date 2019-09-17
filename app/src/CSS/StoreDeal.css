@@ -39,7 +39,7 @@
     display: block;
 }
 
-.dealfood-component{
+.dealfood-component-store{
     margin: 40px 20px 20px 130px;
     padding: 10px 10px 10px 10px;
     width: 70%;
@@ -53,11 +53,11 @@
     position: relative;
 }
 
-.dealfood-image img{
+/* .dealfood-image img{
     margin-top: 12px;
     width: 250px;
     height: 220px;
-}
+} */
 
 .dealfood-info{
     width:50%;

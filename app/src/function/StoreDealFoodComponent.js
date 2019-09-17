@@ -66,7 +66,7 @@ class StoreDealFoodComponent extends React.Component{
 const StoreDealFoodsBoxAlready = ({isCompleted, food, amount, price, time, user})  => (
     <div>
         { isCompleted === "true" &&
-            <div className='dealfood-component'>
+            <div className='dealfood-component-store'>
                 <div className='dealfood-info'>
                     <h3>{'商品名　 : ' + food }</h3>
                     <h3>{'注文個数 : ' + amount + '個' }</h3>    

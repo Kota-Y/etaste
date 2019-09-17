@@ -3,7 +3,7 @@ import React from 'react';
 import UserDeal from './UserDeal';
 import StoreDeal from './StoreDeal';
 
-const store = true;
+const store = false;
 function Branching() {
     if( store ){
         return <StoreDeal />;

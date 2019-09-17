@@ -63,12 +63,11 @@ const DealFoodsBoxYet = ({isCompleted, image, food, amount, price, time, store})
     <div>
         { isCompleted === "false" &&
             <div className='dealfood-component'>
-                <div className='dealfood-image'>
+                 <div className='dealfood-image'>
                     <img src={ image } alt='' />
                     <div className='icon-info'> 
                         <Link to='/store-detail'>
-                            <img src='./image/information_icon.png' alt='' 
-                            />
+                            <img src='./image/information_icon.png' alt='' />
                         </Link>
                     </div>
                 </div>
