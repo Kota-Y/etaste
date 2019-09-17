@@ -22,9 +22,10 @@ input{
     border-radius: 3px;
     display: block;
   }
-  .select{
+  .timeselect{
     width: 350px;
-    height: 35px;
+    height: 20px;
+
   }
   .saleprice,.originalprice,.itemnumber,.endTime,.startTime,.originalprice,.saleprice{
     width:500px;

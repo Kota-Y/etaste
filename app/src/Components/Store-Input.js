@@ -8,11 +8,11 @@ const styleKeys = [{ key: "indicatorsContainer" }];
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
 const times = [
-  { values: "12:00", label: "12:00" },
-  { values: "13:00", label: "13:00" },
-  { values: "14:00", label: "14:00" },
-  { values: "15:00", label: "15:00" },
-  { values: "16:00", label: "16:00" }
+  { value: "12:00", label: "12:00" },
+  { value: "13:00", label: "13:00" },
+  { value: "14:00", label: "14:00" },
+  { value: "15:00", label: "15:00" },
+  { value: "16:00", label: "16:00" }
 ];
 
 class StoreInput extends React.Component {
@@ -22,10 +22,11 @@ class StoreInput extends React.Component {
     this.state = {
       itemName: '',
       itemNumber:'',
-      startTime:'',
-      endTime:'',
+      startTime:[],
+      endTime:[],
       originalprice:'',
-      saleprice:''
+      saleprice:'',
+      allergies:[]
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleToStoreSyuppinPage = this.handleToStoreSyuppinPage.bind(this)
@@ -71,7 +72,7 @@ class StoreInput extends React.Component {
           
           <div className="startTime">
             <Select
-              className='select'
+              className='timeselect'
               options={times}
               styles={{
                 [styleKeys]: styleFn
@@ -85,7 +86,7 @@ class StoreInput extends React.Component {
 
           <div className="endTime">
             <Select
-              className='select'
+              className='timeselect'
               options={times}
               styles={{
                 [styleKeys]: styleFn
