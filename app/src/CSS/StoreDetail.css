@@ -25,7 +25,20 @@
 }
 
 .store-component{
+    position: relative;
     margin-left: 20px;
+}
+
+.favorite-icon img{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 38%;
+    left: 18%;
+}
+
+.favorite-icon img:hover{
+    cursor: pointer;
 }
 
 .store-name h2{

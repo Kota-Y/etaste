@@ -114,6 +114,9 @@ class StoreDetail extends React.Component{
                         <div className='store-component'>
                             <StoreComponent />
                         </div>
+                        <div className='favorite-icon'>
+                            <img src='./image/fav-gray.png' alt='' />
+                        </div>
                         <div className='store-name'>
                             <h2>{ this.state.name }</h2>
                             <h3>{ business_hours }</h3>
