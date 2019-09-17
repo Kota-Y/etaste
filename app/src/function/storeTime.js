@@ -22,3 +22,16 @@ export const strTimeClose = ( ( closeTime ) => {
         return closeTime_hour + ':' + closeTime_min;
     }
 });
+
+/* 時間を分割して表示(受け取り時間などに使用) */
+export const recieveTime = ( ( recieveTime ) => {
+    if(recieveTime.slice(0, 1) === '0'){
+        const recieveTime_hour = recieveTime.slice(1, 2);
+        const recieveTime_min = recieveTime.slice(2, 4);
+        return recieveTime_hour + ':' + recieveTime_min;  
+    } else {
+        const recieveTime_hour = recieveTime.slice(0, 2);
+        const recieveTime_min = recieveTime.slice(2, 4);
+        return recieveTime_hour + ':' + recieveTime_min;
+    }
+});

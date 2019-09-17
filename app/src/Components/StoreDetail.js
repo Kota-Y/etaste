@@ -122,7 +122,7 @@ class StoreDetail extends React.Component{
                             <h3 className='address'>{ this.state.address }</h3>
                             <h3>{ this.state.tel }</h3>
                             <h3>
-                            <a href={this.state.url}>{ this.state.url }</a>
+                                <a href={this.state.url}>{ this.state.url }</a>
                             </h3>
                         </div>
                     </div>

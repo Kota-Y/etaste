@@ -5,10 +5,6 @@ import '../CSS/Main.css';
 import Recommend from "./Recommend";
 
 class Home extends React.Component {
-  handleToSettingPage = () => {
-    this.props.history.push("/setting");
-  };
-
   render() {
     return (
       <div>
