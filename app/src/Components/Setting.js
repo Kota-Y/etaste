@@ -12,6 +12,9 @@ class Setting extends React.Component {
   handleToTradeHistoryPage = () => {
     this.props.history.push("/profileset");
   };
+  handleToStoreDealPage = () => {
+    this.props.history.push("/store-deal");
+  };
   handleToQandAPage = () => {
     this.props.history.push("/qanda");
   };
