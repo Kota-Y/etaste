@@ -13,7 +13,7 @@ class StoreDetail extends React.Component{
         super(props);
         this.state = {
             /* Store情報のstate */
-            name: '',
+            storeName: '',
             access: '',
             address: '',
             areaCity: '',
@@ -21,7 +21,7 @@ class StoreDetail extends React.Component{
             areaPref: '',
             closeTime: '',
             holiday: '',
-            id: '',
+            storeId: '',
             image: '',
             mapLatitude: '',
             mapLongitude: '',
@@ -38,7 +38,9 @@ class StoreDetail extends React.Component{
             salePrice: '',
             startTime: '',
             /* 画像の切り替え */
-            open: true
+            open: true,
+            /* とりあえずのユーザーID */
+            userId: 1
         };
     }
 
@@ -50,9 +52,8 @@ class StoreDetail extends React.Component{
                     data: {},
                 })
             .then( (res) => {
-                console.log(res.data.name);
                     this.setState({
-                        name: res.data.name,
+                        storeName: res.data.name,
                         access: res.data.access,
                         address: res.data.address,
                         areaCity: res.data.areaCity,
@@ -60,7 +61,7 @@ class StoreDetail extends React.Component{
                         areaPref: res.data.areaPref,
                         closeTime: res.data.closeTime,
                         holiday: res.data.holiday,
-                        id: res.data.id,
+                        storeId: res.data.id,
                         image: res.data.image,
                         mapLatitude: res.data.mapLatitude,
                         mapLongitude: res.data.mapLongitude,
@@ -80,23 +81,49 @@ class StoreDetail extends React.Component{
             .get(　SuperKlass.CONST.DOMAIN + '/food/', {
                     headers: { "Content-Type": "application/json" },
                     data: {},
-                    param: this.state.id
+                    param: this.state.storeId
                 })
             .then( (res) => {
-                console.log(res.data.foods[this.state.id].name);
                 this.setState({
-                    foodName: res.data.foods[this.state.id].name,
-                    endTime: res.data.foods[this.state.id].endTime,
-                    foodImage: res.data.foods[this.state.id].image,
-                    originalPrice: res.data.foods[this.state.id].originalPrice,
-                    salePrice: res.data.foods[this.state.id].salePrice,
-                    startTime: res.data.foods[this.state.id].startTime,
+                    foodName: res.data.foods[this.state.storeId].storeName,
+                    endTime: res.data.foods[this.state.storeId].endTime,
+                    foodImage: res.data.foods[this.state.storeId].image,
+                    originalPrice: res.data.foods[this.state.storeId].originalPrice,
+                    salePrice: res.data.foods[this.state.storeId].salePrice,
+                    startTime: res.data.foods[this.state.storeId].startTime,
                 });
+                
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
     }
+
+    /* お気に入りするときにストア情報をポストするメソッド */
+    handlePostStoreInfo(){
+        if( this.state.open ){
+            axios
+                .post( SuperKlass.CONST.DOMAIN + '/favorite/', {
+                    storeId: this.state.storeId,
+                    storeName: this.state.storeName,
+                    userId: this.state.userId
+                })
+                .then((res) => {
+                    console.log("登録しました");
+                })
+        } else if( !this.state.open ) {
+            axios
+                .delete( SuperKlass.CONST.DOMAIN + '/favorite/', {
+                    storeId: this.state.storeId,
+                    storeName: this.state.storeName,
+                    userId: this.state.userId
+                })
+                .then( (res) => {
+                    console.log("削除しました");
+                })
+        }
+    }
+    
 
     toggleImage = () => {
         this.setState(state => ({ open: !state.open }))
@@ -125,7 +152,10 @@ class StoreDetail extends React.Component{
                         </div>
                         <div className='favorite-icon-gray'>
                             <img src={imagesPath[imageName]} alt='' 
-                                onClick={ this.toggleImage }
+                                onClick = { () =>{
+                                    this.toggleImage();
+                                    this.handlePostStoreInfo();
+                                }}
                             />
                         </div>
                         <div className='store-name'>
