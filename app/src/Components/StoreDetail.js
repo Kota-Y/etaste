@@ -32,12 +32,13 @@ class StoreDetail extends React.Component{
             zip: '',
             /* 出品中のFoodの情報state */
             endTime: '',
-            //id: '',
             foodImage: '',
             foodName: '',
             originalPrice: '',
             salePrice: '',
-            startTime: ''
+            startTime: '',
+            /* 画像のオンオフ */
+            toggle: false
         };
     }
 
@@ -114,8 +115,9 @@ class StoreDetail extends React.Component{
                         <div className='store-component'>
                             <StoreComponent />
                         </div>
-                        <div className='favorite-icon'>
-                            <img src='./image/fav-gray.png' alt='' />
+                        <div className='favorite-icon-gray'>
+                            <img src='./image/fav-gray.png' alt='' 
+                            />
                         </div>
                         <div className='store-name'>
                             <h2>{ this.state.name }</h2>
@@ -162,8 +164,6 @@ class StoreDetail extends React.Component{
         );
     }
 }
-
-
 
 const mapStyles = {
     width: '38vw',
