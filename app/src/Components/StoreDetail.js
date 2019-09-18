@@ -159,7 +159,7 @@ class StoreDetail extends React.Component{
                             />
                         </div>
                         <div className='store-name'>
-                            <h2>{ this.state.name }</h2>
+                            <h3>{ this.state.storeName }</h3>
                             <h3>{ business_hours }</h3>
                             <h3>{ this.state.holiday }</h3>
                             <h3 className='zip'>{ '〒' + this.state.zip }</h3>
