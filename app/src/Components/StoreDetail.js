@@ -38,7 +38,7 @@ class StoreDetail extends React.Component{
             salePrice: '',
             startTime: '',
             /* 画像の切り替え */
-            open: true,
+            isOpen: true,
             /* とりあえずのユーザーID */
             userId: 1
         };
@@ -101,7 +101,7 @@ class StoreDetail extends React.Component{
 
     /* お気に入りするときにストア情報をポストするメソッド */
     handlePostStoreInfo(){
-        if( this.state.open ){
+        if( this.state.isOpen ){
             axios
                 .post( SuperKlass.CONST.DOMAIN + '/favorite/', {
                     storeId: this.state.storeId,
@@ -111,7 +111,7 @@ class StoreDetail extends React.Component{
                 .then((res) => {
                     console.log("登録しました");
                 })
-        } else if( !this.state.open ) {
+        } else if( !this.state.isOpen ) {
             axios
                 .delete( SuperKlass.CONST.DOMAIN + '/favorite/', {
                     storeId: this.state.storeId,
@@ -126,10 +126,10 @@ class StoreDetail extends React.Component{
     
 
     toggleImage = () => {
-        this.setState(state => ({ open: !state.open }))
+        this.setState(state => ({ isOpen: !state.isOpen }))
       }
     
-    getImageName = () => this.state.open ? 'favGray' : 'fav';
+    getImageName = () => this.state.isOpen ? 'favGray' : 'fav';
 
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
