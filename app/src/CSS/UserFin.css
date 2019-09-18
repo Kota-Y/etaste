@@ -45,3 +45,7 @@
     margin-bottom: 10px;
     padding: 10px 10px 10px 10px;
 }
+
+.fin-button h2:hover{
+    color: gray;
+}
