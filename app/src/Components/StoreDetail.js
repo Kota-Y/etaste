@@ -84,8 +84,9 @@ class StoreDetail extends React.Component{
                     param: this.state.storeId
                 })
             .then( (res) => {
+                console.log(res.data.foods[this.state.storeId].name);
                 this.setState({
-                    foodName: res.data.foods[this.state.storeId].storeName,
+                    foodName: res.data.foods[this.state.storeId].name,
                     endTime: res.data.foods[this.state.storeId].endTime,
                     foodImage: res.data.foods[this.state.storeId].image,
                     originalPrice: res.data.foods[this.state.storeId].originalPrice,
@@ -179,7 +180,7 @@ class StoreDetail extends React.Component{
                         >
                             <Marker 
                                 position={{ lat: Number(this.state.mapLatitude), lng: Number(this.state.mapLongitude)}}
-                                name={this.state.name}
+                                name={this.state.storeName}
                             />
                         </Map>
                     </div> 
