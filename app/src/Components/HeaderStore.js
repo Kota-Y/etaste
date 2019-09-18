@@ -24,7 +24,8 @@ class BranchingHeader extends React.Component {
       <div className="header">
         <div className="header-contents">
             <img src="./title.png" alt="" className="title" />
-            <h3>ストア用のヘッダーです</h3>
+            <h2>出品入力</h2>
+            <h2>販売確認</h2>
             <div id="ham-menu">
                 <ul>
                     <h3

@@ -77,6 +77,10 @@
   cursor: pointer;
 }
  /* HeaderStore.jsのCSS */
-.header-contents h3{
+.header-contents h2{
   float: right;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-right: 60px;
+  margin-left: 0px;
 }
