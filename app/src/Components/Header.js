@@ -9,7 +9,7 @@ class Header extends React.Component {
 
   handleToFavoriteListPage = () =>{
     this.props.history.push('/favorite-list');
-  }
+  };
 
   handleToUserDealPage = () => {
     this.props.history.push("/deal");
@@ -17,6 +17,10 @@ class Header extends React.Component {
 
   handleToSettingPage = () => {
     this.props.history.push("/setting");
+  };
+
+  handleToUserFinPage = () => {
+    this.props.history.push("/user-fin");
   };
 
   render() {
@@ -53,6 +57,13 @@ class Header extends React.Component {
                 }}
               >
                 設定
+              </h3>
+              <h3
+                onClick={() => {
+                  this.handleToUserFinPage();
+                }}
+              >
+                テスト購入ボタン
               </h3>
               <li>ヘルプ</li>
               <li>サインアップ</li>
