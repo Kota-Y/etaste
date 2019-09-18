@@ -11,7 +11,7 @@ class BranchingHeader extends React.Component {
     this.props.history.push('/favorite-list');
   }
 
-  handleToUserDealPage = () => {
+  handleToDealPage = () => {
     this.props.history.push("/deal");
   };
 
@@ -25,7 +25,9 @@ class BranchingHeader extends React.Component {
         <div className="header-contents">
             <img src="./title.png" alt="" className="title" />
             <h2>出品入力</h2>
-            <h2>販売確認</h2>
+            <h2
+                onClick={ this.handleToDealPage }
+            >販売確認</h2>
             <div id="ham-menu">
                 <ul>
                     <h3
@@ -44,7 +46,7 @@ class BranchingHeader extends React.Component {
                     </h3>
                     <h3
                         onClick={() => {
-                        this.handleToUserDealPage();
+                        this.handleToDealPage();
                         }}
                     >
                         受け取り予定・履歴
