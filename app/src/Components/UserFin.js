@@ -18,6 +18,13 @@ class UserFin extends React.Component{
         }
 
     }
+    handleToUserDealPage = () => {
+        this.props.history.push("/deal");
+    };
+
+    handleToHomePage = () => {
+        this.props.history.push("/");
+    };
 
     handlePostStoreInfo(){
         if( this.state.isOpen ){
@@ -68,8 +75,12 @@ class UserFin extends React.Component{
                         />
                     </div>
                     <div className='fin-button'>
-                        <h2>受取詳細画面へ</h2>
-                        <h2>ホームへ</h2>
+                        <h2
+                            onClick={ this.handleToUserDealPage }
+                        >受取準備へ</h2>
+                        <h2
+                            onClick={ this.handleToHomePage }
+                        >ホームへ</h2>
                     </div>
                 </center>
             </div>

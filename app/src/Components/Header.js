@@ -9,7 +9,7 @@ class Header extends React.Component {
 
   handleToFavoriteListPage = () =>{
     this.props.history.push('/favorite-list');
-  }
+  };
 
   handleToUserDealPage = () => {
     this.props.history.push("/deal");
