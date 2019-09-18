@@ -21,6 +21,10 @@ class BranchingHeader extends React.Component {
     this.props.history.push("/setting");
   };
 
+  handleToLoginPage = () => {
+    this.props.history.push("/login");
+  };
+
   render() {
     return (
       <div className="header">
@@ -38,10 +42,18 @@ class BranchingHeader extends React.Component {
                 return (
                   <div className="header-contents">
                     <img src="./title.png" alt="" className="title" />
-                    <h2>ログイン</h2>
-                    <h2>新規登録</h2>
-                    <h2>受取予定・履歴</h2>
-                    <h2>お気に入り店舗</h2>
+                    <h2
+                      onClick = { this.handleToLoginPage }
+                    >ログイン</h2>
+                    <h2
+                      onClick = { this.handleToLoginPage }
+                    >新規登録</h2>
+                    <h2
+                      onClick = { this.handleToLoginPage }
+                    >受取予定・履歴</h2>
+                    <h2
+                      onClick = { this.handleToLoginPage }
+                    >お気に入り店舗</h2>
                   </div>
                 )
               }

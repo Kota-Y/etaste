@@ -15,6 +15,7 @@ import QandA from "./QandA";
 import Contact from "./Contact";
 import Unsubscribe from "./Unsubscribe";
 import UserFin from "./UserFin";
+import Login from "./Login";
 import "../CSS/Main.css";
 
 class Main extends React.Component {
@@ -36,6 +37,7 @@ class Main extends React.Component {
           <Route exact path={"/contact"} component={Contact} />
           <Route exact path={"/unsubscribe"} component={Unsubscribe} />
           <Route exact path={"/user-fin"} component={UserFin} />
+          <Route exact path={"/login"} component={Login} />
         </Switch>
       </div>
     );
