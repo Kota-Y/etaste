@@ -2,11 +2,11 @@ import React from 'react';
 
 import Header from './Header';
 import HeaderStore from './HeaderStore';
-import { store } from '../function/DefineConst';
+import { isStore } from '../function/DefineConst';
 
 
 function Branching() {
-    if( store ){
+    if( isStore ){
         return <HeaderStore />;
     } else {
         return <Header />;

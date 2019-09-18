@@ -18,4 +18,4 @@ class SuperKlass {
 export default SuperKlass;
 
 /* ストアとユーザーの判別をする(仮) */
-export const store = true;
+export const isStore = true;

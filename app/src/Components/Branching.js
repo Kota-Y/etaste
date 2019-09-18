@@ -2,11 +2,11 @@ import React from 'react';
 
 import UserDeal from './UserDeal';
 import StoreDeal from './StoreDeal';
-import { store } from '../function/DefineConst';
+import { isStore } from '../function/DefineConst';
 
 
 function Branching() {
-    if( store ){
+    if( isStore ){
         return <StoreDeal />;
     } else {
         return <UserDeal />;
