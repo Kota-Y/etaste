@@ -16,3 +16,5 @@ class SuperKlass {
 }*/
 
 export default SuperKlass;
+
+export const store = true;

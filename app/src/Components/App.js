@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import "../CSS/App.css";
-import Header from "./Header";
+import BranchingHeader from "./BranchingHeader";
 import Main from "./Main";
 import Footer from "./Footer";
 
@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div>
         <BrowserRouter>
-          <Header />
+          <BranchingHeader />
           <body>
             <div id="wrapper">
               <Main />

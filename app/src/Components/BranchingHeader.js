@@ -1,15 +1,15 @@
 import React from 'react';
 
-import UserDeal from './UserDeal';
-import StoreDeal from './StoreDeal';
+import Header from './Header';
+import HeaderStore from './HeaderStore';
 import { store } from '../function/DefineConst';
 
 
 function Branching() {
     if( store ){
-        return <StoreDeal />;
+        return <HeaderStore />;
     } else {
-        return <UserDeal />;
+        return <Header />;
     }
 }
 

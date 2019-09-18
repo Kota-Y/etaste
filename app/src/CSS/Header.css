@@ -76,3 +76,7 @@
 .header-left h3:hover{
   cursor: pointer;
 }
+ /* HeaderStore.jsのCSS */
+.header-contents h3{
+  float: right;
+}
