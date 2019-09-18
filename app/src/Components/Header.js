@@ -26,8 +26,17 @@ class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <div className="header-left">
+        <div className="header-contents">
           <img src="./title.png" alt="" className="title" />
+          <h2
+            onClick={ this.handleToSettingPage }
+          >設定</h2>
+          <h2
+            onClick={ this.handleToUserDealPage }
+          >受取予定・履歴</h2>
+          <h2
+            onClick={ this.handleToFavoriteListPage }
+          >お気に入り店舗</h2>
           <div id="ham-menu">
             <ul>
               <h3

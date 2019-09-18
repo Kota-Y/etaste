@@ -16,3 +16,6 @@ class SuperKlass {
 }*/
 
 export default SuperKlass;
+
+/* ストアとユーザーの判別をする(仮) */
+export const isStore = true;
