@@ -1,0 +1,47 @@
+.fin-container{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.fin-message{
+    margin-top: 100px;
+}
+
+.favorite-icon img{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 25%;
+    left: 48%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.favorite-icon img:hover{
+    cursor: pointer;
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+
+.fin-button{
+    margin-top: 170px;
+}
+
+.fin-button h2{
+    margin-top: 40px;
+    text-align: center;
+    width: 20%;
+    color: white;
+    font-weight: bold;
+    background-color: #ffdb73;
+    border:1px solid #ffdb73;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+}

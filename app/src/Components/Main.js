@@ -14,6 +14,7 @@ import Profileset from "./Profileset";
 import QandA from "./QandA";
 import Contact from "./Contact";
 import Unsubscribe from "./Unsubscribe";
+import UserFin from "./UserFin";
 import "../CSS/Main.css";
 
 class Main extends React.Component {
@@ -34,6 +35,7 @@ class Main extends React.Component {
           <Route exact path={"/qanda"} component={QandA} />
           <Route exact path={"/contact"} component={Contact} />
           <Route exact path={"/unsubscribe"} component={Unsubscribe} />
+          <Route exact path={"/user-fin"} component={UserFin} />
         </Switch>
       </div>
     );

@@ -19,6 +19,10 @@ class Header extends React.Component {
     this.props.history.push("/setting");
   };
 
+  handleToUserFinPage = () => {
+    this.props.history.push("/user-fin");
+  };
+
   render() {
     return (
       <div className="header">
@@ -53,6 +57,13 @@ class Header extends React.Component {
                 }}
               >
                 設定
+              </h3>
+              <h3
+                onClick={() => {
+                  this.handleToUserFinPage();
+                }}
+              >
+                テスト購入ボタン
               </h3>
               <li>ヘルプ</li>
               <li>サインアップ</li>
