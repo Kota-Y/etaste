@@ -33,6 +33,9 @@ class BranchingHeader extends React.Component {
                 return (
                   <div className="header-contents">
                     <img src="./title.png" alt="" className="title" />
+                    <h2
+                      onClick = { this.handleToSettingPage }
+                    >設定</h2>
                     <h2>出品入力</h2>
                     <h2
                         onClick={ this.handleToDealPage }
