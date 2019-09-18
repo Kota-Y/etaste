@@ -7,6 +7,7 @@ const styleKeys = [{ key: "indicatorsContainer" }];
   
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
+
 const times = [
   { value: "12:00", label: "12:00" },
   { value: "13:00", label: "13:00" },
@@ -20,23 +21,29 @@ class StoreInput extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      itemImage:'',
       itemName: '',
-      itemNumber:'',
+      amount:'',
       startTime:[],
       endTime:[],
       originalprice:'',
       saleprice:'',
-      allergies:[]
+      allergies:[],
+      isButton:true,
+      sonota:'',
+      isSonota:true
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleToStoreSyuppinPage = this.handleToStoreSyuppinPage.bind(this)
+    this.handleChangedisable = this.handleChangedisable.bind(this)
+    this.handleChangeFile = this.handleChangeFile.bind(this)
   }
 
   handleToStoreSyuppinPage = () => {
     this.props.history.push({
       pathname: "/store-syuppin",
       state:{itemName: this.state.itemName,
-             itemNumber: this.state.itemNumber,
+             amount: this.state.amount,
              startTime: this.state.startTime,
              endTime: this.state.endTime,
              originalprice: this.state.originalprice,
@@ -48,9 +55,23 @@ class StoreInput extends React.Component {
 
   handleChange(e){ //それぞれの要素のname属性に対応した変数にvalueを格納
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      isButton:!(this.state.itemName)
     })
   }
+  handleChangeFile(e){
+    var files = e.target.files;
+    var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
+    var image_url = files.length===0 ? "" : createObjectURL(files[0]);
+    this.setState({itemImage: image_url});
+  }
+ 
+  handleChangedisable(e){
+    this.setState({
+      isSonota:!(this.state.isSonota)
+    });
+  }
+  
 
   render() {
     return (
@@ -59,11 +80,14 @@ class StoreInput extends React.Component {
       <h1>店舗側入力</h1>
         <div className="box-store-input">
           <div className='item-image'>
-            <h2>商品画像</h2>
+            <img className='item-imagedefoult'/>
+            <input type="file" ref="file" onChange={this.handleChangeFile} />
+            <img className='item-imageflame' src={this.state.itemImage}/>
           </div>
           
           <div className="item-name">
             <input type='text' 
+            className='storeinputinput'
             value={this.state.itemName}　
             name='itemName' 
             onChange={this.handleChange} 
@@ -87,19 +111,22 @@ class StoreInput extends React.Component {
           <div className="endTime">
             <Select
               className='timeselect'
-              options={times}
               styles={{
                 [styleKeys]: styleFn
               }}
               placeholder='受取終了時間'
               value={this.state.endTime}
               name='endTime'
-              onChange={this.handleChange}
-            />
+              onChange={this.handleChange}>
+                <option value="grapefruit">Grapefruit</option>
+                <option value="lime">Lime</option>
+                <option value="coconut">Coconut</option>
+                <option value="mango">Mango</option>
+              </Select>
           </div>
-          
           <div className="originalprice">
             <input 
+            className='storeinputinput'
             value={this.state.originalprice}　
             name='originalprice' 
             onChange={this.handleChange} 
@@ -108,7 +135,8 @@ class StoreInput extends React.Component {
           </div>
 
           <div className="saleprice">
-            <input 
+            <input
+            className='storeinputinput'
             value={this.state.saleprice}　
             name='saleprice' 
             onChange={this.handleChange} 
@@ -117,20 +145,34 @@ class StoreInput extends React.Component {
           </div>
 
         
-          <div className="itemnumber">
-            <input value={this.state.itemNumber}　
-            name='itemNumber' 
+          <div className="amount">
+            <input 
+            className='storeinputinput'
+            value={this.state.itemNumber}　
+            name='amount' 
             onChange={this.handleChange} 
             placeholder="個数(半角数字)"/>
             <h4 className='ko'>個</h4>
           </div>
 
-          <div className="">
+          <div className="allergies"> 
             <h3>アレルギー表示</h3>
+            <div className='allergiecom'>            
+              <input type='checkbox'/><h5>卵</h5>
+            </div>
+            <div className='allergiecom'>            
+              <input type='checkbox'/><h5>卵</h5>
+            </div>
 
+            <button className='sonota' onClick={this.handleChangedisable}>その他</button>
+            <input name='sonota' 
+            onChange={this.handleChange} 
+            placeholder='アレルギーを入力してください'
+            disabled={this.state.isSonota}/>
           </div>
-          <button className='storesubmit' onClick={this.handleToStoreSyuppinPage}>出品確認</button>
-          {/*<input onClick={this.handleToStoreSyuppinPage} type="submit" value="出品確認"/>*/}
+
+          <button className='storesubmit' onClick={this.handleToStoreSyuppinPage} 
+          disabled={this.state.isButton}>出品確認</button>
         </div>
       </div>
     );

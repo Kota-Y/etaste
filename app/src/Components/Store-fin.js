@@ -11,7 +11,7 @@ class Storefin extends React.Component {
     return (
       <div className="storefin">
         <h1>出品完了しました</h1>
-        <button className='backhome' onClick={this.handleToHomePage}>確認完了</button>
+        <button className='backhome' onClick={this.handleToHomePage}>ホームへ</button>
       </div>
     );
   }
