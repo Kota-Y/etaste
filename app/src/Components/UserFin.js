@@ -11,7 +11,7 @@ class UserFin extends React.Component{
         this.state = {
             /* とりあえず決め打ちの情報 */
             storeName: '滝川パン',
-            storeId: 111,
+            storeId: 1,
             userId: 2,
             /* 画像切り替え用 */
             isOpen: true
@@ -39,11 +39,7 @@ class UserFin extends React.Component{
                 })
         } else if( !this.state.isOpen ) {
             axios
-                .delete( SuperKlass.CONST.DOMAIN + '/favorite/', {
-                    storeId: this.state.storeId,
-                    storeName: this.state.storeName,
-                    userId: this.state.userId
-                })
+                .delete( SuperKlass.CONST.DOMAIN + '/favorite/' + this.state.storeId)
                 .then( (res) => {
                     console.log("削除しました");
                 })

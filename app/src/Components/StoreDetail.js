@@ -113,11 +113,7 @@ class StoreDetail extends React.Component{
                 })
         } else if( !this.state.isOpen ) {
             axios
-                .delete( SuperKlass.CONST.DOMAIN + '/favorite/', {
-                    storeId: this.state.storeId,
-                    storeName: this.state.storeName,
-                    userId: this.state.userId
-                })
+                .delete( SuperKlass.CONST.DOMAIN + '/favorite/' + this.state.storeId)
                 .then( (res) => {
                     console.log("削除しました");
                 })
