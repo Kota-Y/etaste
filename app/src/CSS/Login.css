@@ -1,0 +1,76 @@
+.login-page{
+    margin:  150px auto;
+    width: 800px;
+}
+
+.social-login-button{
+    margin:  0 auto;
+    margin-top: 80px;
+    padding: 20px 15px 20px 15px; 
+    width: 500px;
+    border-bottom: 2px solid gray;
+}
+
+.social-button{
+    margin: 30px 0px 20px 0px;
+}
+
+.input-form{
+    margin: 20px auto;
+    width: 480px;   
+}
+
+input[type=email]{
+    width: 480px;
+    height: 25px;
+    color: gray;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type=text]{
+    width: 480px;
+    height: 25px;
+    color: gray;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.login-page h2{
+    width: 480px;
+    margin: 10 auto;
+    margin-left: 160px;
+    text-align: center;
+    border-bottom: 0.1875em solid #D2B48C;
+    background-color: #ffdb73;
+    color: #fff;
+    display: inline-block;
+    /* padding: 0.6em 2em; */
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.login-page h2:hover{
+    cursor: pointer;
+    border-bottom-color: transparent;
+    transform: translateY(0.1875em);
+}
+
+.login-page h3{
+    margin: 15px auto;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.login-page h3:hover{
+    color: #C0C0C0;
+    cursor: default;
+}
