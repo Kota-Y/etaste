@@ -21,4 +21,4 @@ export default SuperKlass;
 export const isStore = true;
 
 /* ユーザーのログイン状態の判断(仮) */
-export const isLogin =　true;
+export const isLogin =　false;
