@@ -5,24 +5,11 @@ import "../CSS/Store-Syuppin.css";
 import SuperKlass from './DefineConst';
 import axios from 'axios';
 
-const foodData = {
-  id: 1,
-  name:'滝川パン',
-  originalPrice: 600,
-  salePrice: 300,
-  startTime: "1300",
-  endTime: "1545",
-  number: 3,
-  allergy: "[卵,乳,小麦]",
-  image: "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
-  storeId: 2,
-  storeName: "滝川パン"
-};
+  
+class StoreSyuppin extends React.Component {
 
   
-
-class StoreSyuppin extends React.Component {
-/*
+  /*
   constructor(props){
     super(props);
     this.state = {
@@ -38,11 +25,39 @@ class StoreSyuppin extends React.Component {
   };
 
   handlePostFoodInfo(){
+    const foodData = {
+      /*
+      id: 1,//保留：ログイン状態から取得？
+      name: this.props.location.itemName,
+      originalPrice:this.props.location.state.originalprice,
+      salePrice:this.props.location.state.saleprice,
+      startTime:this.props.location.state.startTime.value,
+      endTime:this.props.location.state.endTime.value,
+    　amount:this.props.location.state.amount,
+      allergy: "[卵,乳,小麦]",
+      image: this.props.location.state.itemImage,
+      storeId: 2,//保留：ログイン状態から取得
+      storeName: "滝川パン"//保留：ログイン状態から取得*/
+
+      id: 1,//保留：ログイン状態から取得？
+      name: 'test',
+      originalPrice:'test',
+      salePrice:'test',
+      startTime:'test',
+      endTime:'test',
+    　amount:'test',
+      allergy: "[卵,乳,小麦]",
+      image: 'test',
+      storeId: 2,//保留：ログイン状態から取得
+      storeName: "滝川パン"//保留：ログイン状態から取得
+    };
+    
     axios
         .post( SuperKlass.CONST.DOMAIN + '/food/', foodData)
         .then((res) => {
             alert("「" + foodData.name + "」登録完了");
             console.log(foodData.name);
+            this.props.history.push("/store-fin");
         })
         .catch( (error) => {
             alert("「" + foodData.name + "」登録失敗");
@@ -57,13 +72,13 @@ class StoreSyuppin extends React.Component {
         <div className='check-area'>
           <p>販売商品：{this.props.location.state.itemName}</p>
           <p>販売個数：{this.props.location.state.amount}</p>
-          <p>受け取り開始時間：{this.props.location.state.startTime}</p>
-          <p>受け取り終了時間：{this.props.location.state.endTime}</p>
+          <p>受け取り開始時間：{this.props.location.state.startTime.value}</p>
+          <p>受け取り終了時間：{this.props.location.state.endTime.value}</p>
           <p>定価：{this.props.location.state.originalprice}円</p>
           <p>販売価格：{this.props.location.state.saleprice}円</p>
           <p>アレルギー：</p>
         </div>
-        <button className='storesubmit' onClick={this.handleToStorefinPage,this.handlePostFoodInfo}>確認完了</button>
+        <button className='storesubmit' onClick={this.handlePostFoodInfo}>確認完了</button>
       </div>
     );
   }

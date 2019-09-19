@@ -26,6 +26,8 @@ class StoreInput extends React.Component {
       amount:'',
       originalprice:'',
       saleprice:'',
+      startTime:'',
+      endTime:'',
       allergies:[],
       isButton:true,
       sonota:'',
@@ -38,12 +40,11 @@ class StoreInput extends React.Component {
     this.handleToStoreSyuppinPage = this.handleToStoreSyuppinPage.bind(this)
     this.handleChangedisable = this.handleChangedisable.bind(this)
     this.handleChangeFile = this.handleChangeFile.bind(this)
+    this.handleChangeselectE = this.handleChangeselectE.bind(this)
+    this.handleChangeselectS = this.handleChangeselectS.bind(this)
     this.handleChangeTamago = this.handleChangeTamago.bind(this)
   }
-  state = {
-    startTime: null,
-    endTime:null
-  };
+  
 
   handleToStoreSyuppinPage = () => {
     this.props.history.push({
@@ -96,10 +97,10 @@ class StoreInput extends React.Component {
   
   render() { 
     var tamago = {
-      backgroundImage: 'url(../bg_photo/photo_1.jpg)'
+      backgroundImage: 'url(image/tamago.jpg)'
     };
     var tamagogrey = {
-      backgroundImage: 'url(../bg_photo/tamagogrey.jpg)'
+      backgroundImage: 'url(image/tamagogrey.jpg)'
     };
     var styleTamago = this.state.isTamago ? tamago : tamagogrey;   
 

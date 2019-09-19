@@ -6,13 +6,13 @@ class SuperKlass {
     }
 }
 
-/*class SubKlass extends SuperKlass {
+class SubKlass extends SuperKlass {
     static get CONST() {
         return Object.assign(super.CONST || {}, {
             PIYO : 4,
             PON : 5
         });
     }
-}*/
+}
 
 export default SuperKlass;
