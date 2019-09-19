@@ -16,6 +16,7 @@ import Contact from "./Contact";
 import Unsubscribe from "./Unsubscribe";
 import UserFin from "./UserFin";
 import Login from "./Login";
+import SignUp from "./SignUp";
 import "../CSS/Main.css";
 
 class Main extends React.Component {
@@ -38,6 +39,7 @@ class Main extends React.Component {
           <Route exact path={"/unsubscribe"} component={Unsubscribe} />
           <Route exact path={"/user-fin"} component={UserFin} />
           <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/sign-up"} component={SignUp} />
         </Switch>
       </div>
     );

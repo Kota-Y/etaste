@@ -5,6 +5,9 @@ import { FacebookLoginButton, TwitterLoginButton, InstagramLoginButton } from "r
 import '../CSS/Login.css';
 
 class Login extends React.Component {
+    handleToSignUpPage = () => {
+        this.props.history.push("/sign-up");
+    };
   
   render() {
     return (
@@ -30,7 +33,9 @@ class Login extends React.Component {
             </form>
             <h2>ログイン</h2>
             <h3>パスワードを忘れた方</h3>
-            <h3>アカウント新規作成</h3>
+            <h3
+                onClick={ this.handleToSignUpPage }
+            >アカウント新規作成</h3>
         </div>
     );
   }
