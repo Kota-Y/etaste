@@ -54,7 +54,6 @@ class StoreSyuppin extends React.Component {
     
     return (
       <div className='mainarea'>
-
         <div className='check-area'>
           <p>販売商品：{this.props.location.state.itemName}</p>
           <p>販売個数：{this.props.location.state.amount}</p>
@@ -64,7 +63,7 @@ class StoreSyuppin extends React.Component {
           <p>販売価格：{this.props.location.state.saleprice}円</p>
           <p>アレルギー：</p>
         </div>
-        <button className='storesubmit' onClick={this.handleToStorefinPage}>確認完了</button>
+        <button className='storesubmit' onClick={this.handleToStorefinPage,this.handlePostFoodInfo}>確認完了</button>
       </div>
     );
   }

@@ -24,20 +24,26 @@ class StoreInput extends React.Component {
       itemImage:'',
       itemName: '',
       amount:'',
-      startTime:[],
-      endTime:[],
       originalprice:'',
       saleprice:'',
       allergies:[],
       isButton:true,
       sonota:'',
-      isSonota:true
+      isSonota:true,
+      //以下アレルギー表示関係
+      isShrimp:false,
+      isTamago:false,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleToStoreSyuppinPage = this.handleToStoreSyuppinPage.bind(this)
     this.handleChangedisable = this.handleChangedisable.bind(this)
     this.handleChangeFile = this.handleChangeFile.bind(this)
+    this.handleChangeTamago = this.handleChangeTamago.bind(this)
   }
+  state = {
+    startTime: null,
+    endTime:null
+  };
 
   handleToStoreSyuppinPage = () => {
     this.props.history.push({
@@ -48,9 +54,8 @@ class StoreInput extends React.Component {
              endTime: this.state.endTime,
              originalprice: this.state.originalprice,
              saleprice: this.state.saleprice
-              }
+          }
     });
-
   };
 
   handleChange(e){ //それぞれの要素のname属性に対応した変数にvalueを格納
@@ -59,6 +64,16 @@ class StoreInput extends React.Component {
       isButton:!(this.state.itemName)
     })
   }
+  handleChangeselectS = startTime => {
+    this.setState({ startTime });
+    console.log(`Option selected:`, startTime);
+  };
+
+  handleChangeselectE = endTime => {
+    this.setState({ endTime });
+    console.log(`Option selected:`, endTime);
+  };
+
   handleChangeFile(e){
     var files = e.target.files;
     var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
@@ -71,16 +86,28 @@ class StoreInput extends React.Component {
       isSonota:!(this.state.isSonota)
     });
   }
+
+  handleChangeTamago(e){
+    this.setState({
+      isTamago:!(this.state.isTamago)
+    });
+  }
+
   
+  render() { 
+    var tamago = {
+      backgroundImage: 'url(../bg_photo/photo_1.jpg)'
+    };
+    var tamagogrey = {
+      backgroundImage: 'url(../bg_photo/tamagogrey.jpg)'
+    };
+    var styleTamago = this.state.isTamago ? tamago : tamagogrey;   
 
-  render() {
     return (
-
       <div>
       <h1>店舗側入力</h1>
         <div className="box-store-input">
           <div className='item-image'>
-            <img className='item-imagedefoult'/>
             <input type="file" ref="file" onChange={this.handleChangeFile} />
             <img className='item-imageflame' src={this.state.itemImage}/>
           </div>
@@ -104,26 +131,24 @@ class StoreInput extends React.Component {
               value={this.state.startTime}
               placeholder='受取開始時間'
               name='startTime'
-              onChange={this.handleChange}
+              onChange={this.handleChangeselectS}
             />
           </div>
 
           <div className="endTime">
             <Select
               className='timeselect'
+              options={times}
               styles={{
                 [styleKeys]: styleFn
               }}
               placeholder='受取終了時間'
               value={this.state.endTime}
               name='endTime'
-              onChange={this.handleChange}>
-                <option value="grapefruit">Grapefruit</option>
-                <option value="lime">Lime</option>
-                <option value="coconut">Coconut</option>
-                <option value="mango">Mango</option>
+              onChange={this.handleChangeselectE}>
               </Select>
           </div>
+
           <div className="originalprice">
             <input 
             className='storeinputinput'
@@ -144,7 +169,6 @@ class StoreInput extends React.Component {
             <h4 className='en'>円</h4>
           </div>
 
-        
           <div className="amount">
             <input 
             className='storeinputinput'
@@ -157,20 +181,24 @@ class StoreInput extends React.Component {
 
           <div className="allergies"> 
             <h3>アレルギー表示</h3>
-            <div className='allergiecom'>            
-              <input type='checkbox'/><h5>卵</h5>
-            </div>
-            <div className='allergiecom'>            
-              <input type='checkbox'/><h5>卵</h5>
-            </div>
-
-            <button className='sonota' onClick={this.handleChangedisable}>その他</button>
-            <input name='sonota' 
+            <div className='allergiecom'>
+              <button className='tamago' style={styleTamago} onClick={this.handleChangeTamago}></button>
+              <button className='tamago'/*onClick={this.handleChangedisable}*/></button>
+              </div>
+{/*} 
+            <button className='isSonota' onClick={this.handleChangedisable}>その他</button>
+           
+           <Select
+            options={allergiefoods}
+            isMulti
+            placeholder='その他'
+            />
+           <input name='sonota' 
             onChange={this.handleChange} 
             placeholder='アレルギーを入力してください'
-            disabled={this.state.isSonota}/>
+            disabled={this.state.isSonota}/>*/}
           </div>
-
+          
           <button className='storesubmit' onClick={this.handleToStoreSyuppinPage} 
           disabled={this.state.isButton}>出品確認</button>
         </div>
