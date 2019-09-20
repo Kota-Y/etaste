@@ -25,6 +25,10 @@ class BranchingHeader extends React.Component {
     this.props.history.push("/login");
   };
 
+  handleToSignUpPage = () => {
+    this.props.history.push("/sign-up");
+  };
+
   render() {
     return (
       <div className="header">
@@ -49,7 +53,7 @@ class BranchingHeader extends React.Component {
                       onClick = { this.handleToLoginPage }
                     >ログイン</h2>
                     <h2
-                      onClick = { this.handleToLoginPage }
+                      onClick = { this.handleToSignUpPage }
                     >新規登録</h2>
                     <h2
                       onClick = { this.handleToLoginPage }
@@ -91,9 +95,6 @@ class BranchingHeader extends React.Component {
                     >
                         設定
                     </h3>
-                    <li>ヘルプ</li>
-                    <li>サインアップ</li>
-                    <li>ログイン</li>
                 </ul>
             </div>
             <div id="menu-background" />
