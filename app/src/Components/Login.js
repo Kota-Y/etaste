@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 import { FacebookLoginButton, TwitterLoginButton, InstagramLoginButton } from "react-social-login-buttons";
 
-import '../CSS/Login.css';
+import '../CSS/LoginFeature.css';
 
 class Login extends React.Component {
     handleToSignUpPage = () => {
@@ -28,7 +28,7 @@ class Login extends React.Component {
                     <input type="email" name="mailAdress" value="メールアドレス" />
                 </div>
                 <div className='input-form'>
-                    <input type="text" name="password" value="パスワード" />
+                    <input type="password" name="password" value="パスワード" />
                 </div>
             </form>
             <h2>ログイン</h2>

@@ -18,7 +18,7 @@ class SuperKlass {
 export default SuperKlass;
 
 /* ストアとユーザーの判別をする(仮) */
-export const isStore = true;
+export const isStore = false;
 
 /* ユーザーのログイン状態の判断(仮) */
 export const isLogin =　false;
