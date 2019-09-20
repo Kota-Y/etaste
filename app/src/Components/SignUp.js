@@ -4,10 +4,13 @@ import { withRouter } from "react-router";
 import "../CSS/LoginFeature.css";
 
 class SignUp extends React.Component {
+    handleToMailCheckPage = () => {
+        this.props.history.push("/mail-check");
+    };
   
-  render() {
-    return (
-      <div className='signup-container'>
+    render() {
+        return (
+        <div className='signup-container'>
             <div>
                 <form>
                     <div className='input-form'>
@@ -30,9 +33,11 @@ class SignUp extends React.Component {
                 </form>
             </div>
             <div className='comp-button'>
-                <h2>完了</h2>
+                <h2
+                    onClick={ this.handleToMailCheckPage }
+                >完了</h2>
             </div>
-      </div>
+        </div>
     );
   }
 }

@@ -118,3 +118,13 @@ input[type=checkbox]{
 .comp-button:hover{
     background-color: #ffdb73;
 }
+
+/* MailCheck.css */
+.mailcheck-container{
+    margin: 70px auto;
+    text-align: center;
+}
+
+.account-miss h2{
+    text-decoration: underline;
+}
