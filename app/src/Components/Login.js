@@ -25,10 +25,12 @@ class Login extends React.Component {
             </div>
             <form>
                 <div className='input-form'>
-                    <input type="email" name="mailAdress" value="メールアドレス" />
+                    <label>メールアドレス</label>
+                    <input type="email" name="mailAdress" />
                 </div>
                 <div className='input-form'>
-                    <input type="password" name="password" value="パスワード" />
+                    <label>パスワード</label>
+                    <input type="password" name="password" />
                 </div>
             </form>
             <h2>ログイン</h2>

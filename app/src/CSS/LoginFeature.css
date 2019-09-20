@@ -24,7 +24,7 @@
 input[type=email]{
     width: 480px;
     height: 25px;
-    color: gray;
+    color:black;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -36,7 +36,7 @@ input[type=email]{
 input[type=text]{
     width: 480px;
     height: 25px;
-    color: gray;
+    color: black;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -48,7 +48,7 @@ input[type=text]{
 input[type=password]{
     width: 480px;
     height: 25px;
-    color: gray;
+    color: black;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
