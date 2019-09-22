@@ -1,5 +1,11 @@
+###[Store-API]###
+
 GET http://127.0.0.1:10080/api/store/1 HTTP/1.1
 
 ###
 
 GET http://127.0.0.1:10080/api/stores HTTP/1.1
+
+###[Food-API]###
+
+GET http://127.0.0.1:10080/api/food/4 HTTP/1.1
