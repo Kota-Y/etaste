@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 import { FacebookLoginButton, TwitterLoginButton, InstagramLoginButton } from "react-social-login-buttons";
 
-import '../CSS/LoginFeature.css';
+import '../CSS/LoginFeature.css'
 
 class Login extends React.Component {
     handleToSignUpPage = () => {
