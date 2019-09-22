@@ -10,7 +10,7 @@ h1{
     box-sizing: border-box;
     background-color: #fff;
     color: #0c0d0e;
-    width: 350px;
+    width: 370px;
     height: 35px;
     font-size: 16px;
     padding: 5px;
@@ -23,16 +23,16 @@ h1{
     display: none;
   }
   
-  .item-image,.item-name,.saleprice,.originalprice,.amount,.originalprice,.saleprice,.allergies{
-    width:350px;/*上のwidthと合わせる*/
+  .item-image,.item-name,.saleprice,.originalprice,.amount,.originalprice,.saleprice{
+    width:370px;/*上のwidthと合わせる*/
     height: 35px;
     position: relative; /*　.enのabsoluteと作用　*/
     margin : 7px auto;
     display: inline-block;
   }
   .endTime,.startTime{
-    width:350px;/*上のwidthと合わせる*/
-    height: 50px;
+    width:370px;/*上のwidthと合わせる*/
+    height: 37px;
     position: relative; /*　.enのabsoluteと作用　*/
     margin : 7px auto;
     display: inline-block; 
@@ -46,14 +46,14 @@ h1{
     margin:0;
   }
   .timeselect{
-    width: 350px;
+    width: 370px;
     height: 20px;
 
   }
 
   .box-store-input {
     margin:auto auto;
-    width:500px;
+    width:700px;
     height: 1000px;
     text-align: center;
   }
@@ -96,11 +96,32 @@ h1{
     top:5px;
     z-index: 0;
   }
+  .storesubmit{
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #ffdb73;
+    border:1px solid #ffdb73;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 90px;
+
+  }
    .storesubmit:disabled {
     background-color: #cccccc;
   }
   .allergies{
-text-align: left;
+    text-align: left;
+    width:462px;/*上のwidthと合わせる*/
+    height: 35px;
+    position: relative; /*　.enのabsoluteと作用　*/
+    margin : 7px auto;
+    display: inline-block;
   }
 
   .allergies h3{
@@ -109,14 +130,18 @@ text-align: left;
     margin-left: 2px;
   }
 
-  .allergies button{
+  .allergies img{
     width: 61px;
     height: 27px;
+    margin-right:5px; 
     cursor: pointer;
     border: 0;
-    background-size: cover;
+    background-size:contain;
   }
   
   .allergiecom{
     text-align: center;
+    width:462px;
+    display: block;
+
   }

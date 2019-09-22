@@ -631,6 +631,22 @@
   },
   "components": {
     "schemas": {
+      "Allergy": {
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
       "Store": {
         "type": "object",
         "required": [
@@ -821,7 +837,7 @@
           "salePrice",
           "startTime",
           "endTime",
-          "allergy",
+          "allergys",
           "whySale",
           "image",
           "mapLatitude",
@@ -850,7 +866,10 @@
             "type": "string"
           },
           "allergy": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Allergy"
+            }
           },
           "whySale": {
             "type": "string"
@@ -907,8 +926,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "allergy": {
-            "type": "string"
+          "allergys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Allergy"
+            }
           },
           "image": {
             "type": "string"
@@ -929,7 +951,20 @@
           "startTime": "1300",
           "endTime": "1545",
           "amount": 3,
-          "allergy": "[卵,乳,小麦]",
+          "allergys": [
+            {
+              "id": 1,
+              "name": "卵"
+            },
+            {
+              "id": 3,
+              "name": "乳"
+            },
+            {
+              "id": 4,
+              "name": "小麦"
+            }
+          ],
           "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
           "storeId": 2,
           "storeName": "滝川パン"
@@ -975,9 +1010,24 @@
               "salePrice": 300,
               "startTime": "1300",
               "endTime": "1545",
-              "allergy": "[卵,乳,小麦]",
+              "allergys": [
+                {
+                  "id": 1,
+                  "name": "卵"
+                },
+                {
+                  "id": 3,
+                  "name": "乳"
+                },
+                {
+                  "id": 4,
+                  "name": "小麦"
+                }
+              ],
               "whySale": "本日はゲリラ豪雨により、お客さんがいらっしゃいいらっしゃいませんでした。このあんぱんは渾身のできです。",
-              "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg"
+              "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
+              "mapLatitude": "32.815183",
+              "mapLongitude": "130.727428"
             }
           ],
           "storeInfo": [
@@ -987,6 +1037,9 @@
               "image": "https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg",
               "openTime": "0800",
               "closeTime": "2000",
+              "areaPref": "熊本県",
+              "areaCity": "熊本市中央区",
+              "areaOther": "下通",
               "zip": "860-0801",
               "address": "熊本県熊本市中央区安政町2-34 HILLS KAGOMACHIビル1F",
               "tel": "096-342-4398",
@@ -1322,7 +1375,7 @@
         },
         "example": {
           "userId": 1,
-          "favoriteNum": 3,
+          "favoriteNum": 5,
           "favoriteStores": [
             {
               "id": 1,

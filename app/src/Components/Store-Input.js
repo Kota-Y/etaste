@@ -8,6 +8,7 @@ const styleKeys = [{ key: "indicatorsContainer" }];
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
 
+
 const times = [
   { value: "12:00", label: "12:00" },
   { value: "13:00", label: "13:00" },
@@ -33,8 +34,13 @@ class StoreInput extends React.Component {
       sonota:'',
       isSonota:true,
       //以下アレルギー表示関係
-      isShrimp:false,
       isTamago:false,
+      isTiti:false,
+      isKomugi:false,
+      isRakkasei:false,
+      isEbi:false,
+      isKani:false,
+      isSoba:false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleToStoreSyuppinPage = this.handleToStoreSyuppinPage.bind(this)
@@ -43,6 +49,12 @@ class StoreInput extends React.Component {
     this.handleChangeselectE = this.handleChangeselectE.bind(this)
     this.handleChangeselectS = this.handleChangeselectS.bind(this)
     this.handleChangeTamago = this.handleChangeTamago.bind(this)
+    this.handleChangeTiti = this.handleChangeTiti.bind(this)
+    this.handleChangeKomugi = this.handleChangeKomugi.bind(this)
+    this.handleChangeRakkasei = this.handleChangeRakkasei.bind(this)
+    this.handleChangeEbi = this.handleChangeEbi.bind(this)
+    this.handleChangeKani = this.handleChangeKani.bind(this)
+    this.handleChangeSoba = this.handleChangeSoba.bind(this)
   }
   
 
@@ -93,24 +105,76 @@ class StoreInput extends React.Component {
       isTamago:!(this.state.isTamago)
     });
   }
+  handleChangeTiti(e){
+    this.setState({
+      isTiti:!(this.state.isTiti)
+    });
+  }
+  handleChangeKomugi(e){
+    this.setState({
+      isKomugi:!(this.state.isKomugi)
+    });
+  }
+  handleChangeRakkasei(e){
+    this.setState({
+      isRakkasei:!(this.state.isRakkasei)
+    });
+  }
+  handleChangeEbi(e){
+    this.setState({
+      isEbi:!(this.state.isEbi)
+    });
+  }
+  handleChangeKani(e){
+    this.setState({
+      isKani:!(this.state.isKani)
+    });
+  }
+  handleChangeSoba(e){
+    this.setState({
+      isSoba:!(this.state.isSoba)
+    });
+  }
 
-  
   render() { 
-    var tamago = {
-      backgroundImage: 'url(image/tamago.jpg)'
-    };
-    var tamagogrey = {
-      backgroundImage: 'url(image/tamagogrey.jpg)'
-    };
-    var styleTamago = this.state.isTamago ? tamago : tamagogrey;   
 
+    const tamago= './image/tamago.jpg';
+    const tamagogrey='./image/tamagogrey.jpg';
+
+    const titi= './image/titi.jpg';
+    const titigrey='./image/titigrey.jpg';
+
+    const komugi= './image/komugi.jpg';
+    const komugigrey='./image/komugigrey.jpg';
+
+    const rakkasei= './image/rakkasei.jpg';
+    const rakkaseigrey='./image/rakkaseigrey.jpg';
+
+    const ebi= './image/ebi.jpg';
+    const ebigrey='./image/ebigrey.jpg';
+
+    const kani= './image/kani.jpg';
+    const kanigrey='./image/kanigrey.jpg';
+
+    const soba= './image/soba.jpg';
+    const sobagrey='./image/sobagrey.jpg';
+
+    const styleTamago = this.state.isTamago ? tamago : tamagogrey;  
+    const styleTiti = this.state.isTiti ? titi : titigrey;  
+    const styleKomugi = this.state.isKomugi ? komugi : komugigrey;  
+    const styleRakkasei = this.state.isRakkasei ? rakkasei : rakkaseigrey;  
+    const styleEbi = this.state.isEbi ? ebi : ebigrey;  
+    const styleKani = this.state.isKani ? kani : kanigrey;  
+    const styleSoba = this.state.isSoba ? soba : sobagrey;  
+
+    
     return (
       <div>
       <h1>店舗側入力</h1>
         <div className="box-store-input">
           <div className='item-image'>
             <input type="file" ref="file" onChange={this.handleChangeFile} />
-            <img className='item-imageflame' src={this.state.itemImage}/>
+            <img className='item-imageflame' alt='' src={this.state.itemImage}/>
           </div>
           
           <div className="item-name">
@@ -183,21 +247,15 @@ class StoreInput extends React.Component {
           <div className="allergies"> 
             <h3>アレルギー表示</h3>
             <div className='allergiecom'>
-              <button className='tamago' style={styleTamago} onClick={this.handleChangeTamago}></button>
-              <button className='tamago'/*onClick={this.handleChangedisable}*/></button>
-              </div>
-{/*} 
-            <button className='isSonota' onClick={this.handleChangedisable}>その他</button>
-           
-           <Select
-            options={allergiefoods}
-            isMulti
-            placeholder='その他'
-            />
-           <input name='sonota' 
-            onChange={this.handleChange} 
-            placeholder='アレルギーを入力してください'
-            disabled={this.state.isSonota}/>*/}
+              <img className='tamago' src={styleTamago} onClick={this.handleChangeTamago}/>
+              <img className='titi' src={styleTiti} onClick={this.handleChangeTiti}/>
+              <img className='komugi' src={styleKomugi} onClick={this.handleChangeKomugi}/>
+              <img className='rakkasei' src={styleRakkasei} onClick={this.handleChangeRakkasei}/>
+              <img className='ebi' src={styleEbi} onClick={this.handleChangeEbi}/>
+              <img className='kani' src={styleKani} onClick={this.handleChangeKani}/>
+              <img className='soba' src={styleSoba} onClick={this.handleChangeSoba}/>
+            </div>
+            
           </div>
           
           <button className='storesubmit' onClick={this.handleToStoreSyuppinPage} 
