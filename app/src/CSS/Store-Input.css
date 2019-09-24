@@ -128,6 +128,7 @@ h1{
     display: initial;
     width:300px;
     margin-left: 2px;
+    font-weight: 600;
   }
 
   .allergies img{
@@ -139,9 +140,28 @@ h1{
     background-size:contain;
   }
   
+  .allergies button{
+    box-sizing: border-box;
+    background-color: #fff;
+    color:#5c5757;
+    width: 95px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 19px;
+    border: 2px solid #bac6d3;
+    border-radius: 8px;
+    display: block;
+    margin: 7px 0;
+    cursor: pointer;
+
+  }
   .allergiecom{
     text-align: center;
     width:462px;
     display: block;
 
+  }
+
+  .disablesonota{
+    display: none;
   }

@@ -11,7 +11,8 @@ class StoreSyuppin extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isConfirm:false
+      isConfirm:false,
+      foodInfo:{},
     }
   }
 
@@ -20,49 +21,50 @@ class StoreSyuppin extends React.Component {
   };
 
   handlePostFoodInfo(){
-    const foodData = {
-      id: 1,//保留：ログイン状態から取得？
-      name: this.props.location.itemName,
-      originalPrice:this.props.location.state.originalprice,
-      salePrice:this.props.location.state.saleprice,
-      startTime:this.props.location.state.startTime.value,
-      endTime:this.props.location.state.endTime.value,
-    　amount:this.props.location.state.amount,
-      allergy: "[卵,乳,小麦]",
-      image: this.props.location.state.itemImage,
-      storeId: 2,//保留：ログイン状態から取得
-      storeName: "滝川パン"//保留：ログイン状態から取得
-    
-     /*
-      id: 1,//保留：ログイン状態から取得？
-      name: 'test',
-      originalPrice:'test',
-      salePrice:'test',
-      startTime:'test',
-      endTime:'test',
-    　amount:'test',
-      allergy: "[卵,乳,小麦]",
-      image: 'test',
-      storeId: 2,//保留：ログイン状態から取得
-      storeName: "滝川パン"//保留：ログイン状態から取得*/
-    };
+    this.setState({
+      foodInfo:{
+          id: 1,//仮
+          name: this.props.location.state.itemName,
+          originalPrice: this.props.location.state.originalprice,
+          salePrice:this.props.location.state.saleprice,
+          startTime: this.props.location.state.startTime.value,
+          endTime: this.props.location.state.endTime.value,
+          amount: this.props.location.state.amount,
+          allergys: [
+            {
+              id: 1,
+              name: "卵"
+            },
+            {
+              id: 3,
+              name: "乳"
+            },
+            {
+              id: 4,
+              name: "小麦"
+            }
+          ],
+          image: "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",//S3から帰ってきたURl入れる
+          storeId: 2,//ストア情報を取得して更新するように変更予定
+          storeName: "滝川パン"//ストア情報を取得して更新するように変更予定
+        }
+    });  
     
     axios
-        .post( SuperKlass.CONST.DOMAIN + '/food/', foodData)
+        .post( SuperKlass.CONST.DOMAIN + '/food/', this.foodInfo)
         .then((res) => {
-            console.log(foodData);
+            console.log('succces'+this.foodInfo);
         })
 
         .catch( (error) => {
-            alert("「" + foodData.name + "」登録失敗");
-            console.log(error, foodData);
+            alert("「" + this.foodInfo.name + "」登録失敗");
+            console.log(error, this.foodInfo);
         });
   
 
 }
   
   render() {
-    
     return (
       <div className='mainarea'>
         <div className='check-area'>

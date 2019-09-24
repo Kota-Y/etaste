@@ -7,8 +7,6 @@ const styleKeys = [{ key: "indicatorsContainer" }];
   
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
-
-
 const times = [
   { value: "12:00", label: "12:00" },
   { value: "13:00", label: "13:00" },
@@ -32,7 +30,7 @@ class StoreInput extends React.Component {
       allergies:[],
       isButton:true,
       sonota:'',
-      isSonota:true,
+      isSonota:false,
       //以下アレルギー表示関係
       isTamago:false,
       isTiti:false,
@@ -44,7 +42,9 @@ class StoreInput extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleToStoreSyuppinPage = this.handleToStoreSyuppinPage.bind(this)
+    
     this.handleChangedisable = this.handleChangedisable.bind(this)
+
     this.handleChangeFile = this.handleChangeFile.bind(this)
     this.handleChangeselectE = this.handleChangeselectE.bind(this)
     this.handleChangeselectS = this.handleChangeselectS.bind(this)
@@ -93,11 +93,11 @@ class StoreInput extends React.Component {
     var image_url = files.length===0 ? "" : createObjectURL(files[0]);
     this.setState({itemImage: image_url});
   }
- 
+  
   handleChangedisable(e){
     this.setState({
       isSonota:!(this.state.isSonota)
-    });
+    });   
   }
 
   handleChangeTamago(e){
@@ -135,29 +135,31 @@ class StoreInput extends React.Component {
       isSoba:!(this.state.isSoba)
     });
   }
-
   render() { 
+    console.log(this.allergies);
 
+    //その他のアレルギーの表示or非表示
+    let classSonota = 'sonotaAllergy';
+    if (!this.state.isSonota) {
+      classSonota += ' disablesonota';
+    }
+    //アレルギー表示の画像path
     const tamago= './image/tamago.jpg';
     const tamagogrey='./image/tamagogrey.jpg';
-
     const titi= './image/titi.jpg';
     const titigrey='./image/titigrey.jpg';
-
     const komugi= './image/komugi.jpg';
     const komugigrey='./image/komugigrey.jpg';
-
     const rakkasei= './image/rakkasei.jpg';
     const rakkaseigrey='./image/rakkaseigrey.jpg';
-
     const ebi= './image/ebi.jpg';
     const ebigrey='./image/ebigrey.jpg';
-
     const kani= './image/kani.jpg';
     const kanigrey='./image/kanigrey.jpg';
-
     const soba= './image/soba.jpg';
     const sobagrey='./image/sobagrey.jpg';
+
+    
 
     const styleTamago = this.state.isTamago ? tamago : tamagogrey;  
     const styleTiti = this.state.isTiti ? titi : titigrey;  
@@ -255,7 +257,35 @@ class StoreInput extends React.Component {
               <img className='kani' src={styleKani} onClick={this.handleChangeKani}/>
               <img className='soba' src={styleSoba} onClick={this.handleChangeSoba}/>
             </div>
-            
+            <button onClick={this.handleChangedisable}>その他</button>
+            <div className={classSonota}>
+              <div className='allergiecom2'>
+                <img className='tamago' src={styleTamago} onClick={this.handleChangeTamago}/>
+                <img className='titi' src={styleTiti} onClick={this.handleChangeTiti}/>
+                <img className='komugi' src={styleKomugi} onClick={this.handleChangeKomugi}/>
+                <img className='rakkasei' src={styleRakkasei} onClick={this.handleChangeRakkasei}/>
+                <img className='ebi' src={styleEbi} onClick={this.handleChangeEbi}/>
+                <img className='kani' src={styleKani} onClick={this.handleChangeKani}/>
+                <img className='soba' src={styleSoba} onClick={this.handleChangeSoba}/>
+              </div>
+              <div className='allergiecom3'>
+                <img className='tamago' src={styleTamago} onClick={this.handleChangeTamago}/>
+                <img className='titi' src={styleTiti} onClick={this.handleChangeTiti}/>
+                <img className='komugi' src={styleKomugi} onClick={this.handleChangeKomugi}/>
+                <img className='rakkasei' src={styleRakkasei} onClick={this.handleChangeRakkasei}/>
+                <img className='ebi' src={styleEbi} onClick={this.handleChangeEbi}/>
+                <img className='kani' src={styleKani} onClick={this.handleChangeKani}/>
+                <img className='soba' src={styleSoba} onClick={this.handleChangeSoba}/>
+              </div>
+              <div className='allergiecom4'>
+                <img className='tamago' src={styleTamago} onClick={this.handleChangeTamago}/>
+                <img className='titi' src={styleTiti} onClick={this.handleChangeTiti}/>
+                <img className='komugi' src={styleKomugi} onClick={this.handleChangeKomugi}/>
+                <img className='rakkasei' src={styleRakkasei} onClick={this.handleChangeRakkasei}/>
+                <img className='ebi' src={styleEbi} onClick={this.handleChangeEbi}/>
+                <img className='kani' src={styleKani} onClick={this.handleChangeKani}/>
+              </div>
+            </div>
           </div>
           
           <button className='storesubmit' onClick={this.handleToStoreSyuppinPage} 
