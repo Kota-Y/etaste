@@ -69,10 +69,10 @@ input[type=password]{
 }
 
 .input-form button{
-    width: 480px;
+    width: 350px;
     height: 30px;
     margin: 40px auto;
-    margin-left: 0px;
+    margin-left: 65px;
     text-align: center;
     border-bottom: 0.1875em solid #D2B48C;
     background-color: #ffdb73;
