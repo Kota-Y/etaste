@@ -57,20 +57,23 @@ input[type=password]{
     box-shadow: inner 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
-.login-page h2{
+.input-form button{
     width: 480px;
-    margin: 10 auto;
-    margin-left: 160px;
+    height: 30px;
+    margin: 40px auto;
+    margin-left: 0px;
     text-align: center;
     border-bottom: 0.1875em solid #D2B48C;
     background-color: #ffdb73;
     color: #fff;
+    font-size: 21px;
+    font-weight: 2px;
     display: inline-block;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 
-.login-page h2:hover{
+.input-form button:hover{
     cursor: pointer;
     border-bottom-color: transparent;
     transform: translateY(0.1875em);
@@ -117,6 +120,10 @@ input[type=checkbox]{
 
 .comp-button:hover{
     background-color: #ffdb73;
+}
+
+.imput-form h2{
+    margin-left: 40px;
 }
 
 /* MailCheck.css */
