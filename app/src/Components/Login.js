@@ -38,12 +38,12 @@ class Login extends React.Component {
         this.setState({
           [event.target.name]: event.target.value
         });
-      };
+    };
     
-      handleSubmit = event => {
+    handleSubmit = event => {
         console.log("Submitting");
         console.log(this.state);
-      };
+    };
 }
 
 export default withRouter(Login);

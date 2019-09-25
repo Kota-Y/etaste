@@ -38,11 +38,11 @@ const ValidatedLoginForm = () => (
 
     validationSchema={Yup.object().shape({
         email: Yup.string()
-            .email()
-            .required("Required"),
+            .email("有効なメールアドレスではありません")
+            .required("必須項目です"),
         password: Yup.string()
-            .required("No password provided.")
-            .min(8, "Password is too short - should be 8 chars minimum.")
+            .required("必須項目です")
+            .min(8, "パスワードは8文字以上です")
             .matches(/(?=.*[0-9])/, "Password must contain a number.")
     })}
   >
@@ -58,7 +58,7 @@ const ValidatedLoginForm = () => (
       } = props;
       return (
         <form onSubmit={handleSubmit} className='input-form'>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">メールアドレス</label>
           <input
             name="email"
             type="text"
@@ -71,7 +71,7 @@ const ValidatedLoginForm = () => (
           {errors.email && touched.email && (
             <div className="input-feedback">{errors.email}</div>
           )}
-          <label htmlFor="email">Password</label>
+          <label htmlFor="email">パスワード</label>
           <input
             name="password"
             type="password"
