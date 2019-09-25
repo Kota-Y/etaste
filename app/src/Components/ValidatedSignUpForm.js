@@ -2,48 +2,58 @@ import React from "react";
 import { Formik } from "formik";
 //import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import axios from 'axios';
 
+import SuperKlass from '../function/DefineConst';
 import "../CSS/LoginFeature.css";
 
 const ValidatedSignUpForm = () => (
-  <Formik
-    initialValues={{ 
-        name_sei: '',
-        name_mei: '',
-        name_kana_sei: '',
-        name_kana_mei: '',
-        email: '',
-        password: '',
-        password_check: ''
-    }}
-    onSubmit={(values, { setSubmitting }) => {
-      setTimeout(() => {
-        console.log("Logging in", values);
-        setSubmitting(false);
-      }, 500);
-    }}
+    <Formik
+        initialValues={{ 
+            name_sei: '',
+            name_mei: '',
+            name_kana_sei: '',
+            name_kana_mei: '',
+            email: '',
+            password: '',
+            password_check: ''
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+            console.log(values);
+            setSubmitting(false);
+            axios
+                .post( SuperKlass.CONST.DOMAIN + '/user/', { 
+                    values
+                })
+                .then((res) => {
+                    console.log("登録しました");
+                })
+        }, 500);
+        }}
 
-    validationSchema={Yup.object().shape({
-        name_sei: Yup.string()
-            .required("必須項目です"),
-        name_mei: Yup.string()
-            .required("必須項目です"),
-        name_kana_sei: Yup.string()
-            .required("必須項目です"),
-        name_kana_mei: Yup.string()
-            .required("必須項目です"),
-        email: Yup.string()
-            .email("有効なメールアドレスではありません")
-            .required("必須項目です"),
-        password: Yup.string()
-            .required("必須項目です")
-            .min(8, "パスワードは8文字以上です")
-            .matches(/(?=.*[0-9])/, "パスワードは半角英数字で入力してください"),
-        password_check: Yup.string()
-            .oneOf([Yup.ref('password')], "パスワードが一致しません")
-            .required("必須項目です"),
-    })}
-  >
+        validationSchema={Yup.object().shape({
+            name_sei: Yup.string()
+                .required("必須項目です"),
+            name_mei: Yup.string()
+                .required("必須項目です"),
+            name_kana_sei: Yup.string()
+                .required("必須項目です"),
+            name_kana_mei: Yup.string()
+                .required("必須項目です"),
+            email: Yup.string()
+                .email("有効なメールアドレスではありません")
+                .required("必須項目です"),
+            password: Yup.string()
+                .required("必須項目です")
+                .min(8, "パスワードは8文字以上です")
+                .matches(/(?=.*[0-9])/, "パスワードは半角英数字で入力してください"),
+            password_check: Yup.string()
+                .oneOf([Yup.ref('password')], "パスワードが一致しません")
+                .required("必須項目です"),
+        })}
+    >
+
     {props => {
         const {
             values,
@@ -147,6 +157,7 @@ const ValidatedSignUpForm = () => (
                 {errors.password_check && touched.password_check && (
                     <div className="input-feedback">{errors.password_check}</div>
                 )}
+                <input type="checkbox" name="check" /><label>利用規約・特定商品取引法に同意する</label>
                 <button type="submit" disabled={isSubmitting}>
                     登録
                 </button>
