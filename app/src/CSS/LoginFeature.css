@@ -21,6 +21,17 @@
     width: 480px;   
 }
 
+input.error {
+    border-color: red;
+}
+
+.input-feedback {
+    color: rgb(235, 54, 54);
+    margin-top: 0px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
 input[type=email]{
     width: 480px;
     height: 25px;
