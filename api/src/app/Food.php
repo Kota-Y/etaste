@@ -29,8 +29,6 @@ class Food extends Model
                         , 'allergy'
                         , 'why_sale as whySale'
                         , 'foods.image_url as foodImage'
-                        , 'map_latitude as foodMapLatitude'
-                        , 'map_Longitude as foodMapLongitude'
                         , 'stores.id as storeId'
                         , 'stores.name as storeName'
                         , 'stores.image_url as storeImage'
@@ -45,8 +43,8 @@ class Food extends Model
                         , 'holiday'
                         , 'parking'
                         , 'access'
-                        , 'map_latitude as storeMapLatitude'
-                        , 'map_Longitude as storeMapLongitude'
+                        , 'map_latitude as mapLatitude'
+                        , 'map_Longitude as mapLongitude'
                         , 'store_url as url'
                         )
                     ->join('stores','stores.id','=','foods.store_id')
