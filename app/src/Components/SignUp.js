@@ -4,6 +4,7 @@ import axios from "axios";
 
 import SuperKlass from "../function/DefineConst";
 import "../CSS/LoginFeature.css";
+import ValidatedSignUpForm from "./ValidatedSignUpForm";
 
 class SignUp extends React.Component {
     constructor(props){
@@ -88,7 +89,8 @@ class SignUp extends React.Component {
             <div>
                 <form>
                     <div className='input-form'>
-                        <label>姓</label>
+                        <ValidatedSignUpForm />
+                        {/* <label>姓</label>
                         <input type="text" name="name_sei"  value={this.state.name_sei} onChange={this.changeNameSei} />
                         <label>名</label>
                         <input type="text" name="name_mei" value={this.state.name_mei} onChange={this.changeNameMei} />
@@ -101,7 +103,7 @@ class SignUp extends React.Component {
                         <label>パスワード</label>
                         <input type="text" name="password" value={this.state.password} onChange={this.changePassword} />
                         <label>パスワード確認</label>
-                        <input type="text" name="password_check" value={this.state.password_check} onChange={this.changePasswordCheck} />
+                        <input type="text" name="password_check" value={this.state.password_check} onChange={this.changePasswordCheck} /> */}
                         <input type="checkbox" name="check" /><label>利用規約・特定商品取引法に同意する</label>
                     </div>
                 </form>
