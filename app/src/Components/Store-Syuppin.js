@@ -12,48 +12,33 @@ class StoreSyuppin extends React.Component {
     super(props);
     this.state = {
       isConfirm:false,
-      foodInfo:{},
+      foodInfo:{
+        id: 1,//仮
+        name: this.props.location.state.itemName,
+        originalPrice: this.props.location.state.originalprice,
+        salePrice:this.props.location.state.saleprice,
+        startTime: this.props.location.state.startTime.value,
+        endTime: this.props.location.state.endTime.value,
+        amount: this.props.location.state.amount,
+        allergys:this.props.location.state.allergys,
+        image: this.props.location.state.s3url,//S3から帰ってきたURl入れる
+        storeId: 2,//ストア情報を取得して更新するように変更予定
+        storeName: "滝川パン"//ストア情報を取得して更新するように変更予定
+      },
     }
   }
 
   handleToStorefinPage = () => {
     this.props.history.push("/store-fin");
+    console.log(this.props.location.state.allergys);
+    console.log(this.state.foodInfo.allergys);
   };
 
   handlePostFoodInfo(){
-    this.setState({
-      foodInfo:{
-          id: 1,//仮
-          name: this.props.location.state.itemName,
-          originalPrice: this.props.location.state.originalprice,
-          salePrice:this.props.location.state.saleprice,
-          startTime: this.props.location.state.startTime.value,
-          endTime: this.props.location.state.endTime.value,
-          amount: this.props.location.state.amount,
-          allergys: [
-            {
-              id: 1,
-              name: "卵"
-            },
-            {
-              id: 3,
-              name: "乳"
-            },
-            {
-              id: 4,
-              name: "小麦"
-            }
-          ],
-          image: "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",//S3から帰ってきたURl入れる
-          storeId: 2,//ストア情報を取得して更新するように変更予定
-          storeName: "滝川パン"//ストア情報を取得して更新するように変更予定
-        }
-    });  
-    
     axios
         .post( SuperKlass.CONST.DOMAIN + '/food/', this.foodInfo)
         .then((res) => {
-            console.log('succces'+this.foodInfo);
+            console.dir('succces'+this.state.foodInfo);
         })
 
         .catch( (error) => {
@@ -75,9 +60,10 @@ class StoreSyuppin extends React.Component {
           <p>定価：{this.props.location.state.originalprice}円</p>
           <p>販売価格：{this.props.location.state.saleprice}円</p>
           <p>アレルギー：</p>
+          <p>{this.props.location.state.allergys.map((e)=>e.name+' ')}</p>
         </div>
         <button className='storeconfirm' 
-        onClick={ () =>{ 
+         onClick={ () =>{ 
           this.handlePostFoodInfo();
           this.handleToStorefinPage();
           }}>確認完了</button>
@@ -85,5 +71,7 @@ class StoreSyuppin extends React.Component {
     );
   }
 }
+
+
 
 export default withRouter(StoreSyuppin);
