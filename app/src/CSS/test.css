@@ -1,0 +1,17 @@
+/* NGなら赤くする */
+form input:focus:invalid {
+    border : tomato 2px solid;
+  }
+  /* 操作中、入力値が正しい場合は、不正エラーを消す */
+  form input:focus:valid + .error .invalid {
+    display : none;
+  }
+  /* OKなら、その他のテキストボックス以外を緑にする */
+  form input:valid:not(:last-child) {
+    border : seagreen 2px solid;
+  }
+
+  .signup-container{
+    width: 600px;
+    margin: 0 auto;
+}

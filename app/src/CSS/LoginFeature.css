@@ -109,7 +109,6 @@ input[type=password]{
 
 .signup-container{
     width: 600px;
-    text-align: center;
     margin: 0 auto;
 }
 
@@ -146,3 +145,5 @@ input[type=checkbox]{
 .account-miss h2{
     text-decoration: underline;
 }
+
+/* test */
