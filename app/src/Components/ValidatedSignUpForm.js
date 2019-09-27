@@ -18,11 +18,10 @@ class ValidatedSignUpForm extends React.Component{
         this.setState({ isAgreed: newValue })
     }
     
-    /* エラーがなければメールチェックページへ */
     handleToMailCheckPage = () => {
-        
         this.props.history.push("/mail-check");
     };
+    
     render() {
         return(
             <Formik
