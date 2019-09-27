@@ -7,8 +7,20 @@ import SuperKlass from '../function/DefineConst';
 import "../CSS/LoginFeature.css";
 
 class ValidatedSignUpForm extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          isAgreed: false,
+        }
+    }
+
+    onAgreementCheckboxChanged(newValue) {
+        this.setState({ isAgreed: newValue })
+    }
     
+    /* エラーがなければメールチェックページへ */
     handleToMailCheckPage = () => {
+        
         this.props.history.push("/mail-check");
     };
     render() {
@@ -27,6 +39,7 @@ class ValidatedSignUpForm extends React.Component{
                     setTimeout(() => {
                         console.log(values);
                         setSubmitting(false);
+                        this.handleToMailCheckPage();
                         axios
                             .post( SuperKlass.CONST.DOMAIN + '/user/', { 
                                 values
@@ -169,17 +182,19 @@ class ValidatedSignUpForm extends React.Component{
                             <div className="input-feedback">{errors.password_check}</div>
                         )}
 
-                        {/* <input
+                        <input
                             id="check"
                             type="checkbox"
                             name="check"
-                        /><label>利用規約・特定商品取引法に同意する</label> */}
+                            onClick={evt => {
+                                this.onAgreementCheckboxChanged(evt.currentTarget.checked)
+                            }}
+                        /><label>利用規約・特定商品取引法に同意する</label>
 
                         <button
                             id="but"
                             type="submit"
-                            disabled={isSubmitting}
-                            onClick={this.handleToMailCheckPage}
+                            disabled={isSubmitting || !this.state.isAgreed}
                         >
                             登録
                         </button>
