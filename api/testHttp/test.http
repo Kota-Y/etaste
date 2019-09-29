@@ -13,3 +13,7 @@ GET http://127.0.0.1:10080/api/food/1 HTTP/1.1
 ###
 
 GET http://127.0.0.1:10080/api/food/4 HTTP/1.1
+
+###
+
+GET http://127.0.0.1:10080/api/food HTTP/

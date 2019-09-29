@@ -11,9 +11,16 @@ class FoodsController extends Controller
     public function index()
     {
         $md = new Food();
-        $datas = $md->getData();
+        $datas = $md->getAllData();
+
+        $data_json = [
+            'id' => 1,
+            'foodNum' => count($datas),
+            'foods' => self::toFoodArray($datas)
+        ];
+
         return response()->json(
-            $datas,
+            $data_json,
             200,
             [],
             JSON_UNESCAPED_UNICODE
@@ -121,6 +128,31 @@ class FoodsController extends Controller
         return redirect('/foods');
     }
 
+    private function toFoodArray($requet_obejct)
+    {
+        $response_arr = [];
+
+        $i = 0;
+        while(count($requet_obejct) > $i){
+            $arr_data  = [
+                'id' => $requet_obejct[$i]->id,
+                'name' => $requet_obejct[$i]->name,
+                'originalPrice' => $requet_obejct[$i]->originalPrice,
+                'salePrice' => $requet_obejct[$i]->salePrice,
+                'startTime' => $requet_obejct[$i]->startTime,
+                'endTime' => $requet_obejct[$i]->endTime,
+                'image' => $requet_obejct[$i]->image,
+                'mapLatitude' => $requet_obejct[$i]->mapLatitude,
+                'mapLongitude' => $requet_obejct[$i]->mapLongitude,
+            ];
+            $response_arr[] = $arr_data;
+
+            ++$i;
+        }
+
+        return $response_arr;
+    }
+
     private function toArray($requet_obejct)
     {
         if(empty($requet_obejct)) return '';
@@ -134,7 +166,7 @@ class FoodsController extends Controller
                 'id' => $key+1,
                 'name' => $value,
             ];
-            array_push($response_arr,$arr_data);
+            $response_arr[] = $arr_data;
         }
 
         return $response_arr;

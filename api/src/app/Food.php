@@ -13,6 +13,27 @@ class Food extends Model
   
     public $timestamps = true;
   
+    public function getAllData()
+    {
+      $query = DB::table($this->table);
+    
+      $data = $query->select(
+                        'foods.id as id'
+                        , 'foods.name as name'
+                        , 'original_price as originalPrice'
+                        , 'sale_price as salePrice'
+                        , 'start_time as startTime'
+                        , 'end_time as endTime'
+                        , 'foods.image_url as image'
+                        , 'map_latitude as mapLatitude'
+                        , 'map_Longitude as mapLongitude'
+                        )
+                    ->join('stores','stores.id','=','foods.store_id')
+                    ->get();
+
+      return $data;
+    }
+
     public function getData($id=null)
     {
       $query = DB::table($this->table);
