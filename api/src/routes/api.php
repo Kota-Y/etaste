@@ -28,5 +28,7 @@ Route::get('/food', 'Api\FoodsController@index');
 Route::post('/food', 'Api\FoodsController@store');
 Route::get('/food/{id}', 'Api\FoodsController@show');
 
-
+Route::post('/user', 'Api\UsersController@store');
+Route::post('/user/login', 'Api\UsersController@login');
+Route::get('/user/logout', 'Api\UsersController@logout');
 
