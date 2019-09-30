@@ -107,7 +107,7 @@ class FoodsController extends Controller
     {
         $food = Food::find($id);
         $food->delete();
-        return redirect('/foods');
+        return redirect('/food');
     }
 
     private function toFoodArray($requet_obejct)
