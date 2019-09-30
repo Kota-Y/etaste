@@ -1,0 +1,70 @@
+/* StoreDeal.jsのCSS */
+.main-deal{
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 0px;
+    display: inline-flex;
+}
+
+.book-container{
+    margin-left: 25px;
+    width: 100%;
+    height: 100vh;
+    border-right:1px solid gray;
+}
+
+.book-container h1{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+.tradingHistory-container{
+    margin-left: 20px;
+    width: 100%;
+}
+
+
+.tradingHistory-container h1{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+/* DealFoodComponent.jsのCSS */
+
+.dealfoods-container{
+    display: block;
+}
+
+.dealfood-component-store{
+    margin: 40px 20px 20px 130px;
+    padding: 10px 10px 10px 10px;
+    width: 70%;
+    display: inline-flex;
+    border: none;
+    border-radius: 0px;
+    border-bottom: medium solid gray;
+}
+
+.dealfood-image{
+    position: relative;
+}
+
+/* .dealfood-image img{
+    margin-top: 12px;
+    width: 250px;
+    height: 220px;
+} */
+
+.dealfood-info{
+    width:50%;
+    height: auto;
+    margin-left: 30px;
+}
+
+.dealfood-info h3{
+    margin: 10px 0px 10px 0px;
+}

@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 // Route::resource('stores', 'StoresController');
 
-Route::get('/stores', 'StoresController@index');
-Route::get('/store/{id}', 'StoresController@show');
+// Route::get('/stores', 'StoresController@index');
+// Route::get('/store/{id}', 'StoresController@show');

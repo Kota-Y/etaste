@@ -3,10 +3,10 @@
   background: #ffdb73;
 }
 
-.logo {
-  width: 80px;
-  height: 80px;
+.header h3:hover{
+  cursor: pointer;
 }
+
 
 .title {
   width: 201px;
@@ -73,6 +73,14 @@
   z-index: 999;
 }
 
-.header-left h3:hover{
+.header-contents h3:hover{
   cursor: pointer;
+}
+ /* HeaderStore.jsのCSS */
+.header-contents h2{
+  float: right;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-right: 60px;
+  margin-left: 0px;
 }

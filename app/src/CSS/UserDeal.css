@@ -1,0 +1,146 @@
+/* UserDeal.jsのCSS */
+.main-deal{
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 0px;
+    display: inline-flex;
+}
+
+.book-container{
+    margin-left: 25px;
+    width: 100%;
+    height: 100vh;
+    border-right:1px solid gray;
+}
+
+.book-container h1{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+.tradingHistory-container{
+    margin-left: 20px;
+    width: 100%;
+}
+
+
+.tradingHistory-container h1{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 40px;
+}
+
+/* DealFoodComponent.jsのCSS */
+
+.dealfood-container{
+    display: block;
+}
+
+.dealfood-component{
+    margin: 40px 20px 20px 130px;
+    padding: 10px 10px 10px 10px;
+    width: 70%;
+    display: inline-flex;
+    border:1px solid gray;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.dealfood-image{
+    position: relative;
+}
+
+.dealfood-image img{
+    margin-top: 12px;
+    width: 250px;
+    height: 220px;
+}
+
+.icon-info img{
+    width: 60px;
+    height: 60px;
+    
+    position: absolute;
+    top: 70%;
+    right: -10%;
+}
+
+.icon-info:hover{
+    background-color: #000;
+}
+
+.icon-info img{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.icon-info img:hover{
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+
+.dealfood-info{
+    width:50%;
+    height: auto;
+    margin-left: 30px;
+}
+
+.dealfood-info h3{
+    margin: 10px 0px 10px 0px;
+}
+
+.dealfood-info h2{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    background-color: #ffdb73;
+    border:1px solid #ffdb73;
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.dealfood-info h2:hover{
+    cursor: pointer;
+    color: gray;
+}
+
+.dealfood-component-already{
+    margin: 40px 20px 20px 130px;
+    padding: 10px 10px 10px 10px;
+    width: 70%;
+    display: inline-flex;
+    border:1px solid gray;
+    border-radius: 10px 10px 10px 10px;
+    background: #DDDDDD;
+    opacity: 0.5;
+}
+
+.dealfood-image-already{
+    width: 250px;
+    height: 220px;
+}
+
+.dealfood-image-already img{
+    margin-top: 12px;
+    width: 250px;
+    height: 220px;
+    opacity: 0.7;
+}
+
+.dealfood-info-already{
+    width:50%;
+    height: auto;
+    margin-left: 30px;
+}
+
+.dealfood-info-already h3{
+    margin-left: 30px;
+}
+
