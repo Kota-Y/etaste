@@ -27,25 +27,30 @@ class FoodsController extends Controller
         );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $md = new Food();
+
+        $md->name = $request->input('name');
+        $md->original_price = $request->input('originalPrice');
+        $md->sale_price = $request->input('salePrice');
+        $md->start_time = $request->input('startTime');
+        $md->end_time = $request->input('endTime');
+        $md->amount = $request->input('amount');
+        $md->allergy = self::toStringforAllergys($request);
+        $md->image_url = $request->input('image');
+        $md->store_id = $request->input('storeId');
+
+        $md->save();
+
+        $data_json = [];
+
+        return response()->json(
+            $data_json,
+            201,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 
     public function show($id)
@@ -98,29 +103,6 @@ class FoodsController extends Controller
         );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     public function destroy($id)
     {
         $food = Food::find($id);
@@ -170,5 +152,21 @@ class FoodsController extends Controller
         }
 
         return $response_arr;
+    }
+
+    private function toStringforAllergys($requet_obejct)
+    {
+        $allergys = $requet_obejct->input('allergys');
+
+        $response_str = '';
+        
+        $i = 0;
+        while(count($allergys) > $i){
+            if($i == 0) $response_str = $allergys[$i]['name'];
+            else $response_str = $response_str . ',' . $allergys[$i]['name'];
+            ++$i;
+        }
+
+        return $response_str;
     }
 }

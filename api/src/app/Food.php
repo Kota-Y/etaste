@@ -12,6 +12,21 @@ class Food extends Model
     protected $guarded = array('id');
   
     public $timestamps = true;
+
+    protected $fillable =[
+        'name'
+        , 'detail'
+        , 'genre'
+        , 'why_sale'
+        , 'original_price'
+        , 'sale_price'
+        , 'start_time'
+        , 'end_time'
+        , 'image_url'
+        , 'store_id'
+        , 'amount'
+        , 'allergy'
+    ];
   
     public function getAllData()
     {
