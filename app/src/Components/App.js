@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import "../CSS/App.css";
 import BranchingHeader from "./BranchingHeader";
 import Main from "./Main";
+//import Recommend from "./Recommend";
 import Footer from "./Footer";
 
 class App extends React.Component {

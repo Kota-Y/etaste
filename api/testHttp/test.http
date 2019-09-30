@@ -1,5 +1,70 @@
+###[Store-API]###
+
 GET http://127.0.0.1:10080/api/store/1 HTTP/1.1
 
 ###
 
 GET http://127.0.0.1:10080/api/stores HTTP/1.1
+
+###[Food-API]###
+
+GET http://127.0.0.1:10080/api/food/1 HTTP/1.1
+
+###
+
+GET http://127.0.0.1:10080/api/food/4 HTTP/1.1
+
+###
+
+GET http://127.0.0.1:10080/api/food HTTP/1.1
+
+###
+
+POST http://127.0.0.1:10080/api/food HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "あんぱん",
+    "originalPrice": 600,
+    "salePrice": 300,
+    "startTime": "1300",
+    "endTime": "1545",
+    "amount": 3,
+    "allergys": [
+    {
+        "id": 1,
+        "name": "卵"
+    },
+    {
+        "id": 3,
+        "name": "乳"
+    },
+    {
+        "id": 4,
+        "name": "小麦"
+    }
+    ],
+    "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
+    "storeId": 2,
+    "storeName": "滝川パン"
+}
+
+###
+
+POST http://127.0.0.1:10080/api/food HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "name": "あんぱん",
+    "originalPrice": 600,
+    "salePrice": 300,
+    "startTime": "1300",
+    "endTime": "1545",
+    "amount": 3,
+    "allergys": [],
+    "image": "https://dl.dropboxusercontent.com/s/fxss9wae0iq143q/an-pan.jpg",
+    "storeId": 2,
+    "storeName": "滝川パン"
+}
