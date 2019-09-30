@@ -1,0 +1,165 @@
+.store-container{
+    margin-top: 15px;
+    margin-left: 35px;
+    width: 850px;
+    height: 100vh;
+    border-right:1px solid gray;
+}
+
+.store-detail{
+    display: inline-flex;
+}
+
+.store-detail h1{
+    margin-left: 30px;
+}
+
+.store-info{
+    display: inline-flex;
+}
+
+.store-info img{
+    margin: 20px;
+    height: 300px;
+    width: 400px;
+}
+
+.store-component{
+    position: relative;
+    margin-left: 20px;
+}
+
+.favorite-icon-gray img{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 38%;
+    left: 18%;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.favorite-icon-gray img:hover{
+    cursor: pointer;
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+
+.favorite-complete img{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 38%;
+    left: 18%;
+}
+
+.store-name h2{
+    margin-left: 10px;
+}
+
+.zip{
+    margin-block-end: 0px;
+}
+
+.address{
+    margin-top: 0px;
+}
+
+.map {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+}
+.onSale-container{
+    margin-left: 55px;
+    width: 400px;
+    height: 100vh;
+}
+
+.title h1{
+    margin-top: 35px;
+    width: 200px;
+}
+
+.onSale-items{
+    border: 1px solid rgb(197, 195, 195);
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 276px;
+    height: 260px;
+    box-shadow: 2px 2px 4px #dddddd;
+}
+
+.items-info img{
+    width: 276px;
+    height: 160px;
+}
+
+.items-info h2{
+    margin-left: 20px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.items-info h3{
+    margin-left: 20px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.container{
+    margin: 20px;
+    margin-left: 0px;
+    width: 350px;
+    height: 330px;
+    border: 1px solid rgb(197, 195, 195);
+    box-shadow: 2px 2px 4px #dddddd;
+}
+
+.info img{
+    margin: 0px;
+    width: 350px;
+    height: 250px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+.info h2{
+    margin-left: 30px;
+    margin-block-start: 6px;
+    margin-block-end: 0px;
+}
+
+.info h3{
+    margin-left: 30px;
+    margin-block-start: 0px;
+    color: gray;
+}
+
+.price{
+    margin-left: 17px;
+}
+
+.price h3{
+    margin-left: 3px;
+    display: inline-flex;
+}
+
+.deleat{
+    text-decoration: line-through;
+}
+
+.salePrice{
+    color: red;
+    font-size: 24px;
+}
+
+.favorite-store{
+    display: inline-flex;
+    flex-wrap: wrap;
+}

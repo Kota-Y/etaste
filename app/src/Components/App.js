@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+
 import "../CSS/App.css";
-import Header from "./Header";
+import BranchingHeader from "./BranchingHeader";
 import Main from "./Main";
 //import Recommend from "./Recommend";
 import Footer from "./Footer";
@@ -9,15 +10,17 @@ import Footer from "./Footer";
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
-        <Header />
-        <body>
-          <div id="wrapper">
-            <Main />
-          </div>
-        </body>
-        <Footer />
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <BranchingHeader />
+          <body>
+            <div id="wrapper">
+              <Main />
+            </div>
+          </body>
+          <Footer />
+        </BrowserRouter>
+      </div>
     );
   }
 }
