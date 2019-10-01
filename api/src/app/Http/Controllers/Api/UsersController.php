@@ -38,9 +38,22 @@ class UsersController extends Controller
         //
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        //
+        $id = $request->input('id');
+
+        $md = \App\User::find($id);
+        $md->is_login = false;
+        $md->save();
+
+        $data_json = [];
+
+        return response()->json(
+            $data_json,
+            200,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 
     public function destroy($id)
