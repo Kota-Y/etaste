@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Http\Controllers\Controller;
 
@@ -33,9 +34,56 @@ class UsersController extends Controller
         );
     }
 
-    public function login()
+    public function login(Request $request)
     {
-        //
+        $mail = $request->input('mail');
+        $password = $request->input('password');
+
+        try{
+            $storePassword = \App\User::where('mail', $mail)->first()->password;
+        }
+        catch (\Exception $e){
+            $data_json = [
+                'code' => 1,
+                'message' => 'Mail does not exist.'
+            ];
+
+            return response()->json(
+                $data_json,
+                500,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+
+        if(Hash::check($password, $storePassword)){
+            $id = $request->input('id');
+            $md = \App\User::find($id);
+            $md->is_login = true;
+            $md->save();
+
+            $data_json = [];
+
+            return response()->json(
+                $data_json,
+                200,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+        else{
+            $data_json = [
+                'code' => 1,
+                'message' => 'Login failed.'
+            ];
+
+            return response()->json(
+                $data_json,
+                401,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
     }
 
     public function logout(Request $request)

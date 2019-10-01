@@ -79,8 +79,8 @@ Content-Type: application/json
     "lastName": "昂太",
     "firstNameKana": "ヤマシタ",
     "lastNameKana": "コウタ",
-    "mail": "kyamashit@etaste-jp.com",
-    "password": "KBa45fdg"
+    "mail": "test@etaste-jp.com",
+    "password": "testtest"
 }
 
 ###
@@ -89,8 +89,20 @@ POST http://127.0.0.1:10080/api/user/login HTTP/1.1
 Content-Type: application/json
 
 {
+    "id": "1",
     "mail": "k_yamashita@etaste-jp.com",
-    "password": "KBa45fdg"
+    "password": "aa"
+}
+
+###
+
+POST http://127.0.0.1:10080/api/user/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": "5",
+    "mail": "test@etaste-jp.com",
+    "password": "testtest"
 }
 
 ###
