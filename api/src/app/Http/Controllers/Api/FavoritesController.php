@@ -54,7 +54,7 @@ class FavoritesController extends Controller
         $md->save();
 
         $data_json = [];
-        
+
         return response()->json(
             $data_json,
             201,
@@ -63,9 +63,42 @@ class FavoritesController extends Controller
         );
     }
 
-    public function show($id)
+    public function show($useId)
     {
-        //
+        $user = new User();
+
+        $user_id = $useId;
+
+        if(!$user->hasUserId($user_id)){
+            $data_json = [
+                'code' => 1,
+                'message' => 'UserId does not exist.'
+            ];
+
+            return response()->json(
+                $data_json,
+                500,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+
+        $md = new Favorite();
+
+        $datas = $md->getData($user_id);
+
+        $data_json = [
+            'userId' => $user_id,
+            'favoriteNum' => count($datas),
+            'favoriteStores' => self::toFavoriteArray($datas)
+        ];
+
+        return response()->json(
+            $data_json,
+            200,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 
     public function destroy($id)
@@ -73,5 +106,24 @@ class FavoritesController extends Controller
         $favorite = Favorite::find($id);
         $favorite->delete();
         return redirect('/favorite');
+    }
+
+    private function toFavoriteArray($requet_obejct)
+    {
+        $response_arr = [];
+
+        $i = 0;
+        while(count($requet_obejct) > $i){
+            $arr_data  = [
+                'id' => $requet_obejct[$i]->id,
+                'name' => $requet_obejct[$i]->name,
+                'image' => $requet_obejct[$i]->image,
+            ];
+            $response_arr[] = $arr_data;
+
+            ++$i;
+        }
+
+        return $response_arr;
     }
 }
