@@ -71,6 +71,39 @@ Content-Type: application/json
 
 ###[Favorite-API]###
 
+POST http://127.0.0.1:10080/api/trade HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": 111,
+    "userId": 1,
+    "stodeId": 2,
+    "foodId": 3,
+    "amount": 2,
+    "receiveTime": "1830"
+}
+
+###
+
+GET http://127.0.0.1:10080/api/trade/1 HTTP/1.1
+
+###
+
+PATCH  http://127.0.0.1:10080/api/trade/complete/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "tradeId": 1
+}
+
+###
+
+GET http://127.0.0.1:10080/api/trade/store/1 HTTP/1.1
+
+
+###[Favorite-API]###
+
 GET http://127.0.0.1:10080/api/favorite/1 HTTP/1.1
 
 ###

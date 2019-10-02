@@ -30,6 +30,11 @@ Route::post('/food', 'Api\FoodsController@store');
 Route::get('/food/{id}', 'Api\FoodsController@show');
 Route::delete('/food/{id}', 'Api\FoodsController@destroy');
 
+Route::post('/trade', 'Api\TradesController@store');
+Route::get('/trade/{userId}', 'Api\TradesController@showUser');
+Route::patch('/trade/complete/{id}', 'Api\TradesController@complete');
+Route::get('/trade/store/{storeId}', 'Api\TradesController@showStore');
+
 Route::get('/favorite/{userId}', 'Api\FavoritesController@show');
 Route::post('/favorite', 'Api\FavoritesController@store');
 Route::delete('/favorite/{id}', 'Api\FavoritesController@destroy');
