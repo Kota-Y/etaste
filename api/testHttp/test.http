@@ -69,6 +69,25 @@ Content-Type: application/json
     "storeName": "滝川パン"
 }
 
+###[Favorite-API]###
+
+GET http://127.0.0.1:10080/api/favorite/1 HTTP/1.1
+
+###
+
+POST http://127.0.0.1:10080/api/favorite HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": 2,
+    "storeId": 2,
+    "storeName": "滝川パン"
+}
+
+###
+
+DELETE http://127.0.0.1:10080/api/favorite/11 HTTP/1.1
+
 ###[User-API]###
 
 POST http://127.0.0.1:10080/api/user HTTP/1.1

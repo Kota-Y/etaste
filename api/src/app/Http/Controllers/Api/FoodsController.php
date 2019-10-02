@@ -43,14 +43,7 @@ class FoodsController extends Controller
 
         $md->save();
 
-        $data_json = [];
-
-        return response()->json(
-            $data_json,
-            201,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
+        return response([], 201);
     }
 
     public function show($id)
@@ -107,7 +100,7 @@ class FoodsController extends Controller
     {
         $food = Food::find($id);
         $food->delete();
-        return redirect('/food');
+        return response([], 200);
     }
 
     private function toFoodArray($requet_obejct)

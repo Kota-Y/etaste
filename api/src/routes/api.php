@@ -23,12 +23,18 @@ use Illuminate\Http\Request;
 
 Route::get('/stores', 'Api\StoresController@index');
 Route::get('/store/{id}', 'Api\StoresController@show');
+Route::delete('/store/{id}', 'Api\StoresController@destroy');
 
 Route::get('/food', 'Api\FoodsController@index');
 Route::post('/food', 'Api\FoodsController@store');
 Route::get('/food/{id}', 'Api\FoodsController@show');
+Route::delete('/food/{id}', 'Api\FoodsController@destroy');
+
+Route::get('/favorite/{userId}', 'Api\FavoritesController@show');
+Route::post('/favorite', 'Api\FavoritesController@store');
+Route::delete('/favorite/{id}', 'Api\FavoritesController@destroy');
 
 Route::post('/user', 'Api\UsersController@store');
 Route::post('/user/login', 'Api\UsersController@login');
 Route::get('/user/logout', 'Api\UsersController@logout');
-
+Route::delete('/user/{id}', 'Api\UsersController@destroy');

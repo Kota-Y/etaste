@@ -36,6 +36,6 @@ class StoresController extends Controller
     {
         $store = Store::find($id);
         $store->delete();
-        return redirect('/stores');
+        return response([], 200);        
     }
 }

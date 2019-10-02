@@ -43,4 +43,9 @@ class Store extends Model
 
       return $data;
     }
+
+    public function hasStoreId($id)
+    {
+        return DB::table($this->table)->where('id', $id)->exists();
+    }
 }
