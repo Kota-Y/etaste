@@ -21,4 +21,9 @@ class User extends Model
         , 'mail'
         , 'password'
     ];
+
+    public function hasUserId($id)
+    {
+        return DB::table($this->table)->where('id', $id)->exists();
+    }
 }
