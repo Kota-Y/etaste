@@ -28,8 +28,8 @@ Route::get('/food', 'Api\FoodsController@index');
 Route::post('/food', 'Api\FoodsController@store');
 Route::get('/food/{id}', 'Api\FoodsController@show');
 
-Route::get('/favorite/{userId}', 'Api\FoodsController@show');
-Route::post('/favorite', 'Api\FoodsController@store');
+Route::get('/favorite/{userId}', 'Api\FavoritesController@show');
+Route::post('/favorite', 'Api\FavoritesController@store');
 
 Route::post('/user', 'Api\UsersController@store');
 Route::post('/user/login', 'Api\UsersController@login');
