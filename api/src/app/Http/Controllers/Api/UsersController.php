@@ -24,14 +24,7 @@ class UsersController extends Controller
 
         $md->save();
 
-        $data_json = [];
-
-        return response()->json(
-            $data_json,
-            201,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
+        return response([], 201);
     }
 
     public function login(Request $request)
@@ -62,14 +55,7 @@ class UsersController extends Controller
             $md->is_login = true;
             $md->save();
 
-            $data_json = [];
-
-            return response()->json(
-                $data_json,
-                200,
-                [],
-                JSON_UNESCAPED_UNICODE
-            );
+            return response([], 200);
         }
         else{
             $data_json = [
@@ -94,20 +80,13 @@ class UsersController extends Controller
         $md->is_login = false;
         $md->save();
 
-        $data_json = [];
-
-        return response()->json(
-            $data_json,
-            200,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
+        return response([], 200);
     }
 
     public function destroy($id)
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('/user');
+        return response([], 200);        
     }
 }

@@ -53,14 +53,7 @@ class FavoritesController extends Controller
 
         $md->save();
 
-        $data_json = [];
-
-        return response()->json(
-            $data_json,
-            201,
-            [],
-            JSON_UNESCAPED_UNICODE
-        );
+        return response([], 201);
     }
 
     public function show($useId)
@@ -105,7 +98,7 @@ class FavoritesController extends Controller
     {
         $favorite = Favorite::find($id);
         $favorite->delete();
-        return redirect('/favorite');
+        return response([], 200);
     }
 
     private function toFavoriteArray($requet_obejct)
