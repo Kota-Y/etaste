@@ -45,8 +45,6 @@ class StoreSyuppin extends React.Component {
             alert("「" + this.foodInfo.name + "」登録失敗");
             console.log(error, this.foodInfo);
         });
-  
-
 }
   
   render() {
@@ -55,8 +53,8 @@ class StoreSyuppin extends React.Component {
         <div className='check-area'>
           <p>販売商品：{this.props.location.state.itemName}</p>
           <p>販売個数：{this.props.location.state.amount}</p>
-          <p>受け取り開始時間：{this.props.location.state.startTime.value}</p>
-          <p>受け取り終了時間：{this.props.location.state.endTime.value}</p>
+          <p>受け取り開始時間：{this.props.location.state.startTime.label}</p>
+          <p>受け取り終了時間：{this.props.location.state.endTime.label}</p>
           <p>定価：{this.props.location.state.originalprice}円</p>
           <p>販売価格：{this.props.location.state.saleprice}円</p>
           <p>アレルギー：</p>

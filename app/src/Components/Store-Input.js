@@ -2,24 +2,46 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Select from "react-select";
 import "../CSS/Store-Input.css";
+import SuperKlass from './DefineConst';
+import axios from 'axios';
   
 const styleKeys = [{ key: "indicatorsContainer" }];
   
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
-const times = [
-  { value: "12:00", label: "12:00" },
-  { value: "13:00", label: "13:00" },
-  { value: "14:00", label: "14:00" },
-  { value: "15:00", label: "15:00" },
-  { value: "16:00", label: "16:00" }
-];
 
 class StoreInput extends React.Component {
+
 
   constructor(props){
     super(props);
     this.state = {
+      times :[
+        { value: "0700", label: "7:00" },
+        { value: "0800", label: "8:00" },
+        { value: "0900", label: "9:00" },
+        { value: "1000", label: "10:00" },
+        { value: "1100", label: "11:00" },
+        { value: "1200", label: "12:00" },
+        { value: "1300", label: "13:00" },
+        { value: "1400", label: "14:00" },
+        { value: "1500", label: "15:00" },
+        { value: "1600", label: "16:00" },
+        { value: "1700", label: "17:00" },
+        { value: "1800", label: "18:00" },
+        { value: "1900", label: "19:00" },
+        { value: "2000", label: "20:00" },
+        { value: "2100", label: "21:00" },
+        { value: "2200", label: "22:00" },
+        { value: "2300", label: "23:00" },
+        { value: "2400", label: "24:00" },
+        { value: "2500", label: "25:00" },
+      ],
+      storeId:'',
+      openTime:'15:00',
+      closeTime:'24:00',
+      //入力フォーム関係
+      file:'',
       itemImage:'',
       s3url:'',
       itemName: '',
@@ -97,9 +119,21 @@ class StoreInput extends React.Component {
     this.handleChangeCashew_nut = this.handleChangeCashew_nut.bind(this)
   }
 
-  
 
   handleToStoreSyuppinPage = () => {
+
+    if((Number(this.state.saleprice)>=750)||(350>=Number(this.state.saleprice))){
+      alert('販売価格を修正してください');
+    }
+    else if((Number(this.state.originalprice)>=750)||(350>=Number(this.state.originalprice))){
+      alert('定価を修正してください');
+    }
+    else{
+    this.sendAllergy();
+    }
+  }
+
+  sendAllergy(){
     let kariAllergy=[]
     if(this.state.isEgg){
       kariAllergy.push({
@@ -278,7 +312,7 @@ class StoreInput extends React.Component {
       });
       console.log(kariAllergy);
       console.log(this.state.allergys);
-    };
+    }
 
   handleChange(e){ //入力フォームにおいてそれぞれの要素のname属性に対応した変数にvalueを格納
     this.setState({
@@ -294,10 +328,42 @@ class StoreInput extends React.Component {
   };
 
   handleChangeFile(e){
+    /*
+    this.setState({file: e.target.files[0]}
+    );*/
     var files = e.target.files;
     var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
     var image_url = files.length===0 ? "" : createObjectURL(files[0]);
     this.setState({itemImage: image_url});
+
+    const aws = require('aws-sdk');
+    const bucketname='food-etaste'
+    var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
+    var filename = 'storeinput/images/'+identityId + '/'+this.state.itemImage;
+    var fileType = this.state.file.type;
+    var params = {
+         Bucket: bucketname,
+         Key: filename,
+         ContentType: this.state.file.type,
+         Body: this.state.files,
+         /*
+         Metadata: {
+           data: JSON.stringify({
+           identityId: identityId,
+           uploadTime: uploadTime,
+           uploadDate: uploadDate
+           })
+         }*/
+        };
+        
+        var s3 = new aws.S3();
+        s3.putObject(params, function(err, data) {
+            if(err) {
+                console.log("Err: upload failed :" +err);
+            } else {
+                console.log("Success: upload ok");
+            }
+        });
   }
   
   handleChangedisable(e){//その他ボタンでのアレルギーの表示非表示切り替え
@@ -306,8 +372,8 @@ class StoreInput extends React.Component {
     });   
   }
 
-  //アレルギー原料の表示or非表示
-  handleChangeEgg(e){
+  
+  handleChangeEgg(e){//アレルギー原料の表示or非表示
     this.setState({
       isEgg:!(this.state.isEgg)
     });
@@ -443,7 +509,49 @@ class StoreInput extends React.Component {
     });
   }
 
+
+  startendTimeEdit(){ //受け取り時間のプルダウンを、店の営業時間に合わせて調整する
+    var closeTimepuls = Number(this.state.closeTime) + 100; 
+    console.log(closeTimepuls);
+    this.setState({
+      times:this.state.times.filter(n => ((n.value >= this.state.openTime))),
+    });
+    this.setState({
+      times:this.state.times.filter(n => ((closeTimepuls >= n.value)))
+    });
+      console.log(this.state.openTime);
+      console.log(this.state.closeTime);
+      console.log(this.state.times);
+    }
+
+  componentWillMount(){
+    axios
+        .get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
+                headers: { "Content-Type": "application/json" },
+                data: {},
+            })
+        .then( (res) => {
+            axios.get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
+                headers: { "Content-Type": "application/json" },
+                data: {},
+                param: '1'//this.state.storeId
+                })
+                .then( (res) => {
+                    this.setState({
+                        openTime: res.data.openTime,
+                        closeTime: res.data.closeTime,
+                    });
+                    console.log('success' + this.state.closeTime);
+                    this.startendTimeEdit();
+                });
+        })
+        .catch( (error) => {
+            console.log('通信に失敗しました');
+        });
+   }
+
   render() { 
+
     //その他のアレルギーの表示or非表示
     let classSonota = 'sonotaAllergy';
     if (!this.state.isSonotaButton) {
@@ -504,8 +612,6 @@ class StoreInput extends React.Component {
     const Bananagrey='./image/Bananagrey.jpg';
     const Cashew_nut = './image/Cashew_nut.jpg';
     const Cashew_nutgrey='./image/Cashew_nutgrey.jpg';
-    
-    
 
     const styleEgg = this.state.isEgg ? Egg : Egggrey;  
     const styleMilk = this.state.isMilk ? Milk : Milkgrey;  
@@ -535,6 +641,7 @@ class StoreInput extends React.Component {
     const styleSesame= this.state.isSesame ? Sesame: Sesamegrey;
     const styleCashew_nut= this.state.isCashew_nut ? Cashew_nut: Cashew_nutgrey;
     
+    
 
     return (
       <div>
@@ -557,7 +664,7 @@ class StoreInput extends React.Component {
           <div className="startTime">
             <Select
               className='timeselect'
-              options={times}
+              options={this.state.times}
               styles={{
                 [styleKeys]: styleFn
               }}
@@ -571,7 +678,7 @@ class StoreInput extends React.Component {
           <div className="endTime">
             <Select
               className='timeselect'
-              options={times}
+              options={this.state.times}
               styles={{
                 [styleKeys]: styleFn
               }}
@@ -667,3 +774,7 @@ class StoreInput extends React.Component {
 }
 
 export default withRouter(StoreInput);
+
+
+
+
