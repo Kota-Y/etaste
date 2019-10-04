@@ -3,8 +3,9 @@ import { withRouter } from 'react-router-dom';
 import Select from "react-select";
 import "../CSS/Store-Input.css";
 import SuperKlass from './DefineConst';
-import axios from 'axios';
-  
+import axios from 'axios'; 
+import {AWS_ACCESS_KEY,AWS_SECRET_KEY} from "./Sercret"; //Sercret.jsというファイルにアクセスキーとシークレットキーを格納
+
 const styleKeys = [{ key: "indicatorsContainer" }];
   
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
@@ -129,9 +130,75 @@ class StoreInput extends React.Component {
       alert('定価を修正してください');
     }
     else{
+    this.sendImagetoS3();
     this.sendAllergy();
     }
   }
+
+
+sendImagetoS3(){
+  const aws = require('aws-sdk');
+    aws.config.update({
+      accessKeyId: AWS_ACCESS_KEY,
+      secretAccessKey: AWS_SECRET_KEY
+    });
+    const bucketname='food-etaste'
+    var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
+    var filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
+    var fileType = this.state.file.type;
+    console.log(this.state.itemImage);
+    console.log(filename);    
+    this.setState({
+      s3url:'https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename,
+    });
+    var params = {
+         Bucket: bucketname,
+         Key: filename,
+         ContentType: this.state.file.type,
+         Body: this.state.file,
+         /*
+         Metadata: {
+           data: JSON.stringify({
+           identityId: identityId,
+           uploadTime: uploadTime,
+           uploadDate: uploadDate
+           })
+         }*/
+        };
+        
+        var s3 = new aws.S3();
+        s3.putObject(params, function(err, data) {
+            if(err) {
+                console.log("Err: upload failed :" +err);
+            } else {
+                console.log("Success: upload ok");
+                console.log('https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename);
+                /*
+                var paramsToget={
+                  Bucket:bucketname,
+                  Key:filename
+                }
+                s3.getObject(paramsToget, function(err, data) {
+                  if (err) {
+                    console.log(err, err.stack); // an error occurred
+                  }
+                    else{
+                      console.log(data);           // successful response
+                      console.log(data.publicurl);
+                    }
+                    });*/
+               
+            }
+        });
+        /*
+        s3.getUrl('putObject', params, (err, url) => {
+          if (err) {
+            console.log("Err: get url failed :" +err);
+          }
+            console.log("Success: upload and get url ok");
+        });*/
+      }
+
 
   sendAllergy(){
     let kariAllergy=[]
@@ -300,7 +367,7 @@ class StoreInput extends React.Component {
       this.props.history.push({
         pathname: "/store-syuppin",
         state:{
-              s3url:'llllll',
+              s3url:this.state.s3url,
               itemName: this.state.itemName,
               amount: this.state.amount,
               startTime: this.state.startTime,
@@ -328,42 +395,13 @@ class StoreInput extends React.Component {
   };
 
   handleChangeFile(e){
-    /*
     this.setState({file: e.target.files[0]}
-    );*/
-    var files = e.target.files;
+    );
+    var displyfiles = e.target.files;
     var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
-    var image_url = files.length===0 ? "" : createObjectURL(files[0]);
+    var image_url = displyfiles.length===0 ? "" : createObjectURL(displyfiles[0]);
     this.setState({itemImage: image_url});
-
-    const aws = require('aws-sdk');
-    const bucketname='food-etaste'
-    var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
-    var filename = 'storeinput/images/'+identityId + '/'+this.state.itemImage;
-    var fileType = this.state.file.type;
-    var params = {
-         Bucket: bucketname,
-         Key: filename,
-         ContentType: this.state.file.type,
-         Body: this.state.files,
-         /*
-         Metadata: {
-           data: JSON.stringify({
-           identityId: identityId,
-           uploadTime: uploadTime,
-           uploadDate: uploadDate
-           })
-         }*/
-        };
-        
-        var s3 = new aws.S3();
-        s3.putObject(params, function(err, data) {
-            if(err) {
-                console.log("Err: upload failed :" +err);
-            } else {
-                console.log("Success: upload ok");
-            }
-        });
+    
   }
   
   handleChangedisable(e){//その他ボタンでのアレルギーの表示非表示切り替え
@@ -524,7 +562,7 @@ class StoreInput extends React.Component {
       console.log(this.state.times);
     }
 
-  componentWillMount(){
+  componentDidMount(){
     axios
         .get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
                 headers: { "Content-Type": "application/json" },
