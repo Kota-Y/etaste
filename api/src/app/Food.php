@@ -89,4 +89,9 @@ class Food extends Model
 
       return $data;
     }
+
+    public function hasFoodId($id)
+    {
+        return DB::table($this->table)->where('id', $id)->exists();
+    }
 }
