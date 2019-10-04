@@ -20,4 +20,29 @@ class Trade extends Model
         , 'amount'
         , 'receive_time'
     ];
+
+    public function getData($userId=null)
+    {
+      $query = DB::table($this->table);
+
+      if($userId != null) $query->where('trades.user_id', $userId);
+    
+      $data = $query->select(
+                        'trades.id as id'
+                        , 'foods.id as foodId'
+                        , 'stores.id as storeId'
+                        , 'foods.name as foodName'
+                        , 'stores.name as storeName'
+                        , 'trades.amount as amount'
+                        , 'sale_price'
+                        , 'recieve_time as recieveTime'
+                        , 'is_completed as isCompleted'
+                        , 'foods.image_url as foodImage'
+                        )
+                    ->join('foods','foods.id','=','trades.food_id')
+                    ->join('stores','stores.id','=','trades.store_id')
+                    ->get();
+
+      return $data;
+    }
 }

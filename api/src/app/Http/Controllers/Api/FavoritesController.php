@@ -56,11 +56,11 @@ class FavoritesController extends Controller
         return response([], 201);
     }
 
-    public function show($useId)
+    public function show($userId)
     {
         $user = new User();
 
-        $user_id = $useId;
+        $user_id = $userId;
 
         if(!$user->hasUserId($user_id)){
             $data_json = [
