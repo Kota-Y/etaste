@@ -6,6 +6,11 @@ import SuperKlass from './DefineConst';
 import axios from 'axios'; 
 import {AWS_ACCESS_KEY,AWS_SECRET_KEY} from "./Sercret"; //Sercret.jsというファイルにアクセスキーとシークレットキーを格納
 
+/*Sercret.js
+export const AWS_ACCESS_KEY = '自分のアクセスキー';
+export const AWS_SECRET_KEY = '自分のシークレットキー';
+*/ 
+
 const styleKeys = [{ key: "indicatorsContainer" }];
   
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
@@ -39,8 +44,8 @@ class StoreInput extends React.Component {
         { value: "2500", label: "25:00" },
       ],
       storeId:'',
-      openTime:'15:00',
-      closeTime:'24:00',
+      openTime:'',
+      closeTime:'',
       //入力フォーム関係
       file:'',
       itemImage:'',
@@ -130,41 +135,30 @@ class StoreInput extends React.Component {
       alert('定価を修正してください');
     }
     else{
-    this.sendImagetoS3();
-    this.sendAllergy();
+      const bucketname='food-etaste'
+      var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
+      var filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
+      var fileType = this.state.file.type;
+      console.log(filename);    
+      var sendS3='https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename;
+      var params = {
+           Bucket: bucketname,
+           Key: filename,
+           ContentType: this.state.file.type,
+           Body: this.state.file,
+          };
+    this.sendImagetoS3(params);
+    this.sendAllergy(sendS3);
     }
   }
 
 
-sendImagetoS3(){
+sendImagetoS3(params){
   const aws = require('aws-sdk');
     aws.config.update({
       accessKeyId: AWS_ACCESS_KEY,
       secretAccessKey: AWS_SECRET_KEY
     });
-    const bucketname='food-etaste'
-    var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
-    var filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
-    var fileType = this.state.file.type;
-    console.log(this.state.itemImage);
-    console.log(filename);    
-    this.setState({
-      s3url:'https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename,
-    });
-    var params = {
-         Bucket: bucketname,
-         Key: filename,
-         ContentType: this.state.file.type,
-         Body: this.state.file,
-         /*
-         Metadata: {
-           data: JSON.stringify({
-           identityId: identityId,
-           uploadTime: uploadTime,
-           uploadDate: uploadDate
-           })
-         }*/
-        };
         
         var s3 = new aws.S3();
         s3.putObject(params, function(err, data) {
@@ -172,35 +166,12 @@ sendImagetoS3(){
                 console.log("Err: upload failed :" +err);
             } else {
                 console.log("Success: upload ok");
-                console.log('https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename);
-                /*
-                var paramsToget={
-                  Bucket:bucketname,
-                  Key:filename
-                }
-                s3.getObject(paramsToget, function(err, data) {
-                  if (err) {
-                    console.log(err, err.stack); // an error occurred
-                  }
-                    else{
-                      console.log(data);           // successful response
-                      console.log(data.publicurl);
-                    }
-                    });*/
-               
             }
         });
-        /*
-        s3.getUrl('putObject', params, (err, url) => {
-          if (err) {
-            console.log("Err: get url failed :" +err);
-          }
-            console.log("Success: upload and get url ok");
-        });*/
       }
 
 
-  sendAllergy(){
+  sendAllergy(sendS3){
     let kariAllergy=[]
     if(this.state.isEgg){
       kariAllergy.push({
@@ -367,7 +338,7 @@ sendImagetoS3(){
       this.props.history.push({
         pathname: "/store-syuppin",
         state:{
-              s3url:this.state.s3url,
+              s3url:sendS3,
               itemName: this.state.itemName,
               amount: this.state.amount,
               startTime: this.state.startTime,
@@ -377,6 +348,7 @@ sendImagetoS3(){
               allergys:kariAllergy,
             }
       });
+      console.log(this.state.s3url);
       console.log(kariAllergy);
       console.log(this.state.allergys);
     }
@@ -416,6 +388,7 @@ sendImagetoS3(){
       isEgg:!(this.state.isEgg)
     });
   }
+  
   handleChangeMilk(e){
     this.setState({
       isMilk:!(this.state.isMilk)
@@ -562,7 +535,7 @@ sendImagetoS3(){
       console.log(this.state.times);
     }
 
-  componentDidMount(){
+  componentDidMount(){//ログインしている店舗の情報を取得
     axios
         .get(SuperKlass.CONST.DOMAIN + '/store/detail/', {
                 headers: { "Content-Type": "application/json" },

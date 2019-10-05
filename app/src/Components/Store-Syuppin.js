@@ -30,8 +30,14 @@ class StoreSyuppin extends React.Component {
 
   handleToStorefinPage = () => {
     this.props.history.push("/store-fin");
-    console.log(this.props.location.state.allergys);
+    console.log(this.state.foodInfo.name);
+    console.log(this.state.foodInfo.originalPrice);
+    console.log(this.state.foodInfo.salePrice);
+    console.log(this.state.foodInfo.startTime);
+    console.log(this.state.foodInfo.endTime);
+    console.log(this.state.foodInfo.amount);
     console.log(this.state.foodInfo.allergys);
+    console.log(this.state.foodInfo.image);
   };
 
   handlePostFoodInfo(){
