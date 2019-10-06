@@ -136,11 +136,11 @@ class StoreInput  extends React.Component{
     }
     else{
       const bucketname='food-etaste'
-      var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
-      var filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
+      let identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
+      let filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
       console.log(filename);    
-      var sendS3='https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename;
-      var params = {
+      let sendS3='https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename;
+      let params = {
            Bucket: bucketname,
            Key: filename,
            ContentType: this.state.file.type,
@@ -159,7 +159,7 @@ sendImagetoS3(params){
       secretAccessKey: AWS_SECRET_KEY
     });
         
-        var s3 = new aws.S3();
+        let s3 = new aws.S3();
         s3.putObject(params, function(err, data) {
             if(err) {
                 console.log("Err: upload failed :" +err);
@@ -368,9 +368,9 @@ sendImagetoS3(params){
   handleChangeFile(e){
     this.setState({file: e.target.files[0]}
     );
-    var displyfiles = e.target.files;
-    var createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
-    var image_url = displyfiles.length===0 ? "" : createObjectURL(displyfiles[0]);
+    let displyfiles = e.target.files;
+    let createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
+    let image_url = displyfiles.length===0 ? "" : createObjectURL(displyfiles[0]);
     this.setState({itemImage: image_url});
     
   }
@@ -521,7 +521,7 @@ sendImagetoS3(params){
 
 
   startendTimeEdit(){ //受け取り時間のプルダウンを、店の営業時間に合わせて調整する
-    var closeTimepuls = Number(this.state.closeTime) + 100; 
+    let closeTimepuls = Number(this.state.closeTime) + 100; 
     console.log(closeTimepuls);
     this.setState({
       times:this.state.times.filter(n => ((n.value >= this.state.openTime))),
