@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Select from "react-select";
 import "../CSS/Store-Input.css";
@@ -16,7 +16,7 @@ const styleKeys = [{ key: "indicatorsContainer" }];
 const styleFn = base => ({ ...base, border: "5px solid #bac6d" });
 
 
-class StoreInput extends React.Component {
+class StoreInput  extends React.Component{
 
 
   constructor(props){
@@ -138,7 +138,6 @@ class StoreInput extends React.Component {
       const bucketname='food-etaste'
       var identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
       var filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
-      var fileType = this.state.file.type;
       console.log(filename);    
       var sendS3='https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename;
       var params = {
@@ -733,42 +732,42 @@ sendImagetoS3(params){
           <div className="allergies"> 
             <h3>アレルギー表示</h3>
             <div className='allergiecom'>
-              <img className='Egg' src={styleEgg} onClick={this.handleChangeEgg}/>
-              <img className='Milk' src={styleMilk} onClick={this.handleChangeMilk}/>
-              <img className='Wheat' src={styleWheat} onClick={this.handleChangeWheat}/>
-              <img className='Peanuts' src={stylePeanuts} onClick={this.handleChangePeanuts}/>
-              <img className='Shrimp' src={styleShrimp} onClick={this.handleChangeShrimp}/>
-              <img className='Crab' src={styleCrab} onClick={this.handleChangeCrab}/>
-              <img className='Soba' src={styleSoba} onClick={this.handleChangeSoba}/>
+              <img className='Egg' src={styleEgg} alt='' onClick={this.handleChangeEgg}/>
+              <img className='Milk' src={styleMilk} alt='' onClick={this.handleChangeMilk}/>
+              <img className='Wheat' src={styleWheat} alt='' onClick={this.handleChangeWheat}/>
+              <img className='Peanuts' src={stylePeanuts} alt='' onClick={this.handleChangePeanuts}/>
+              <img className='Shrimp' src={styleShrimp} alt='' onClick={this.handleChangeShrimp}/>
+              <img className='Crab' src={styleCrab} alt='' onClick={this.handleChangeCrab}/>
+              <img className='Soba' src={styleSoba} alt='' onClick={this.handleChangeSoba}/>
             </div>
             <button onClick={this.handleChangedisable}>その他</button>
             <div className={classSonota}>
               <div className='allergiecom2'>
-                <img className='Abalone' src={styleAbalone} onClick={this.handleChangeAbalone}/>
-                <img className='Squid' src={styleSquid} onClick={this.handleChangeSquid}/>
-                <img className='Salmon_roe' src={styleSalmon_roe} onClick={this.handleChangeSalmon_roe}/>
-                <img className='Orange' src={styleOrange} onClick={this.handleChangeOrange}/>
-                <img className='Kiwi' src={styleKiwi} onClick={this.handleChangeKiwi}/>
-                <img className='Beef' src={styleBeef} onClick={this.handleChangeBeef}/>
-                <img className='Walnut' src={styleWalnut} onClick={this.handleChangeWalnut
+                <img className='Abalone' src={styleAbalone} alt='' onClick={this.handleChangeAbalone}/>
+                <img className='Squid' src={styleSquid} alt='' onClick={this.handleChangeSquid}/>
+                <img className='Salmon_roe' src={styleSalmon_roe} alt='' onClick={this.handleChangeSalmon_roe}/>
+                <img className='Orange' src={styleOrange} alt='' onClick={this.handleChangeOrange}/>
+                <img className='Kiwi' src={styleKiwi} alt='' onClick={this.handleChangeKiwi}/>
+                <img className='Beef' src={styleBeef} alt='' onClick={this.handleChangeBeef}/>
+                <img className='Walnut' src={styleWalnut} alt='' onClick={this.handleChangeWalnut
                 }/>
               </div>
               <div className='allergiecom3'>
-                <img className='Salmon' src={styleSalmon} onClick={this.handleChangeSalmon}/>
-                <img className='Mackerel' src={styleMackerel} onClick={this.handleChangeMackerel}/>
-                <img className='Soy' src={styleSoy} onClick={this.handleChangeSoy}/>
-                <img className='Chicken' src={styleChicken} onClick={this.handleChangeChicken}/>
-                <img className='Pork' src={stylePork} onClick={this.handleChangePork}/>
-                <img className='Matsutake' src={styleMatsutake} onClick={this.handleChangeMatsutake}/>
-                <img className='Peaches' src={stylePeaches} onClick={this.handleChangePeaches}/>
+                <img className='Salmon' src={styleSalmon} alt='' onClick={this.handleChangeSalmon}/>
+                <img className='Mackerel' src={styleMackerel} alt='' onClick={this.handleChangeMackerel}/>
+                <img className='Soy' src={styleSoy} alt='' onClick={this.handleChangeSoy}/>
+                <img className='Chicken' src={styleChicken} alt='' onClick={this.handleChangeChicken}/>
+                <img className='Pork' src={stylePork} alt='' onClick={this.handleChangePork}/>
+                <img className='Matsutake' src={styleMatsutake} alt='' onClick={this.handleChangeMatsutake}/>
+                <img className='Peaches' src={stylePeaches} alt='' onClick={this.handleChangePeaches}/>
               </div>
               <div className='allergiecom4'>
-                <img className='Yam' src={styleYam} onClick={this.handleChangeYam}/>
-                <img className='Apple' src={styleApple} onClick={this.handleChangeApple}/>
-                <img className='Gelatin' src={styleGelatin} onClick={this.handleChangeGelatin}/>
-                <img className='Banana' src={styleBanana} onClick={this.handleChangeBanana}/>
-                <img className='Sesame' src={styleSesame} onClick={this.handleChangeSesame}/>
-                <img className='Cashew_nut' src={styleCashew_nut} onClick={this.handleChangeCashew_nut}/>
+                <img className='Yam' src={styleYam} alt='' onClick={this.handleChangeYam}/>
+                <img className='Apple' src={styleApple} alt='' onClick={this.handleChangeApple}/>
+                <img className='Gelatin' src={styleGelatin} alt='' onClick={this.handleChangeGelatin}/>
+                <img className='Banana' src={styleBanana} alt='' onClick={this.handleChangeBanana}/>
+                <img className='Sesame' src={styleSesame} alt='' onClick={this.handleChangeSesame}/>
+                <img className='Cashew_nut' src={styleCashew_nut} alt='' onClick={this.handleChangeCashew_nut}/>
               </div>
             </div>
           </div>

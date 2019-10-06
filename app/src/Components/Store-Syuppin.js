@@ -1,6 +1,6 @@
 
 import { withRouter } from "react-router";
-import React,{Component} from "react";
+import React from "react";
 import "../CSS/Store-Syuppin.css";
 import SuperKlass from './DefineConst';
 import axios from 'axios';

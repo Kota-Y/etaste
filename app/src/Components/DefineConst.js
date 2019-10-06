@@ -5,7 +5,7 @@ class SuperKlass {
         });
     }
 }
-
+/*
 class SubKlass extends SuperKlass {
     static get CONST() {
         return Object.assign(super.CONST || {}, {
@@ -13,6 +13,6 @@ class SubKlass extends SuperKlass {
             PON : 5
         });
     }
-}
+}*/
 
 export default SuperKlass;
