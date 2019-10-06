@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
 import { withRouter } from 'react-router';
+
 import SuperKlass from '../function/DefineConst';
 import "../CSS/LoginFeature.css";
 
@@ -204,5 +205,14 @@ class ValidatedSignUpForm extends React.Component{
         );
     }
 }
+
+/* const FormikForm = withFormik({
+    mapPropsToValues({ title, body }) {
+      return {
+        title: title || '', // titleに値が入っていたらpropsで渡されたtitleを表示、または空表示
+        body: body || ''
+      }
+    }
+  })(ValidatedSignUpForm) */
 
 export default withRouter(ValidatedSignUpForm);

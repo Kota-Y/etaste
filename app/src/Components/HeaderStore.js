@@ -68,30 +68,30 @@ class BranchingHeader extends React.Component {
             <div id="ham-menu">
                 <ul>
                     <h3
-                        onClick={() => {
-                        this.handleToHomePage();
-                        }}
+                      onClick={() => {
+                      this.handleToHomePage();
+                      }}
                     >
                         Home
                     </h3>
                     <h3
-                        onClick={() => {
-                        this.handleToFavoriteListPage();
-                        }}
+                      onClick={() => {
+                      this.handleToFavoriteListPage();
+                      }}
                     >
                         お気に入り店舗
                     </h3>
                     <h3
-                        onClick={() => {
-                        this.handleToDealPage();
-                        }}
+                      onClick={() => {
+                      this.handleToDealPage();
+                      }}
                     >
                         受け取り予定・履歴
                     </h3>
                     <h3
-                        onClick={() => {
-                        this.handleToSettingPage();
-                        }}
+                      onClick={() => {
+                      this.handleToSettingPage();
+                      }}
                     >
                         設定
                     </h3>
