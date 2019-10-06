@@ -1,11 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-//import { render } from 'react-dom';
 
-//import { isLogin } from "../function/DefineConst";
 import { store } from "./Login";
-//import { mappingState } from "./ValidatedLoginForm";
 import "../CSS/Header.css";
 
 class Header extends React.Component {

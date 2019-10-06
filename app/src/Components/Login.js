@@ -1,13 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router";
-//import ReactDOM from "react-dom";
-import { createStore, /* combineReducers */ } from "redux";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { FacebookLoginButton, TwitterLoginButton, InstagramLoginButton } from "react-social-login-buttons";
 
 import '../CSS/LoginFeature.css'
 import ValidatedLoginForm from "./ValidatedLoginForm";
-//import { connect } from "formik";
 
 //ステートの値
 let state_value = {
