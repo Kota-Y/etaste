@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
 //import { render } from 'react-dom';
 
 //import { isLogin } from "../function/DefineConst";
@@ -39,7 +39,6 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Provider store={store}>
       <div className="header">
         {(() => {
           console.log(store.getState());
@@ -118,9 +117,12 @@ class Header extends React.Component {
         </div>
         <div id="menu-background" />
       </div>
-      </Provider>
     );
   }
 }
 
-export default withRouter(Header);
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn
+})
+
+export default connect(mapStateToProps)(withRouter(Header));
