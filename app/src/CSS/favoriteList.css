@@ -1,0 +1,14 @@
+.favList h1{
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.list-container{
+    align-content: center;
+    margin-left: 80px;
+    flex-wrap: wrap;
+}
+
+.grid:hover{
+    cursor: pointer;
+}

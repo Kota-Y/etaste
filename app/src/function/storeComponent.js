@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
-import SuperKlass from './DefineConst';
+import SuperKlass from '../function/DefineConst';
 import '../CSS/StoreDetail.css';
 
 class StoreComponent extends React.Component{
@@ -45,14 +45,13 @@ class StoreComponent extends React.Component{
 
     render (){
         return(
-                <div className='container' onClick = { this.handleToStoreDetailPage } >
-                    <div className='info'>
-                        <img src={this.state.image} alt='' />
-                        <h2>{ this.state.name }</h2>
-                        <h3>熊本</h3>
-                    </div>
+            <div className='container' onClick = { this.handleToStoreDetailPage } >
+                <div className='info'>
+                    <img src={this.state.image} alt='' />
+                    <h2>{ this.state.name }</h2>
+                    <h3>熊本</h3>
                 </div>
-            
+            </div>     
         );
     }
 }

@@ -24,3 +24,18 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Laravel(api)
+/api/.env
+/api/src/node_modules
+/api/src/public/hot
+/api/src/public/storage
+/api/src/storage/*.key
+/api/src/vendor
+/api/src/.env
+/api/src.phpunit.result.cache
+/api/srcHomestead.json
+/api/srcHomestead.yaml
+/api/srcnpm-debug.log
+/api/srcyarn-error.log
+/api/logs

@@ -6,8 +6,8 @@ import Carousel from 'nuka-carousel';
 import "../CSS/Recommend.css";
 import AllRecommends from './allRecommends';
 import StoreDetail from './StoreDetail';
-import SuperKlass from './DefineConst';
-import StoreComponent from './storeComponent';
+import SuperKlass from '../function/DefineConst';
+import StoreComponent from '../function/storeComponent';
 
 const foodData = {
     id: 1,
