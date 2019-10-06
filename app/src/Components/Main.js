@@ -17,6 +17,7 @@ import StoreSyuppin from "./Store-Syuppin";
 import Storefin from "./Store-fin";
 import UserFin from "./UserFin";
 import Login from "./Login";
+import UserItem from "./UserItem"
 import "../CSS/Main.css";
 
 
@@ -42,6 +43,7 @@ class Main extends React.Component {
           <Route exact path={"/store-input"} component={StoreInput} />
           <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
           <Route exact path={"/store-fin"} component={Storefin} />
+          <Route exact path={"/user-item"} component={UserItem} />
         </Switch>
 
       </div>
