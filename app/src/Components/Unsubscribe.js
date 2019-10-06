@@ -6,7 +6,8 @@ class Unsubscribe extends React.Component {
   render() {
     return (
       <div>
-        <h1>退会について</h1>
+        <h1>退会についてです
+        </h1>
       </div>
     );
   }

@@ -1,0 +1,33 @@
+.check-area{
+    margin:auto;
+    margin-top: 80px;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border: 4px solid #bac6d3;
+    width: 550px;
+    height: 525px;
+}
+.check-area p{
+    font-size: 25px;
+    font-weight:600;
+}
+
+.storeconfirm{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #ffdb73;
+    border:1px solid #ffdb73;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 90px;
+    display: inline-block;
+    
+}
+.mainarea{
+    text-align: center;
+}
