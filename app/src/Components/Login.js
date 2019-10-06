@@ -1,9 +1,36 @@
 import React from "react";
 import { withRouter } from "react-router";
+//import ReactDOM from "react-dom";
+import { createStore, /* combineReducers */ } from "redux";
+import { Provider } from "react-redux";
 import { FacebookLoginButton, TwitterLoginButton, InstagramLoginButton } from "react-social-login-buttons";
 
 import '../CSS/LoginFeature.css'
 import ValidatedLoginForm from "./ValidatedLoginForm";
+//import { connect } from "formik";
+
+//ステートの値
+let state_value = {
+    email: 'etaste@aaa.com',
+    password: 'etaste0712',
+    isLoggedIn: false
+}
+
+//レデューサー
+function changeHeader(state = state_value, action){
+    switch(action.type){
+        case 'LOGIN':
+            return{
+                isLoggedIn:true
+            };
+        case 'NOTLOGIN':
+            return{
+                isLoggedIn: false
+            };
+        default:
+            return state;
+    }
+}
 
 class Login extends React.Component {
 
@@ -26,7 +53,9 @@ class Login extends React.Component {
                         <span>Instagramでログイン</span>
                     </InstagramLoginButton>
                 </div>
-                <ValidatedLoginForm />
+                <Provider store={store}>
+                    <ValidatedLoginForm />
+                </Provider>
                 <h3>パスワードを忘れた方</h3>
                 <h3
                     onClick={ this.handleToSignUpPage }
@@ -45,5 +74,13 @@ class Login extends React.Component {
         console.log(this.state);
     };
 }
+
+//ストアの作成
+export let store = createStore(changeHeader);
+
+//dispatchされるたびに値を確認できる
+store.subscribe(() =>
+    console.log(store.getState())
+)
 
 export default withRouter(Login);

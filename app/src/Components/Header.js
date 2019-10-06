@@ -1,7 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { Provider } from "react-redux";
+//import { render } from 'react-dom';
 
-import { isLogin } from "../function/DefineConst";
+//import { isLogin } from "../function/DefineConst";
+import { store } from "./Login";
+//import { mappingState } from "./ValidatedLoginForm";
 import "../CSS/Header.css";
 
 class Header extends React.Component {
@@ -35,9 +39,11 @@ class Header extends React.Component {
 
   render() {
     return (
+      <Provider store={store}>
       <div className="header">
         {(() => {
-          if ( isLogin ) {
+          console.log(store.getState());
+          if ( store.getState().isLoggedIn ) {
             return (
               <div className="header-contents">
                 <img src="./title.png" alt="" className="title" />
@@ -112,6 +118,7 @@ class Header extends React.Component {
         </div>
         <div id="menu-background" />
       </div>
+      </Provider>
     );
   }
 }

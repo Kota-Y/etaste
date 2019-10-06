@@ -1,9 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 import "../CSS/LoginFeature.css";
+import {store} from './Login';
 
 /* ログイン用の決め打ちのメルアドとパスワード */
 const userInfo = {
@@ -11,12 +13,12 @@ const userInfo = {
   password: 'etaste0712'
 }
 
+//ステートのマッピング
+function mappingState(state){
+  return state;
+}
+
 class ValidatedLoginForm extends React.Component{
-  /* handleToHomePage = () => {
-    if( userInfo.email ===  this.values.email && userInfo.password ===  this.values.password ){
-      return this.props.history.push("/home");
-    }
-  }; */
 
   render(){
     return(
@@ -26,9 +28,14 @@ class ValidatedLoginForm extends React.Component{
           setTimeout(() => {
             console.log("Logging in", values);
             setSubmitting(false);
-            if( userInfo.email ===  values.email && userInfo.password ===  values.password ){
-              this.props.history.push("/");
-            }
+              if( userInfo.email ===  values.email && userInfo.password ===  values.password ){
+                this.props.history.push("/");
+                this.props.dispatch({ type:'LOGIN' });
+                console.log(store.getState());
+              } else {
+                this.props.dispatch({ type:'NOTLOGIN' });
+                console.log(store.getState());
+              }
           }, 500);
         }}
 
@@ -92,5 +99,8 @@ class ValidatedLoginForm extends React.Component{
       </Formik>
   );}
 }
+
+//ストアのコネクト
+ValidatedLoginForm = connect(mappingState)(ValidatedLoginForm);
 
 export default withRouter(ValidatedLoginForm);

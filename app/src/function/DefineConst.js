@@ -12,11 +12,3 @@ export const isStore = false;
 
 /* ユーザーのログイン状態の判断(仮) */
 export const isLogin =　false;
-
-export const hoge = () => {
-    if(document.getElementById('check').checked === true) {
-      document.getElementById('but').disabled = false;
-    } else {
-      document.getElementById('but').disabled = true;
-    }
-  }
