@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Favorite;
-use App\User;
-use App\Store;
+use App\Models\Favorite;
+use App\Models\User;
+use App\Models\Store;
 use App\Http\Controllers\Controller;
 
 class FavoritesController extends Controller

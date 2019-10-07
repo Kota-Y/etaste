@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Trade;
-use App\User;
-use App\Store;
-use App\Food;
+use App\Models\Trade;
+use App\Models\User;
+use App\Models\Store;
+use App\Models\Food;
 use App\Http\Controllers\Controller;
 
 class TradesController extends Controller

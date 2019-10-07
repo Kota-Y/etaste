@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
@@ -76,7 +76,7 @@ class UsersController extends Controller
     {
         $id = $request->input('id');
 
-        $md = \App\User::find($id);
+        $md = User::find($id);
         $md->is_login = false;
         $md->save();
 
