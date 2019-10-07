@@ -24,7 +24,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -41,7 +41,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -58,7 +58,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -92,7 +92,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -129,7 +129,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -147,7 +147,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -172,7 +172,7 @@ class TradesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );

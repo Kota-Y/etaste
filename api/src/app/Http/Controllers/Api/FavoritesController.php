@@ -23,7 +23,7 @@ class FavoritesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -40,7 +40,7 @@ class FavoritesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -70,7 +70,7 @@ class FavoritesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
