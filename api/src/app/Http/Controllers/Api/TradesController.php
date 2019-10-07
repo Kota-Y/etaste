@@ -100,7 +100,7 @@ class TradesController extends Controller
 
         $md = new Trade();
 
-        $datas = $md->getData($user_id);
+        $datas = $md->getUSerData($user_id);
 
         $data_json = [
             'id' => 1,
@@ -123,7 +123,45 @@ class TradesController extends Controller
 
     public function showStore($storeId)
     {
-        //
+        $store = new Store();
+
+        $store_id = $storeId;
+
+        if(!$store->hasStoreId($store_id)){
+            $data_json = [
+                'code' => 1,
+                'message' => 'StoreId does not exist.'
+            ];
+
+            return response()->json(
+                $data_json,
+                500,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+
+        $md = new Trade();
+
+        $datas = $md->getStoreData($store_id);
+
+        $data_json = [
+            'id' => $datas[0]->foodId,
+            'foodName' => $datas[0]->foodName,
+            'amount' => $datas[0]->amount - self::tradeFoodSum($datas),
+            'startTime' => $datas[0]->startTime,
+            'endTime' => $datas[0]->endTime,
+            'foodImage' => $datas[0]->foodImage,
+            'tradeNum' => count($datas),
+            'storeTrades' => self::toStoreTradeArray($datas)
+        ];
+
+        return response()->json(
+            $data_json,
+            200,
+            [],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 
     private function toTradeArray($requet_obejct)
@@ -151,5 +189,41 @@ class TradesController extends Controller
         }
 
         return $response_arr;
+    }
+
+    private function toStoreTradeArray($requet_obejct)
+    {
+        $response_arr = [];
+
+        $i = 0;
+        while(count($requet_obejct) > $i){
+            $amount = $requet_obejct[$i]->orderAmount;
+            $arr_data  = [
+                'id' => $requet_obejct[$i]->id,
+                'orderAmount' => $amount,
+                'totalPrice' => $requet_obejct[$i]->sale_price * $amount,
+                'recieveTime' => $requet_obejct[$i]->recieveTime,
+                'userName' => $requet_obejct[$i]->foodImage,
+                'isCompleted' => $requet_obejct[$i]->isCompleted,
+            ];
+            $response_arr[] = $arr_data;
+
+            ++$i;
+        }
+
+        return $response_arr;
+    }
+
+    private function tradeFoodSum($requet_obejct)
+    {
+        $amountSum = 0;
+
+        $i = 0;
+        while(count($requet_obejct) > $i){
+            $amountSum += $requet_obejct[$i]->orderAmount;
+            ++$i;
+        }
+
+        return $amountSum;
     }
 }

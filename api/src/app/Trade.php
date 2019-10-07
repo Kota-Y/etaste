@@ -21,7 +21,7 @@ class Trade extends Model
         , 'receive_time'
     ];
 
-    public function getData($userId=null)
+    public function getUserData($userId=null)
     {
       $query = DB::table($this->table);
 
@@ -41,6 +41,33 @@ class Trade extends Model
                         )
                     ->join('foods','foods.id','=','trades.food_id')
                     ->join('stores','stores.id','=','trades.store_id')
+                    ->get();
+
+      return $data;
+    }
+
+    public function getStoreData($storeId=null)
+    {
+      $query = DB::table($this->table);
+
+      if($storeId != null) $query->where('trades.store_id', $storeId);
+    
+      $data = $query->select(
+                        'foods.id as foodId'
+                        , 'foods.name as foodName'
+                        , 'foods.amount as amount'
+                        , 'foods.start_time as startTime'
+                        , 'foods.end_time as endTime'
+                        , 'foods.image_url as foodImage'
+                        , 'trades.id as id'
+                        , 'trades.amount as orderAmount'
+                        , 'sale_price'
+                        , 'recieve_time as recieveTime'
+                        , 'users.mail as userName'
+                        , 'is_completed as isCompleted'
+                        )
+                    ->join('users','users.id','=','trades.user_id')
+                    ->join('foods','foods.id','=','trades.food_id')
                     ->get();
 
       return $data;
