@@ -77,4 +77,9 @@ class Trade extends Model
     {
         return DB::table($this->table)->where('id', $id)->exists();
     }
+
+    public function isCompleted($id)
+    {
+        DB::table($this->table)->where('id', $id)->update(['is_completed' => true]);
+    }
 }

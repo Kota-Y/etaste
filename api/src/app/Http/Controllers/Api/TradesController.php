@@ -153,12 +153,7 @@ class TradesController extends Controller
             );
         }
 
-        // $trade->is_completed = True;
-
-        // $trade->save();
-
-        \App\Trade::where('id', $trade_id)
-          ->update(['is_completed' => true]);
+        $trade->isCompleted($trade_id);
 
         return response([], 204);
     }
