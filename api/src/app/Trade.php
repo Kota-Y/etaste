@@ -72,4 +72,9 @@ class Trade extends Model
 
       return $data;
     }
+
+    public function hasTradeId($id)
+    {
+        return DB::table($this->table)->where('id', $id)->exists();
+    }
 }

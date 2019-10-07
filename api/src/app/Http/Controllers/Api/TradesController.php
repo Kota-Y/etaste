@@ -118,7 +118,49 @@ class TradesController extends Controller
 
     public function complete(Request $request, $id)
     {
-        //
+        $user = new User();
+        $user_id = $request->input('userId');
+
+        if(!$user->hasUserId($user_id)){
+            $data_json = [
+                'code' => 1,
+                'message' => 'UserId does not exist.'
+            ];
+
+            return response()->json(
+                $data_json,
+                500,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+
+        $trade = new Trade();
+
+        $trade_id = $id;
+
+        if(!$trade->hasTradeId($trade_id)){
+            $data_json = [
+                'code' => 1,
+                'message' => 'TradeId does not exist.'
+            ];
+
+            return response()->json(
+                $data_json,
+                500,
+                [],
+                JSON_UNESCAPED_UNICODE
+            );
+        }
+
+        // $trade->is_completed = True;
+
+        // $trade->save();
+
+        \App\Trade::where('id', $trade_id)
+          ->update(['is_completed' => true]);
+
+        return response([], 204);
     }
 
     public function showStore($storeId)
