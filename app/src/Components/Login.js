@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter } from "react-router";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { FacebookLoginButton, TwitterLoginButton, InstagramLoginButton } from "react-social-login-buttons";
 
 import '../CSS/LoginFeature.css'
@@ -12,6 +14,12 @@ let state_value = {
     email: 'etaste@aaa.com',
     password: 'etaste0712',
     isLoggedIn: false
+}
+
+// 永続化の設定
+const persistConfig = {
+    key: 'root', // Storageに保存されるキー名を指定する
+    storage, // 保存先としてlocalStorageがここで設定される
 }
 
 //レデューサー
@@ -30,8 +38,16 @@ function changeHeader(state = state_value, action){
     }
 }
 
+// 永続化設定されたReducerとして定義
+const persistedReducer = persistReducer(persistConfig, changeHeader)
+
 //ストアの作成
-export let store = createStore(changeHeader);
+export const store = createStore(
+    persistedReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+export const persistor = persistStore(store);
 
 class Login extends React.Component {
 
