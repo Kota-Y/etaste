@@ -38,7 +38,6 @@ class Header extends React.Component {
     return (
       <div className="header">
         {(() => {
-          console.log(store.getState());
           if ( store.getState().isLoggedIn ) {
             return (
               <div className="header-contents">

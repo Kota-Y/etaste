@@ -7,6 +7,7 @@ class MailCheck extends React.Component {
     };
   
     render() {
+        console.log(this.props.location.state);
         return (
             <div className='mailcheck-container'>
                 <h2>ご登録いただいたメールアドレスにメールが届いているか確認してください</h2>

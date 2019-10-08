@@ -11,8 +11,18 @@ class ValidatedSignUpForm extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          isAgreed: false,
+            isAgreed: false,
+
+            name_sei: '',
+            name_mei: '',
+            name_kana_sei: '',
+            name_kana_mei: '',
+            email: '',
+            password: '',
+            password_check: '',
         }
+
+        this.handleToMailCheckPage = this.handleToMailCheckPage.bind(this)
     }
 
     onAgreementCheckboxChanged(newValue) {
@@ -20,7 +30,17 @@ class ValidatedSignUpForm extends React.Component{
     }
     
     handleToMailCheckPage = () => {
-        this.props.history.push("/mail-check");
+        this.props.history.push({
+            pathname: "/mail-check",
+            state: { name_sei: this.state.name_sei,
+                    name_mei: this.state.name_mei,
+                    name_kana_sei: this.state.name_kana_sei,
+                    name_kana_mei: this.state.name_kana_mei,
+                    email: this.state.email,
+                    password: this.state.password,
+                    password_check: this.state.password_check
+            }
+        });
     };
     
     render() {
@@ -37,7 +57,6 @@ class ValidatedSignUpForm extends React.Component{
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
-                        console.log(values);
                         setSubmitting(false);
                         this.handleToMailCheckPage();
                         axios
