@@ -30,6 +30,9 @@ function changeHeader(state = state_value, action){
     }
 }
 
+//ストアの作成
+export let store = createStore(changeHeader);
+
 class Login extends React.Component {
 
     handleToSignUpPage = () => {
@@ -72,9 +75,6 @@ class Login extends React.Component {
         console.log(this.state);
     };
 }
-
-//ストアの作成
-export let store = createStore(changeHeader);
 
 //dispatchされるたびに値を確認できる
 store.subscribe(() =>
