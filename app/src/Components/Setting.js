@@ -7,9 +7,6 @@ class Setting extends React.Component {
     this.props.history.push("/opensource");
   };
   handleToTradeHistoryPage = () => {
-    this.props.history.push("/tradeHistory");
-  };
-  handleToTradeHistoryPage = () => {
     this.props.history.push("/profileset");
   };
   handleToStoreDealPage = () => {

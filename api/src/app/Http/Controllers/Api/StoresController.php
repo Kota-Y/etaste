@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Store;
+use App\Models\Store;
 use App\Http\Controllers\Controller;
 
 class StoresController extends Controller
@@ -36,6 +36,6 @@ class StoresController extends Controller
     {
         $store = Store::find($id);
         $store->delete();
-        return redirect('/stores');
+        return response([], 200);        
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -42,5 +42,10 @@ class Store extends Model
                     ->get();
 
       return $data;
+    }
+
+    public function hasStoreId($id)
+    {
+        return DB::table($this->table)->where('id', $id)->exists();
     }
 }
