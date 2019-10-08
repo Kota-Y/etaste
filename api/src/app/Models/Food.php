@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -88,5 +88,10 @@ class Food extends Model
                     ->get();
 
       return $data;
+    }
+
+    public function hasFoodId($id)
+    {
+        return DB::table($this->table)->where('id', $id)->exists();
     }
 }

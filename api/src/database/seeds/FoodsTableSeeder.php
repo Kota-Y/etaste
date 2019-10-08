@@ -22,7 +22,7 @@ class FoodsTableSeeder extends Seeder
               'sale_price' => 300,
               'start_time' => '1500',
               'end_time' => '1900',
-              'amount' => 3,
+              'amount' => 10,
               'allergy' => '卵,乳',
               'image_url' => 'https://dl.dropboxusercontent.com/s/7vyyl6u3h66enwv/takigawa-pan.jpg',
               'created_at' => new DateTime(),
@@ -79,4 +79,3 @@ class FoodsTableSeeder extends Seeder
           ]);
     }
 }
-
