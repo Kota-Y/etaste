@@ -40,7 +40,9 @@ class StoreDetail extends React.Component{
             /* 画像の切り替え */
             isOpen: true,
             /* とりあえずのユーザーID */
-            userId: 1
+            userId: 1,
+            /* 出品中の商品がない時、true */            
+            NoItem:true,
         };
     }
 
@@ -98,6 +100,9 @@ class StoreDetail extends React.Component{
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
+        if(this.state.NoItem){                
+            this.props.history.push("/store-detail-noitem");  
+        }
     }
 
     /* お気に入りするときにストア情報をポストするメソッド */

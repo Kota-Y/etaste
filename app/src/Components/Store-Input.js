@@ -722,7 +722,7 @@ sendImagetoS3(params){
           <div className="amount">
             <input 
             className='storeinputinput'
-            value={this.state.itemNumber}　
+            value={this.state.amount}　
             name='amount' 
             onChange={this.handleChange} 
             placeholder="個数(半角数字)"/>

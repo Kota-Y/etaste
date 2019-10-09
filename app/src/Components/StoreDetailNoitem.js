@@ -6,9 +6,10 @@ import axios from 'axios';
 import SuperKlass from '../function/DefineConst';
 import { strTimeOpen, strTimeClose } from '../function/storeTime';
 import StoreComponent from '../function/storeComponent';
-import "../CSS/UserItem.css";
+import '../CSS/StoreDetailNoitem.css';
 
-class UserItem extends React.Component {
+
+class StoreDetailNoitem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,7 +48,6 @@ class UserItem extends React.Component {
             /* とりあえずのユーザーID */
             userId: 1
         };
-        this.handleChange = this.handleChange.bind(this)
     }
     componentDidMount() { 
         /* Storeの情報をGETするメソッド(id1について) */
@@ -80,34 +80,7 @@ class UserItem extends React.Component {
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
-
-        /*　Storeの出品中の商品をGETするメソッド */
-        axios
-            .get(　SuperKlass.CONST.DOMAIN + '/food/{1}', {
-                    headers: { "Content-Type": "application/json" },
-                    data: {},
-                    param: this.state.storeId
-                })
-            .then( (res) => {
-                console.log(this.state.storeId);
-                console.log(res.data.foodInfo);
-                this.setState({
-                    foodName: res.data.foodInfo[0].name,
-                    foodImage: res.data.foodInfo[0].image,
-                    originalPrice: res.data.foodInfo[0].originalPrice,
-                    salePrice: res.data.foodInfo[0].salePrice,
-                    startTime: res.data.foodInfo[0].startTime,
-                    endTime: res.data.foodInfo[0].endTime,
-                    whySale: res.data.foodInfo[0].whySale,
-                    allergies: res.data.foodInfo[0].allergys,
-                 });
-                 console.log(res.data.foodInfo[0].allergys);
-                 console.log(this.state.allergies[0].name);
-            })
-            .catch( (error) => {
-                console.log('通信に失敗しました');
-            });
-    }
+        }
   /* お気に入りするときにストア情報をポストするメソッド */
   handlePostStoreInfo(){
     if( this.state.isOpen ){
@@ -135,84 +108,19 @@ class UserItem extends React.Component {
 
   getImageName = () => this.state.isOpen ? 'favGray' : 'fav';
 
-
-  handleChange(e){ //入力フォームにおいてそれぞれの要素のname属性に対応した変数にvalueを格納
-    this.setState({
-      [e.target.name]: e.target.value,
-    })
-  }
-
+  
   render() {
-    const imageName = this.getImageName();
-
-    /* 営業時間の先頭が0の場合に消す処理 */
-    const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
+      /* 営業時間の先頭が0の場合に消す処理 */
+      const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
         
-    /* 販売時刻の先頭が0の場合に消す処理 */
-    /*const sellTime = strTimeOpen( this.state.startTime ) + '〜' + strTimeClose( this.state.endTime );*/
 
+      const imageName = this.getImageName();
+      
     return (
-    　<div className='UserItem-container'>
-        <div className='Item-inUserItem'>
-            <img className='ItemImage' src={this.state.foodImage} alt=''/>
-            <div className='Item-container'>
-                <div>
-                <h1>{this.state.foodName}</h1>
-                <div className='price'>
-                    <h2 className='dot-inUserItem'>・</h2>
-                    <h3 className='deleat'>{ this.state.originalPrice + '円'}</h3>
-                    <h3> → </h3> 
-                    <h3 className='salePrice'>{this.state.salePrice + '円' }</h3>
-                </div>
-                
-                <h2>・受け取り可能時間　{this.state.startTime}~{this.state.endTime}</h2>
-                <h2>・{this.state.storeName}</h2>
-                </div>
-                
-                <div className='history-of-exhibition'>
-                <h1>出品経緯</h1>
-                <div>
-                <h3>{this.state.whySale}</h3>
-                </div>
-
-                </div>
-
-                <div className='allergy-show'>
-                <h1>アレルギー表示</h1>
-                <div>
-                <h2>?</h2>{/*{this.state.allergies[0].name}ができない？*/}
-                </div>
-                </div>
-
-                <div className='item-num'>
-                <h1>購入個数</h1>
-                <div>
-                <input
-                className='useriteminput'
-                value={this.state.item_num_tobuy}　
-                name='item_num_tobuy' 
-                onChange={this.handleChange} 
-                placeholder="購入希望個数を入力(半角数字)"/>
-                </div>
-                </div>
-
-                <div className='receive-time'>
-                <h1>受け取り時間</h1>
-                <div>
-                <input
-                className='useriteminput'
-                value={this.state.recieve_time_tobuy}　
-                name='recieve_time_tobuy' 
-                onChange={this.handleChange} 
-                placeholder="購入希望時間を選択(半角数字)"/>
-                </div>
-                </div>
-                <button className='storesubmit' 
-          /*onClick={ () =>{ 
-            this.handleToStoreSyuppinPage();
-            }}*/ 
-          disabled={this.state.isSubmitButton}>購入確認</button>
-            </div>
+      <div className='StoreDetailNoitem-Container'>
+        <div className='message-inStoreDetailNoitem'>  
+        <h1>申し訳ございません</h1>
+        <h1>現在、出品がありません</h1>
         </div>
         <div className='store-detail-inUserItem'>
             <div className='store-info-inUserItem'>
@@ -270,4 +178,4 @@ const mapStyles = {
 
 export default withRouter(GoogleApiWrapper({
     apiKey: 'AIzaSyC0J0FF5y8zA1Bd_BNXC_GeYflbOodFN3g'
-  })(UserItem));
+  })(StoreDetailNoitem));

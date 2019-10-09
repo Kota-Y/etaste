@@ -5,6 +5,7 @@ import Setting from "./Setting";
 import Item from "./Item";
 import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
+import StoreDetailNoitem from "./StoreDetailNoitem"
 import FavoriteList from "./favoriteList";
 import Opensource from "./Opensource";
 import Branching from "./Branching";
@@ -18,6 +19,7 @@ import Storefin from "./Store-fin";
 import UserFin from "./UserFin";
 import Login from "./Login";
 import UserItem from "./UserItem"
+
 import "../CSS/Main.css";
 
 
@@ -31,6 +33,7 @@ class Main extends React.Component {
           <Route exact path={"/setting"} component={Setting} />
           <Route exact path={"/all-recommends"} component={AllRecommends} />
           <Route exact path={"/store-detail"} component={StoreDetail} />
+          <Route exact path={"/store-detail-noitem"} component={StoreDetailNoitem} />
           <Route exact path={"/favorite-list"} component={FavoriteList} />
           <Route exact path={"/opensource"} component={Opensource} />
           <Route exact path={"/deal"} component={Branching} />

@@ -1,6 +1,39 @@
+.UserItem-container{
+    height:2200px;
+}
+
+
+.Item-container{
+    width:30%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px grey;/*線*/
+    border-radius: 30px;/*角の丸み*/
+    margin:20px auto;
+}
+.dot-inUserItem{
+    display: inline;
+    margin-right:0;
+}
+.price-inUserItem{
+    display: inline;
+    margin:0;
+    
+}
 .store-detail-inUserItem{
     display: block;
     border-top:1px solid gray;
     margin-top:10px;
-    width:90%;
+    width:80%;
+    margin: 0 auto;
+}
+
+.store-detail-inUserItem h1{
+    margin-left: 30px;
+}
+
+.store-info-inUserItem{
+    display: inline-flex;
 }

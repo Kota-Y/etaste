@@ -35,6 +35,7 @@ class Recommend extends React.Component {
     handleToStoreDetailPage = () => {
         this.props.history.push("/store-detail");
     };
+  
 
     /* Foodの情報のGETメソッド */
     handleGetFoodInfo() { 
