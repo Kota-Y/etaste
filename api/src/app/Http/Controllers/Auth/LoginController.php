@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,7 @@ class LoginController extends Controller
 
         $credentials = $request->only('mail', 'password');
         $token = $guard->attempt($credentials);
-        
+
         if (!$token) {
             $data_json = [
                 'code' => 1,
@@ -40,6 +41,11 @@ class LoginController extends Controller
                 JSON_UNESCAPED_UNICODE
             );
         }
+
+        $id = $request->input('id');
+        $user = User::find($id);
+        $user->is_login = true;
+        $user->save();
 
         return response()->json(
             $token,
