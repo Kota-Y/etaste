@@ -21,9 +21,19 @@ use Illuminate\Http\Request;
 //   Route::resource('stores', 'Api\StoresController');
 // });
 
-Route::get('/stores', 'Api\StoresController@index');
-Route::get('/store/{id}', 'Api\StoresController@show');
-Route::delete('/store/{id}', 'Api\StoresController@destroy');
+Route::group(["middleware" => "api"], function () {
+        Route::get('/stores', 'Api\StoresController@index');
+        Route::get('/store/{id}', 'Api\StoresController@show');
+        Route::post('/user/login', 'Auth\LoginController@login');
+    Route::group(['middleware' => ['jwt.auth']], function () {
+        Route::delete('/store/{id}', 'Api\StoresController@destroy');
+        Route::get('/home', 'ApiController@index');
+    });
+});
+
+// Route::get('/stores', 'Api\StoresController@index');
+// Route::get('/store/{id}', 'Api\StoresController@show');
+// Route::delete('/store/{id}', 'Api\StoresController@destroy');
 
 Route::get('/food', 'Api\FoodsController@index');
 Route::post('/food', 'Api\FoodsController@store');
@@ -40,6 +50,5 @@ Route::post('/favorite', 'Api\FavoritesController@store');
 Route::delete('/favorite/{id}', 'Api\FavoritesController@destroy');
 
 Route::post('/user', 'Api\UsersController@store');
-Route::post('/user/login', 'Api\UsersController@login');
 Route::get('/user/logout', 'Api\UsersController@logout');
 Route::delete('/user/{id}', 'Api\UsersController@destroy');
