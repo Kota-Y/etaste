@@ -2,9 +2,10 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
+import Select from "react-select";
 
 import SuperKlass from '../function/DefineConst';
-import { strTimeOpen, strTimeClose } from '../function/storeTime';
+import { strTimeEdit} from '../function/storeTime';
 import StoreComponent from '../function/storeComponent';
 import "../CSS/UserItem.css";
 
@@ -141,37 +142,44 @@ class UserItem extends React.Component {
       [e.target.name]: e.target.value,
     })
   }
+  handleChangeselectE = recieve_time_tobuy => {
+    this.setState({ recieve_time_tobuy });
+  };
 
   render() {
     const imageName = this.getImageName();
 
     /* 営業時間の先頭が0の場合に消す処理 */
-    const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
+    const business_hours = strTimeEdit( this.state.openTime ) + '〜' + strTimeEdit( this.state.closeTime );
         
-    /* 販売時刻の先頭が0の場合に消す処理 */
-    /*const sellTime = strTimeOpen( this.state.startTime ) + '〜' + strTimeClose( this.state.endTime );*/
+    /* 受け取り可能時間の先頭が0の場合に消す処理 */
+    const receiveTime = strTimeEdit( this.state.startTime ) + '〜' + strTimeEdit( this.state.endTime );
+
+    /*　受け取り希望時間の調整　*/
+    const timeInfo = new Date();
+    console.log(timeInfo);
 
     return (
     　<div className='UserItem-container'>
         <div className='Item-inUserItem'>
-            <img className='ItemImage' src={this.state.foodImage} alt=''/>
+            <img className='ItemImage-inUserItem' src={this.state.foodImage} alt=''/>
             <div className='Item-container'>
                 <div>
                 <h1>{this.state.foodName}</h1>
-                <div className='price'>
-                    <h2 className='dot-inUserItem'>・</h2>
+                <div className='price price-inUserItem'>
+                    <h3 className='dot-inUserItem'>・</h3>
                     <h3 className='deleat'>{ this.state.originalPrice + '円'}</h3>
                     <h3> → </h3> 
                     <h3 className='salePrice'>{this.state.salePrice + '円' }</h3>
                 </div>
                 
-                <h2>・受け取り可能時間　{this.state.startTime}~{this.state.endTime}</h2>
-                <h2>・{this.state.storeName}</h2>
+                <h4>・受け取り可能時間 {receiveTime}</h4>
+                <h4>・{this.state.storeName}</h4>
                 </div>
                 
                 <div className='history-of-exhibition'>
                 <h1>出品経緯</h1>
-                <div>
+                <div className='whySale-inUserItem'>
                 <h3>{this.state.whySale}</h3>
                 </div>
 
@@ -199,12 +207,14 @@ class UserItem extends React.Component {
                 <div className='receive-time'>
                 <h1>受け取り時間</h1>
                 <div>
-                <input
-                className='useriteminput'
-                value={this.state.recieve_time_tobuy}　
-                name='recieve_time_tobuy' 
-                onChange={this.handleChange} 
-                placeholder="購入希望時間を選択(半角数字)"/>
+                <Select
+                className='timeselect-inUserItem'
+                //options={this.state.times}
+                value={this.state.recieve_time_tobuy}
+                placeholder='受取希望時間を選択'
+                name=''
+                onChange={this.handleChangeselect}
+                />
                 </div>
                 </div>
                 <button className='storesubmit' 

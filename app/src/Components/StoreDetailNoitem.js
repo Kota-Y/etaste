@@ -4,7 +4,7 @@ import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import axios from 'axios';
 
 import SuperKlass from '../function/DefineConst';
-import { strTimeOpen, strTimeClose } from '../function/storeTime';
+import { strTimeEdit} from '../function/storeTime';
 import StoreComponent from '../function/storeComponent';
 import '../CSS/StoreDetailNoitem.css';
 
@@ -111,7 +111,7 @@ class StoreDetailNoitem extends React.Component {
   
   render() {
       /* 営業時間の先頭が0の場合に消す処理 */
-      const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
+      const business_hours = strTimeEdit( this.state.openTime ) + '〜' + strTimeEdit( this.state.closeTime );
         
 
       const imageName = this.getImageName();

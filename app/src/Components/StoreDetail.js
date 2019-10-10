@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import SuperKlass from '../function/DefineConst';
 import StoreComponent from '../function/storeComponent';
-import { strTimeOpen, strTimeClose } from '../function/storeTime';
+import { strTimeEdit} from '../function/storeTime';
 import "../CSS/StoreDetail.css";
 
 class StoreDetail extends React.Component{
@@ -42,7 +42,7 @@ class StoreDetail extends React.Component{
             /* とりあえずのユーザーID */
             userId: 1,
             /* 出品中の商品がない時、true */            
-            NoItem:true,
+            NoItem:false,
         };
     }
 
@@ -135,11 +135,11 @@ class StoreDetail extends React.Component{
 
     render() {
         /* 営業時間の先頭が0の場合に消す処理 */
-        const business_hours = strTimeOpen( this.state.openTime ) + '〜' + strTimeClose( this.state.closeTime );
+        const business_hours = strTimeEdit( this.state.openTime ) + '〜' + strTimeEdit( this.state.closeTime );
         
         /* 販売時刻の先頭が0の場合に消す処理 */
-        const sellTime = strTimeOpen( this.state.startTime ) + '〜' + strTimeClose( this.state.endTime );
-
+        const sellTime = strTimeEdit( this.state.startTime ) + '〜' + strTimeEdit( this.state.endTime );
+        
         const imageName = this.getImageName();
         
         return(

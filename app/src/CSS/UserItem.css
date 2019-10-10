@@ -13,14 +13,67 @@
     border-radius: 30px;/*角の丸み*/
     margin:20px auto;
 }
+.Item-container h1{
+    margin-bottom: 0; 
+}
+
+.Item-container h4{
+    margin: 0 0 0 40px; 
+}
+
+.ItemImage-inUserItem{
+    margin: 20px auto;
+    display: block; 
+    width:600px;
+    height:auto;
+}
+
 .dot-inUserItem{
     display: inline;
     margin-right:0;
+    margin-left: 36px; 
 }
 .price-inUserItem{
-    display: inline;
+    margin-left:40px;
+    height:40px;
+}
+
+.price-inUserItem h3{
     margin:0;
-    
+}
+
+.whySale-inUserItem{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #FFF;
+    border: solid 1px grey;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    margin:10px auto 20px auto;
+}
+.whySale-inUserItem h3{
+    font-weight: 300;
+}
+
+.useriteminput{
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #0c0d0e;
+    width: 250px;
+    height: 35px;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #bac6d3;
+    border-radius: 3px;
+    display: block;
+    margin-left: 40px;
+    text-align: right;
+}
+
+.timeselect-inUserItem{
+    width:270px;
+    margin-left: 40px;
+    font-weight: 400;
+    color: hsl(0,0%,40%);
 }
 .store-detail-inUserItem{
     display: block;
