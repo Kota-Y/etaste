@@ -1,7 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
 
-import { isLogin } from "../function/DefineConst";
+import { store } from "./Login";
 import "../CSS/Header.css";
 
 class Header extends React.Component {
@@ -29,11 +30,15 @@ class Header extends React.Component {
     this.props.history.push("/login");
   };
 
+  handleToSignUpPage = () => {
+    this.props.history.push("/sign-up");
+  };
+
   render() {
     return (
       <div className="header">
         {(() => {
-          if ( isLogin ) {
+          if ( store.getState().isLoggedIn ) {
             return (
               <div className="header-contents">
                 <img src="./title.png" alt="" className="title" />
@@ -55,7 +60,7 @@ class Header extends React.Component {
                   onClick = { this.handleToLoginPage }
                 >ログイン</h2>
                 <h2
-                  onClick = { this.handleToLoginPage }
+                  onClick = { this.handleToSignUpPage }
                 >新規登録</h2>
                 <h2
                   onClick = { this.handleToLoginPage }
@@ -104,9 +109,6 @@ class Header extends React.Component {
             >
               テスト購入ボタン
             </h3>
-            <li>ヘルプ</li>
-            <li>サインアップ</li>
-            <li>ログイン</li>
           </ul>
         </div>
         <div id="menu-background" />
@@ -115,4 +117,8 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(Header);
+const mapStateToProps = state => ({
+  isLoggedIn: state.isLoggedIn
+})
+
+export default connect(mapStateToProps)(withRouter(Header));

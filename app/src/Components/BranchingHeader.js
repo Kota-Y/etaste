@@ -1,16 +1,18 @@
 import React from 'react';
+import { Provider } from "react-redux";
 
+import { store } from "./Login";
 import Header from './Header';
 import HeaderStore from './HeaderStore';
 import { isStore } from '../function/DefineConst';
 
 
-function Branching() {
+function BranchingHeader() {
     if( isStore ){
-        return <HeaderStore />;
+        return <Provider store={store}><HeaderStore /></Provider>
     } else {
-        return <Header />;
+        return <Provider store={store}><Header /></Provider>
     }
 }
 
-export default Branching;
+export default BranchingHeader;
