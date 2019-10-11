@@ -1,5 +1,5 @@
 .UserItem-container{
-    height:2200px;
+    height:2120px;
 }
 
 
@@ -15,6 +15,8 @@
 }
 .Item-container h1{
     margin-bottom: 0; 
+    font-size: 35px;
+    margin-left: 30px;
 }
 
 .Item-container h4{
@@ -54,11 +56,31 @@
     font-weight: 300;
 }
 
+.allergy-show-area{
+    height:100px;
+    width:330px;
+    margin :0 auto;
+}
+
+.allergy-box{
+    background:#ffdb73;
+    width:65px;
+    height:35px;
+    margin : 5px 10px 5px 10px;
+    display: inline-block;   
+    text-align: center;
+    border-radius: 3px;
+}
+
+.allergy-box h4{
+    margin:5px 0;
+}
+ 
 .useriteminput{
     box-sizing: border-box;
     background-color: #fff;
     color: #0c0d0e;
-    width: 250px;
+    width: 340px;
     height: 35px;
     font-size: 16px;
     padding: 5px;
@@ -66,11 +88,14 @@
     border-radius: 3px;
     display: block;
     margin-left: 40px;
-    text-align: right;
+    
+}
+.useriteminput::placeholder{
+    text-align: left;
 }
 
 .timeselect-inUserItem{
-    width:270px;
+    width:340px;
     margin-left: 40px;
     font-weight: 400;
     color: hsl(0,0%,40%);
@@ -89,4 +114,14 @@
 
 .store-info-inUserItem{
     display: inline-flex;
+}
+
+.favorite-icon-gray-inUserItem img {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 74%;
+    left: 33%;
+    box-sizing: border-box;
+    transition: all .3s;
 }

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Select from "react-select";
 
 import SuperKlass from '../function/DefineConst';
-import { strTimeEdit} from '../function/storeTime';
+import {strTimeEdit,receiveTimeEdit}from '../function/storeTime';
 import StoreComponent from '../function/storeComponent';
 import "../CSS/UserItem.css";
 
@@ -39,16 +39,21 @@ class UserItem extends React.Component {
             salePrice: '',
             startTime: '',
             whySale:'',
-            allergies:'',
+            allergies:[],
             /*ユーザーの購入希望個数と購入希望時間 */
             item_num_tobuy:'',
             recieve_time_tobuy:'',
+            editedTimeState:'',
+            /*購入確認ボタンの管理*/
+            isUserSubmitButton:true,
             /* 画像の切り替え */
             isOpen: true,
             /* とりあえずのユーザーID */
             userId: 1
         };
         this.handleChange = this.handleChange.bind(this)
+        this.handleChangeselect = this.handleChangeselect.bind(this)
+
     }
     componentDidMount() { 
         /* Storeの情報をGETするメソッド(id1について) */
@@ -90,8 +95,6 @@ class UserItem extends React.Component {
                     param: this.state.storeId
                 })
             .then( (res) => {
-                console.log(this.state.storeId);
-                console.log(res.data.foodInfo);
                 this.setState({
                     foodName: res.data.foodInfo[0].name,
                     foodImage: res.data.foodInfo[0].image,
@@ -102,12 +105,15 @@ class UserItem extends React.Component {
                     whySale: res.data.foodInfo[0].whySale,
                     allergies: res.data.foodInfo[0].allergys,
                  });
-                 console.log(res.data.foodInfo[0].allergys);
-                 console.log(this.state.allergies[0].name);
+                    
+                    this.setState({
+                        editedTimeState:receiveTimeEdit(this.state.startTime,this.state.endTime),
+                    })
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
+
     }
   /* お気に入りするときにストア情報をポストするメソッド */
   handlePostStoreInfo(){
@@ -141,12 +147,34 @@ class UserItem extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     })
+    if(this.state.recieve_time_tobuy){
+        this.setState({
+            isUserSubmitButton:false
+        })
+    }
   }
-  handleChangeselectE = recieve_time_tobuy => {
+  handleChangeselect = recieve_time_tobuy => {
     this.setState({ recieve_time_tobuy });
-  };
-
+    if(this.state.item_num_tobuy){
+        this.setState({
+            isUserSubmitButton:false
+        })
+    }
+};
+  handleToUserItemConfirm(){
+    this.props.history.push({
+        pathname: "/user-item-confirm",
+        state:{
+            foodName:this.state.foodName,
+            item_num_tobuy:this.state.item_num_tobuy,
+            salePrice:this.state.salePrice,
+            recieve_time_tobuy:this.state.recieve_time_tobuy,
+            storeName:this.state.storeName
+            }
+      });
+  }
   render() {
+    
     const imageName = this.getImageName();
 
     /* 営業時間の先頭が0の場合に消す処理 */
@@ -154,12 +182,8 @@ class UserItem extends React.Component {
         
     /* 受け取り可能時間の先頭が0の場合に消す処理 */
     const receiveTime = strTimeEdit( this.state.startTime ) + '〜' + strTimeEdit( this.state.endTime );
-
-    /*　受け取り希望時間の調整　*/
-    const timeInfo = new Date();
-    console.log(timeInfo);
-
     return (
+        
     　<div className='UserItem-container'>
         <div className='Item-inUserItem'>
             <img className='ItemImage-inUserItem' src={this.state.foodImage} alt=''/>
@@ -187,8 +211,10 @@ class UserItem extends React.Component {
 
                 <div className='allergy-show'>
                 <h1>アレルギー表示</h1>
-                <div>
-                <h2>?</h2>{/*{this.state.allergies[0].name}ができない？*/}
+                <div className='allergy-show-area'>
+                {this.state.allergies.map(e=>
+                    <AllergyBox name={e.name}
+                    />)}
                 </div>
                 </div>
 
@@ -209,19 +235,18 @@ class UserItem extends React.Component {
                 <div>
                 <Select
                 className='timeselect-inUserItem'
-                //options={this.state.times}
+                options={this.state.editedTimeState}
                 value={this.state.recieve_time_tobuy}
                 placeholder='受取希望時間を選択'
-                name=''
-                onChange={this.handleChangeselect}
-                />
+                name='recieve_time_tobuy'
+                onChange={this.handleChangeselect}/>
                 </div>
                 </div>
                 <button className='storesubmit' 
-          /*onClick={ () =>{ 
-            this.handleToStoreSyuppinPage();
-            }}*/ 
-          disabled={this.state.isSubmitButton}>購入確認</button>
+                onClick={ () =>{ 
+                this.handleToUserItemConfirm();
+                }}
+                disabled={this.state.isUserSubmitButton}>購入確認</button>
             </div>
         </div>
         <div className='store-detail-inUserItem'>
@@ -229,7 +254,7 @@ class UserItem extends React.Component {
                 <div className='store-component-inUserItem'>
                     <StoreComponent />
                 </div>
-                <div className='favorite-icon-gray'>
+                <div className='favorite-icon-gray-inUserItem'>
                     <img src={imagesPath[imageName]} alt='' 
                         onClick = { () =>{
                             this.toggleImage();
@@ -267,6 +292,13 @@ class UserItem extends React.Component {
     );
   }
 }
+
+const AllergyBox = ({name})  => (
+    <div className='allergy-box'>
+        <h4>{name}</h4>
+    </div>
+);
+
 const imagesPath = {
     fav: "./image/fav.png",
     favGray: "./image/fav-gray.png"
@@ -281,3 +313,4 @@ const mapStyles = {
 export default withRouter(GoogleApiWrapper({
     apiKey: 'AIzaSyC0J0FF5y8zA1Bd_BNXC_GeYflbOodFN3g'
   })(UserItem));
+
