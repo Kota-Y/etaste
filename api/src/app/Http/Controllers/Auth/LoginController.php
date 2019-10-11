@@ -47,8 +47,12 @@ class LoginController extends Controller
         $user->is_login = true;
         $user->save();
 
+        $data_json = [
+            'token' => $token
+        ];
+
         return response()->json(
-            $token,
+            $data_json,
             200,
             [],
             JSON_UNESCAPED_UNICODE

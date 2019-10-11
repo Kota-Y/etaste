@@ -27,17 +27,6 @@ class UsersController extends Controller
         return response([], 201);
     }
 
-    public function logout(Request $request)
-    {
-        $id = $request->input('id');
-
-        $md = User::find($id);
-        $md->is_login = false;
-        $md->save();
-
-        return response([], 200);
-    }
-
     public function destroy($id)
     {
         $user = User::find($id);

@@ -28,6 +28,7 @@ Route::group(["middleware" => "api"], function () {
     Route::group(['middleware' => ['jwt.auth']], function () {
         Route::delete('/store/{id}', 'Api\StoresController@destroy');
         Route::get('/home', 'ApiController@index');
+        Route::get('/user/logout', 'Auth\LogoutController@logout');
     });
 });
 
@@ -50,5 +51,4 @@ Route::post('/favorite', 'Api\FavoritesController@store');
 Route::delete('/favorite/{id}', 'Api\FavoritesController@destroy');
 
 Route::post('/user', 'Api\UsersController@store');
-Route::get('/user/logout', 'Api\UsersController@logout');
 Route::delete('/user/{id}', 'Api\UsersController@destroy');
