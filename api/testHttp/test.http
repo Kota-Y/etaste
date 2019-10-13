@@ -7,6 +7,12 @@ GET {{baseUrl}}/store/1 HTTP/1.1
 ###
 
 GET {{baseUrl}}/stores HTTP/1.1
+Authorization:Bearer {{authToken}}
+
+###
+
+DELETE {{baseUrl}}/store/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###[Food-API]###
 
@@ -23,6 +29,7 @@ GET {{baseUrl}}/food HTTP/1.1
 ###
 
 POST {{baseUrl}}/food HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -55,6 +62,7 @@ Content-Type: application/json
 ###
 
 POST {{baseUrl}}/food HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -71,9 +79,15 @@ Content-Type: application/json
     "storeName": "滝川パン"
 }
 
+###
+
+DELETE {{baseUrl}}/food/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
+
 ###[Trade-API]###
 
 POST {{baseUrl}}/trade HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -88,10 +102,12 @@ Content-Type: application/json
 ###
 
 GET {{baseUrl}}/trade/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###
 
 PATCH  {{baseUrl}}/trade/complete/2 HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -102,15 +118,18 @@ Content-Type: application/json
 ###
 
 GET {{baseUrl}}/trade/store/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 
 ###[Favorite-API]###
 
 GET {{baseUrl}}/favorite/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###
 
 POST {{baseUrl}}/favorite HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -122,6 +141,7 @@ Content-Type: application/json
 ###
 
 DELETE {{baseUrl}}/favorite/11 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###[User-API]###
 
@@ -135,17 +155,6 @@ Content-Type: application/json
     "lastNameKana": "コウタ",
     "mail": "test@etaste-jp.com",
     "password": "testtest"
-}
-
-###
-
-POST {{baseUrl}}/user/login HTTP/1.1
-Content-Type: application/json
-
-{
-    "id": "1",
-    "mail": "k_yamashita@etaste-jp.com",
-    "password": "aa"
 }
 
 ###
@@ -176,3 +185,26 @@ Content-Type: application/json
 {
     "id": 1
 }
+
+###
+
+POST {{baseUrl}}/user HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "山下",
+    "lastName": "昂太",
+    "firstNameKana": "ヤマシタ",
+    "lastNameKana": "コウタ",
+    "mail": "mcz-0604-htt@outlook.com",
+    "password": "testtest"
+}
+
+###
+
+DELETE {{baseUrl}}/user/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
+
+###
+
+GET {{baseUrl}}/mail HTTP/1.1
