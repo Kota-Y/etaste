@@ -4,7 +4,6 @@ import Home from "./Home";
 import Setting from "./Setting";
 import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
-import Noitem from "./Noitem"
 import FavoriteList from "./favoriteList";
 import Opensource from "./Opensource";
 import Branching from "./Branching";
@@ -46,7 +45,6 @@ class Main extends React.Component {
           <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
           <Route exact path={"/store-fin"} component={Storefin} />
           <Route exact path={"/item"} component={UserItem} />
-          <Route exact path={"/noitem"} component={Noitem} />
           <Route exact path={"/user-item-confirm"} component={UserItemConfirm} />
         </Switch>
 

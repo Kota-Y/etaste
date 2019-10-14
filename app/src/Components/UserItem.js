@@ -187,9 +187,13 @@ class UserItem extends React.Component {
         
     /* 受け取り可能時間の先頭が0の場合に消す処理 */
     const receiveTime = strTimeEdit( this.state.startTime ) + '〜' + strTimeEdit( this.state.endTime );
+
+    const isSalingtoView = this.state.isSaling;
+    
     return (
-        
-    　<div className='UserItem-container'>
+
+    <div className='UserItem-container'>
+    　{isSalingtoView ?
         <div className='Item-inUserItem'>
             <img className='ItemImage-inUserItem' src={this.state.foodImage} alt=''/>
             <div className='Item-container'>
@@ -254,6 +258,12 @@ class UserItem extends React.Component {
                 disabled={this.state.isUserSubmitButton}>購入確認</button>
             </div>
         </div>
+        :
+        <div className='message-inUserItem'>  
+        <h1>申し訳ございません</h1>
+        <h1>現在、出品がありません</h1>
+        </div>
+    }
         <div className='store-detail-inUserItem'>
             <div className='store-info-inUserItem'>
                 <div className='store-component-inUserItem'>
