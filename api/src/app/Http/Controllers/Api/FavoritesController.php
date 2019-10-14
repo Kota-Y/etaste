@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Favorite;
-use App\User;
-use App\Store;
+use App\Models\Favorite;
+use App\Models\User;
+use App\Models\Store;
 use App\Http\Controllers\Controller;
 
 class FavoritesController extends Controller
@@ -23,7 +23,7 @@ class FavoritesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -40,7 +40,7 @@ class FavoritesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );
@@ -56,11 +56,11 @@ class FavoritesController extends Controller
         return response([], 201);
     }
 
-    public function show($useId)
+    public function show($userId)
     {
         $user = new User();
 
-        $user_id = $useId;
+        $user_id = $userId;
 
         if(!$user->hasUserId($user_id)){
             $data_json = [
@@ -70,7 +70,7 @@ class FavoritesController extends Controller
 
             return response()->json(
                 $data_json,
-                500,
+                400,
                 [],
                 JSON_UNESCAPED_UNICODE
             );

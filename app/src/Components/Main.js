@@ -18,8 +18,8 @@ import UserFin from "./UserFin";
 import Login from "./Login";
 import UserItem from "./UserItem"
 import UserItemConfirm from "./UserItemConfirm"
-
-
+import SignUp from "./SignUp";
+import MailCheck from "./MailCheck";
 import "../CSS/Main.css";
 
 
@@ -41,6 +41,8 @@ class Main extends React.Component {
           <Route exact path={"/unsubscribe"} component={Unsubscribe} />
           <Route exact path={"/user-fin"} component={UserFin} />
           <Route exact path={"/login"} component={Login} />
+          <Route exact path={"/sign-up"} component={SignUp} />
+          <Route exact path={"/mail-check"} component={MailCheck} />
           <Route exact path={"/store-input"} component={StoreInput} />
           <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
           <Route exact path={"/store-fin"} component={Storefin} />
