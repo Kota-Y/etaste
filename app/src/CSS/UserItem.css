@@ -1,5 +1,5 @@
 .UserItem-container{
-    height:2120px;
+    height:2220px;
 }
 
 
@@ -120,8 +120,8 @@
     position: absolute;
     width: 60px;
     height: 60px;
-    top: 74%;
-    left: 33%;
+    top: 71%;
+    left: 29%;
     box-sizing: border-box;
     transition: all .3s;
 }

@@ -6,10 +6,10 @@ import axios from 'axios';
 import SuperKlass from '../function/DefineConst';
 import { strTimeEdit} from '../function/storeTime';
 import StoreComponent from '../function/storeComponent';
-import '../CSS/StoreDetailNoitem.css';
+import '../CSS/Noitem.css';
 
 
-class StoreDetailNoitem extends React.Component {
+class Noitem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -178,4 +178,4 @@ const mapStyles = {
 
 export default withRouter(GoogleApiWrapper({
     apiKey: 'AIzaSyC0J0FF5y8zA1Bd_BNXC_GeYflbOodFN3g'
-  })(StoreDetailNoitem));
+  })(Noitem));

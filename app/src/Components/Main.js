@@ -2,10 +2,9 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Setting from "./Setting";
-import Item from "./Item";
 import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
-import StoreDetailNoitem from "./StoreDetailNoitem"
+import Noitem from "./Noitem"
 import FavoriteList from "./favoriteList";
 import Opensource from "./Opensource";
 import Branching from "./Branching";
@@ -21,6 +20,7 @@ import Login from "./Login";
 import UserItem from "./UserItem"
 import UserItemConfirm from "./UserItemConfirm"
 
+
 import "../CSS/Main.css";
 
 
@@ -30,11 +30,9 @@ class Main extends React.Component {
       <div className='main'>
         <Switch>
           <Route exact path={"/"} component={Home} />
-          <Route exact path={"/item"} component={Item} />
           <Route exact path={"/setting"} component={Setting} />
           <Route exact path={"/all-recommends"} component={AllRecommends} />
           <Route exact path={"/store-detail"} component={StoreDetail} />
-          <Route exact path={"/store-detail-noitem"} component={StoreDetailNoitem} />
           <Route exact path={"/favorite-list"} component={FavoriteList} />
           <Route exact path={"/opensource"} component={Opensource} />
           <Route exact path={"/deal"} component={Branching} />
@@ -47,7 +45,8 @@ class Main extends React.Component {
           <Route exact path={"/store-input"} component={StoreInput} />
           <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
           <Route exact path={"/store-fin"} component={Storefin} />
-          <Route exact path={"/user-item"} component={UserItem} />
+          <Route exact path={"/item"} component={UserItem} />
+          <Route exact path={"/noitem"} component={Noitem} />
           <Route exact path={"/user-item-confirm"} component={UserItemConfirm} />
         </Switch>
 

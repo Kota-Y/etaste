@@ -32,14 +32,15 @@ class UserItem extends React.Component {
             url: '',
             zip: '',
             /*Food情報のstate */
-            endTime: '',
             foodImage: '',
             foodName: '',
             originalPrice: '',
             salePrice: '',
             startTime: '',
+            endTime: '',
             whySale:'',
             allergies:[],
+            isSaling:'',
             /*ユーザーの購入希望個数と購入希望時間 */
             item_num_tobuy:'',
             recieve_time_tobuy:'',
@@ -102,13 +103,17 @@ class UserItem extends React.Component {
                     salePrice: res.data.foodInfo[0].salePrice,
                     startTime: res.data.foodInfo[0].startTime,
                     endTime: res.data.foodInfo[0].endTime,
+                    isSaling: res.data.isSaling,
                     whySale: res.data.foodInfo[0].whySale,
                     allergies: res.data.foodInfo[0].allergys,
                  });
-                    
                     this.setState({
                         editedTimeState:receiveTimeEdit(this.state.startTime,this.state.endTime),
                     })
+                    if(!(this.state.isSaling)){    
+                        console.log(this.state.isSaling);            
+                        this.props.history.push("/noitem");  
+                    }
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');

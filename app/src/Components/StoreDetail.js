@@ -41,8 +41,6 @@ class StoreDetail extends React.Component{
             isOpen: true,
             /* とりあえずのユーザーID */
             userId: 1,
-            /* 出品中の商品がない時、true */            
-            NoItem:false,
         };
     }
 
@@ -100,9 +98,6 @@ class StoreDetail extends React.Component{
             .catch( (error) => {
                 console.log('通信に失敗しました');
             });
-        if(this.state.NoItem){                
-            this.props.history.push("/store-detail-noitem");  
-        }
     }
 
     /* お気に入りするときにストア情報をポストするメソッド */
