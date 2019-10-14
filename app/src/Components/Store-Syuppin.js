@@ -39,6 +39,9 @@ class StoreSyuppin extends React.Component {
     console.log(this.state.foodInfo.allergys);
     console.log(this.state.foodInfo.image);
   };
+  handleToStorePreview(){
+    this.props.history.push("/store-preview");
+  }
 
   handlePostFoodInfo(){
     axios
@@ -71,6 +74,8 @@ class StoreSyuppin extends React.Component {
           this.handlePostFoodInfo();
           this.handleToStorefinPage();
           }}>確認完了</button>
+          <button className='storepreview' 
+         onClick={this.handleToStorePreview()}>プレビューへ</button>
       </div>
     );
   }

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-social-login-buttons": "^3.0.0",
+    "redux-persist": "^6.0.0"
+  }
+}
