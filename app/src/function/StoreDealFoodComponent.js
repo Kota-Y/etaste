@@ -3,7 +3,7 @@ import React from 'react';
 import axios from 'axios';
 
 import SuperKlass from '../function/DefineConst';
-import { recieveTime } from '../function/storeTime';
+import { strTimeEdit } from '../function/storeTime';
 import '../CSS/StoreDeal.css';
 
 
@@ -54,7 +54,7 @@ class StoreDealFoodComponent extends React.Component{
                         food = {this.state.foodName}
                         amount = {e.orderAmount}
                         price = {e.totalPrice}
-                        time = {recieveTime(e.recieveTime)}
+                        time = {strTimeEdit(e.recieveTime)}
                         user = {e.userName}
                     />
                 )}

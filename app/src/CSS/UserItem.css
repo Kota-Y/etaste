@@ -1,0 +1,138 @@
+.UserItem-container{
+}
+
+
+.Item-container{
+    width:30%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    background: #FFF;
+    border: solid 3px grey;/*線*/
+    border-radius: 30px;/*角の丸み*/
+    margin:20px auto;
+}
+.Item-container h1{
+    margin-bottom: 0; 
+    font-size: 35px;
+    margin-left: 30px;
+}
+
+.Item-container h4{
+    margin: 0 0 0 40px; 
+}
+
+.ItemImage-inUserItem{
+    margin: 20px auto;
+    display: block; 
+    width:600px;
+    height:auto;
+}
+
+.dot-inUserItem{
+    display: inline;
+    margin-right:0;
+    margin-left: 36px; 
+}
+.price-inUserItem{
+    margin-left:40px;
+    height:40px;
+}
+
+.price-inUserItem h3{
+    margin:0;
+}
+
+.whySale-inUserItem{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    background: #FFF;
+    border: solid 1px grey;/*線*/
+    border-radius: 10px;/*角の丸み*/
+    margin:10px auto 20px auto;
+}
+.whySale-inUserItem h3{
+    font-weight: 300;
+}
+
+.allergy-show-area{
+    height:100px;
+    width:330px;
+    margin :0 auto;
+}
+
+.allergy-box{
+    background:#ffdb73;
+    width:65px;
+    height:35px;
+    margin : 5px 10px 5px 10px;
+    display: inline-block;   
+    text-align: center;
+    border-radius: 3px;
+}
+
+.allergy-box h4{
+    margin:5px 0;
+}
+ 
+.useriteminput{
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #0c0d0e;
+    width: 340px;
+    height: 35px;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #bac6d3;
+    border-radius: 3px;
+    display: block;
+    margin-left: 40px;
+    
+}
+.useriteminput::placeholder{
+    text-align: left;
+}
+
+.timeselect-inUserItem{
+    width:340px;
+    margin-left: 40px;
+    font-weight: 400;
+    color: hsl(0,0%,40%);
+}
+.store-detail-inUserItem{
+    display: block;
+    border-top:1px solid gray;
+    margin-top:10px;
+    width:80%;
+    margin: 0 auto;
+}
+
+.store-detail-inUserItem h1{
+    margin-left: 30px;
+}
+
+.store-info-inUserItem{
+    display: inline-flex;
+}
+
+.favorite-icon-gray-inUserItem img {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 71%;
+    left: 29%;
+    box-sizing: border-box;
+    transition: all .3s;
+}
+
+.StoreDetailNoitem-Container{
+    height: 1100px;
+}
+.message-inUserItem{
+    margin:50px auto;
+}
+.message-inUserItem h1{
+    font-weight: 400;
+    margin: 5px auto;
+    width:500px;
+}

@@ -35,17 +35,17 @@ class Recommend extends React.Component {
     handleToStoreDetailPage = () => {
         this.props.history.push("/store-detail");
     };
+  
 
     /* Foodの情報のGETメソッド */
     handleGetFoodInfo() { 
         axios
-            .get(　SuperKlass.CONST.DOMAIN + '/food/1/'　,{
+            .get(　SuperKlass.CONST.DOMAIN + '/food/'　,{
                     headers: { "Content-Type": "application/json" },
                     data: {}  
                 })
             .then( (res) => {
-                const name = res.data.foodIndo[0].name;
-                console.log(name);
+                console.log(res.data);
             })
             .catch( (error) => {
                 console.log('通信に失敗しました');

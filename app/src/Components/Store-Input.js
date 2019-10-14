@@ -137,7 +137,7 @@ class StoreInput  extends React.Component{
     else{
       const bucketname='food-etaste'
       let identityId='aaaaa'; //店舗のユーザーID等、ログイン店舗を識別できるもの　ログイン実装後編集
-      let filename = 'storeinput/images/'+identityId + '/'+ this.state.file.name;
+      let filename = 'storeinput/'+identityId + '/'+ this.state.file.name;
       console.log(filename);    
       let sendS3='https://s3-ap-northeast-1.amazonaws.com/food-etaste/'+ filename;
       let params = {
@@ -722,7 +722,7 @@ sendImagetoS3(params){
           <div className="amount">
             <input 
             className='storeinputinput'
-            value={this.state.itemNumber}　
+            value={this.state.amount}　
             name='amount' 
             onChange={this.handleChange} 
             placeholder="個数(半角数字)"/>

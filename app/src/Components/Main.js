@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Setting from "./Setting";
-import Item from "./Item";
 import AllRecommends from "./allRecommends";
 import StoreDetail from "./StoreDetail";
 import FavoriteList from "./favoriteList";
@@ -17,6 +16,8 @@ import StoreSyuppin from "./Store-Syuppin";
 import Storefin from "./Store-fin";
 import UserFin from "./UserFin";
 import Login from "./Login";
+import UserItem from "./UserItem"
+import UserItemConfirm from "./UserItemConfirm"
 import SignUp from "./SignUp";
 import MailCheck from "./MailCheck";
 import "../CSS/Main.css";
@@ -28,7 +29,6 @@ class Main extends React.Component {
       <div className='main'>
         <Switch>
           <Route exact path={"/"} component={Home} />
-          <Route exact path={"/item"} component={Item} />
           <Route exact path={"/setting"} component={Setting} />
           <Route exact path={"/all-recommends"} component={AllRecommends} />
           <Route exact path={"/store-detail"} component={StoreDetail} />
@@ -46,6 +46,8 @@ class Main extends React.Component {
           <Route exact path={"/store-input"} component={StoreInput} />
           <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
           <Route exact path={"/store-fin"} component={Storefin} />
+          <Route exact path={"/item"} component={UserItem} />
+          <Route exact path={"/user-item-confirm"} component={UserItemConfirm} />
         </Switch>
 
       </div>

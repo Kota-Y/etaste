@@ -5,7 +5,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 import SuperKlass from '../function/DefineConst';
 import StoreDetail from '../Components/StoreDetail';
-import { recieveTime } from '../function/storeTime';
+import { strTimeEdit } from '../function/storeTime';
 import '../CSS/UserDeal.css';
 
 class DealFoodComponentYet extends React.Component{
@@ -49,7 +49,7 @@ class DealFoodComponentYet extends React.Component{
                         food = {e.foodName}
                         amount = {e.amount}
                         price = {e.totalPrice}
-                        time = {recieveTime(e.recieveTime)}
+                        time = {strTimeEdit(e.recieveTime)}
                         store = {e.storeName}
                         link = {e.link}
                     />
