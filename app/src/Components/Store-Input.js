@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Select from "react-select";
+import {minimamPrice, maximanPrice} from './DefineConst';
 import SuperKlass from './DefineConst';
 import axios from 'axios'; 
 import {AWS_ACCESS_KEY,AWS_SECRET_KEY} from "./Sercret"; //Sercret.jsというファイルにアクセスキーとシークレットキーを格納
@@ -128,7 +129,7 @@ class StoreInput  extends React.Component{
 
   handleToStoreSyuppinPage = () => {
 
-    if((Number(this.state.saleprice)>=750)||(350>=Number(this.state.saleprice))){
+    if((Number(this.state.saleprice)>=maximanPrice)||(minimamPrice>=Number(this.state.saleprice))){
       alert('販売価格を修正してください');
     }
     else if((Number(this.state.originalprice)>=750)||(350>=Number(this.state.originalprice))){
