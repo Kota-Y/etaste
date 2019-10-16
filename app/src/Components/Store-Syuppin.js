@@ -21,7 +21,7 @@ class StoreSyuppin extends React.Component {
         endTime: this.props.location.state.endTime.value,
         amount: this.props.location.state.amount,
         allergys:this.props.location.state.allergys,
-        image: this.props.location.state.s3url,//S3から帰ってきたURl入れる
+        s3url: this.props.location.state.s3url,//S3から帰ってきたURl入れる
         storeId: 2,//ストア情報を取得して更新するように変更予定
         storeName: "滝川パン"//ストア情報を取得して更新するように変更予定
       },
@@ -30,18 +30,24 @@ class StoreSyuppin extends React.Component {
 
   handleToStorefinPage = () => {
     this.props.history.push("/store-fin");
-    console.log(this.state.foodInfo.name);
-    console.log(this.state.foodInfo.originalPrice);
-    console.log(this.state.foodInfo.salePrice);
-    console.log(this.state.foodInfo.startTime);
-    console.log(this.state.foodInfo.endTime);
-    console.log(this.state.foodInfo.amount);
-    console.log(this.state.foodInfo.allergys);
-    console.log(this.state.foodInfo.image);
   };
-  handleToStorePreview(){
-    this.props.history.push("/store-preview");
-  }
+
+  handleToStorePreview = () =>{
+    console.log(this.state.foodInfo.name);
+    this.props.history.push({
+      pathname: "/store-preview",
+      state:{
+            itemName: this.state.foodInfo.name,
+            amount: this.state.foodInfo.amount,
+            startTime: this.state.foodInfo.startTime,
+            endTime: this.state.foodInfo.endTime,
+            originalprice: this.state.foodInfo.originalPrice,
+            saleprice: this.state.foodInfo.salePrice,
+            allergys:this.state.foodInfo.allergys,
+            s3url:this.state.foodInfo.s3url,
+          }
+    });
+  };
 
   handlePostFoodInfo(){
     axios
@@ -73,9 +79,9 @@ class StoreSyuppin extends React.Component {
          onClick={ () =>{ 
           this.handlePostFoodInfo();
           this.handleToStorefinPage();
-          }}>確認完了</button>
+          }}>出品</button>
           <button className='storepreview' 
-         onClick={this.handleToStorePreview()}>プレビューへ</button>
+         onClick={this.handleToStorePreview}>プレビュー</button>
       </div>
     );
   }
