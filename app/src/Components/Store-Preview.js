@@ -8,8 +8,10 @@ import Select from "react-select";
 import SuperKlass from '../function/DefineConst';
 import {strTimeEdit}from '../function/storeTime';
 import StoreComponent from '../function/storeComponent';
+import {ItemInfo,StoreName} from "../function/UserItemComponent";
 
-class StorePreview extends React.Component {
+
+class StorePreview extends React.Component{
   constructor(props){
     super(props);
     this.state = {
@@ -124,36 +126,15 @@ class StorePreview extends React.Component {
             </div>
             <img className='ItemImage-inUserItem' src={this.state.itemImage} alt=''/>
             <div className='Item-container'>
-                <div>
-                <h1>{this.state.itemName}</h1>
-                <div className='price price-inUserItem'>
-                    <h3 className='dot-inUserItem'>・</h3>
-                    <h3 className='deleat'>{ this.state.originalprice + '円'}</h3>
-                    <h3> → </h3> 
-                    <h3 className='salePrice'>{this.state.saleprice + '円' }</h3>
-                </div>
-                
-                <h4>・受け取り可能時間 {receiveTime}</h4>
-                <h4>・{this.state.storeName}</h4>
-                </div>
-                
-                <div className='history-of-exhibition'>
-                <h1>出品経緯</h1>
-                <div className='whySale-inUserItem'>
-                <h3>{this.state.whySale}</h3>
-                </div>
-
-                </div>
-
-                <div className='allergy-show'>
-                <h1>アレルギー表示</h1>
-                <div className='allergy-show-area'>
-                {this.state.allergys.map(e=>
-                    <AllergyBox name={e.name}
-                    />)}
-                </div>
-                </div>
-
+              <ItemInfo 
+                foodName = {this.state.foodName}
+                originalPrice = {this.state.originalprice}
+                salePrice = {this.state.saleprice}
+                receiveTime = {receiveTime}
+                storeName = {this.state.storeName}
+                whySale = {''}
+                allergies = {this.state.allergys}                 
+               />
                 <div className='item-num'>
                 <h1>購入個数</h1>
                 <div>
@@ -189,17 +170,15 @@ class StorePreview extends React.Component {
                         }}
                     />
                 </div>
-                <div className='store-name'>
-                    <h3>{ this.state.storeName }</h3>
-                    <h3>{ business_hours }</h3>
-                    <h3>{ this.state.holiday }</h3>
-                    <h3 className='zip'>{ '〒' + this.state.zip }</h3>
-                    <h3 className='address'>{ this.state.address }</h3>
-                    <h3>{ this.state.tel }</h3>
-                    <h3>
-                        <a href={this.state.url}>{ this.state.url }</a>
-                    </h3>
-                </div>
+                <StoreName
+                storeName = {this.state.storeName}
+                business_hours = {business_hours}
+                holiday ={this.state.holiday}
+                zip = {this.state.zip}
+                address = {this.state.address}
+                tel = {this.state.tel}
+                url = {this.state.url}
+                />
             </div>
             <div className='map-inUserItem'>
                 <Map
@@ -213,17 +192,14 @@ class StorePreview extends React.Component {
                         name={this.state.storeName}
                     />
                 </Map>
-            </div> 
+            </div>
         </div>
-    </div>
+      </div>
     );
   }
 }
-const AllergyBox = ({name})  => (
-  <div className='allergy-box'>
-      <h4>{name}</h4>
-  </div>
-);
+
+
 const imagesPath = {
   fav: "./image/fav.png",
   favGray: "./image/fav-gray.png"
