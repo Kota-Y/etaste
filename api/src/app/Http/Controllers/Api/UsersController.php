@@ -11,18 +11,20 @@ class UsersController extends Controller
 {
     public function store(Request $request)
     {
-        $md = new User();
+        $user = new User();
 
-        $md->first_name = $request->input('firstName');
-        $md->last_name = $request->input('lastName');
-        $md->first_name_kana = $request->input('firstNameKana');
-        $md->last_name_kana = $request->input('lastNameKana');
-        $md->mail = $request->input('mail');
-        $md->password = bcrypt($request->input('password'));
-        $md->is_login = false;
-        $md->is_store = false;
+        $user->first_name = $request->input('firstName');
+        $user->last_name = $request->input('lastName');
+        $user->first_name_kana = $request->input('firstNameKana');
+        $user->last_name_kana = $request->input('lastNameKana');
+        $user->mail = $request->input('mail');
+        $user->password = bcrypt($request->input('password'));
+        $user->is_login = false;
+        $user->is_store = false;
 
-        $md->save();
+        $user->save();
+
+        self::callMailVerificationStore($user);
 
         return response([], 201);
     }
@@ -32,5 +34,11 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
         return response([], 200);        
+    }
+
+    private function callMailVerificationStore($user)
+    {
+        $mail_varification = app()->make('App\Http\Controllers\Api\MailVerificationsController');
+        $mail_varification->store($user->mail);
     }
 }

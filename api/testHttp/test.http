@@ -208,3 +208,7 @@ Authorization:Bearer {{authToken}}
 ###
 
 GET {{baseUrl}}/mail HTTP/1.1
+
+###
+
+GET {{baseUrl}}/verify/cbf4a8a92ece88f696a0aa822df86282e83835b54e7e0de9a7276f597f37e9c2 HTTP/1.1

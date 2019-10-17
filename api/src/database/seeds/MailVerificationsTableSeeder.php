@@ -14,13 +14,13 @@ class MailVerificationsTableSeeder extends Seeder
         DB::table('mail_verifications')->insert([
             [
               'mail_authentication' => 'NULL',
-              'mail' => 'mcz-0604-htt@outlook.com',
+              'mail' => 'testuser@outlook.com',
               'created_at' => new DateTime(),
               'updated_at' => new DateTime(),
             ],
             [
               'mail_authentication' => 'NULL',
-              'mail' => 'mcz1127htt@gmail.com',
+              'mail' => 'test@gmail.com',
               'created_at' => new DateTime(),
               'updated_at' => new DateTime(),
             ],

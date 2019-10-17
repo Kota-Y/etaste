@@ -27,6 +27,7 @@ Route::group(["middleware" => "api"], function () {
         Route::get('/food/{id}', 'Api\FoodsController@show');
         Route::post('/user', 'Api\UsersController@store');
         Route::post('/user/login', 'Auth\LoginController@login');
+        Route::get('/verify/{active_code}', 'Api\MailVerificationsController@verify');
         // Route::post("/password/email", "Auth\ForgotPasswordController@sendResetLinkEmail");
         // Route::get('/mail', 'Api\TestMailController@send_mail');
         // Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
