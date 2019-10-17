@@ -13,13 +13,8 @@ class ValidatedSignUpForm extends React.Component{
         this.state = {
             isAgreed: false,
 
-            name_sei: '',
-            name_mei: '',
-            name_kana_sei: '',
-            name_kana_mei: '',
-            email: '',
-            password: '',
-            password_check: '',
+            
+            backSignUp:false,
         }
 
         this.handleToMailCheckPage = this.handleToMailCheckPage.bind(this)
@@ -29,16 +24,16 @@ class ValidatedSignUpForm extends React.Component{
         this.setState({ isAgreed: newValue })
     }
     
-    handleToMailCheckPage = () => {
+    handleToMailCheckPage = (values) => {
         this.props.history.push({
             pathname: "/mail-check",
-            state: { name_sei: this.state.name_sei,
-                    name_mei: this.state.name_mei,
-                    name_kana_sei: this.state.name_kana_sei,
-                    name_kana_mei: this.state.name_kana_mei,
-                    email: this.state.email,
-                    password: this.state.password,
-                    password_check: this.state.password_check
+            state: { name_sei:values.name_sei,
+                    name_mei: values.name_mei,
+                    name_kana_sei: values.name_kana_sei,
+                    name_kana_mei: values.name_kana_mei,
+                    email: values.email,
+                    password: values.password,
+                    password_check: values.password_check
             }
         });
     };
@@ -47,18 +42,18 @@ class ValidatedSignUpForm extends React.Component{
         return(
             <Formik
                 initialValues={{ 
-                    name_sei: '',
-                    name_mei: '',
-                    name_kana_sei: '',
-                    name_kana_mei: '',
-                    email: '',
-                    password: '',
-                    password_check: '',
+                    name_sei: this.props.location.state.name_sei,
+                    name_mei: this.props.location.state.name_mei,
+                    name_kana_sei: this.props.location.state.name_kana_sei,
+                    name_kana_mei: this.props.location.state.name_kana_mei,
+                    email: this.props.location.state.email,
+                    password: this.props.location.state.password,
+                    password_check: this.props.location.state.password_check,
                 }}
                 onSubmit={(values, { setSubmitting }) => {
                     setTimeout(() => {
                         setSubmitting(false);
-                        this.handleToMailCheckPage();
+                        this.handleToMailCheckPage(values);
                         axios
                             .post( SuperKlass.CONST.DOMAIN + '/user/', { 
                                 values
@@ -101,6 +96,7 @@ class ValidatedSignUpForm extends React.Component{
                     handleBlur,
                     handleSubmit
                 } = props;
+    
                 return (
                     <form onSubmit={handleSubmit} className='input-form'>
                         <label htmlFor="email">姓</label>
