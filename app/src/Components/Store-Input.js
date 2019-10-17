@@ -1,10 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Select from "react-select";
-import "../CSS/Store-Input.css";
+import {minimamPrice, maximanPrice} from './DefineConst';
 import SuperKlass from './DefineConst';
 import axios from 'axios'; 
 import {AWS_ACCESS_KEY,AWS_SECRET_KEY} from "./Sercret"; //Sercret.jsというファイルにアクセスキーとシークレットキーを格納
+import "../CSS/Store-Input.css";
 
 /*Sercret.js
 export const AWS_ACCESS_KEY = '自分のアクセスキー';
@@ -128,7 +129,7 @@ class StoreInput  extends React.Component{
 
   handleToStoreSyuppinPage = () => {
 
-    if((Number(this.state.saleprice)>=750)||(350>=Number(this.state.saleprice))){
+    if((Number(this.state.saleprice)>=maximanPrice)||(minimamPrice>=Number(this.state.saleprice))){
       alert('販売価格を修正してください');
     }
     else if((Number(this.state.originalprice)>=750)||(350>=Number(this.state.originalprice))){
@@ -150,7 +151,6 @@ class StoreInput  extends React.Component{
     this.sendAllergy(sendS3);
     }
   }
-
 
 sendImagetoS3(params){
   const aws = require('aws-sdk');
@@ -347,9 +347,9 @@ sendImagetoS3(params){
               allergys:kariAllergy,
             }
       });
-      console.log(this.state.s3url);
+      console.log(this.state.s3url);//表示できない
       console.log(kariAllergy);
-      console.log(this.state.allergys);
+      console.log(this.state.allergys);//表示できない
     }
 
   handleChange(e){ //入力フォームにおいてそれぞれの要素のname属性に対応した変数にvalueを格納
@@ -663,7 +663,7 @@ sendImagetoS3(params){
           </div>
           
           <div className="item-name">
-            <input type='text' 
+            <input 
             className='storeinputinput'
             value={this.state.itemName}　
             name='itemName' 

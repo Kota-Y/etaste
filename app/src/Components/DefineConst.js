@@ -5,6 +5,10 @@ class SuperKlass {
         });
     }
 }
+
+export const maximanPrice = Number(700);
+export const minimamPrice = Number(250);
+
 /*
 class SubKlass extends SuperKlass {
     static get CONST() {
