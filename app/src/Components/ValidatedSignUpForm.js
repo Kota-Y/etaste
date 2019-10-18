@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
-//import {BackorFirst} from './MailCheck';
 import SuperKlass from '../function/DefineConst';
 import "../CSS/LoginFeature.css";
 

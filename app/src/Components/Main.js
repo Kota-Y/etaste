@@ -13,6 +13,7 @@ import Contact from "./Contact";
 import Unsubscribe from "./Unsubscribe";
 import StoreInput from "./Store-Input";
 import StoreSyuppin from "./Store-Syuppin";
+import StorePreview from "./Store-Preview";
 import Storefin from "./Store-fin";
 import UserFin from "./UserFin";
 import Login from "./Login";
@@ -45,6 +46,7 @@ class Main extends React.Component {
           <Route exact path={"/mail-check"} component={MailCheck} />
           <Route exact path={"/store-input"} component={StoreInput} />
           <Route exact path={"/store-syuppin"} component={StoreSyuppin} />
+          <Route exact path={"/store-preview"} component={StorePreview} />
           <Route exact path={"/store-fin"} component={Storefin} />
           <Route exact path={"/item"} component={UserItem} />
           <Route exact path={"/user-item-confirm"} component={UserItemConfirm} />

@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 // Route::get('/stores', 'StoresController@index');
 // Route::get('/store/{id}', 'StoresController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

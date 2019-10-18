@@ -1,26 +1,35 @@
+@baseUrl = http://127.0.0.1:10080/api
+
 ###[Store-API]###
 
-GET http://127.0.0.1:10080/api/store/1 HTTP/1.1
+GET {{baseUrl}}/store/1 HTTP/1.1
 
 ###
 
-GET http://127.0.0.1:10080/api/stores HTTP/1.1
+GET {{baseUrl}}/stores HTTP/1.1
+Authorization:Bearer {{authToken}}
+
+###
+
+DELETE {{baseUrl}}/store/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###[Food-API]###
 
-GET http://127.0.0.1:10080/api/food/1 HTTP/1.1
+GET {{baseUrl}}/food/1 HTTP/1.1
 
 ###
 
-GET http://127.0.0.1:10080/api/food/4 HTTP/1.1
+GET {{baseUrl}}/food/4 HTTP/1.1
 
 ###
 
-GET http://127.0.0.1:10080/api/food HTTP/1.1
+GET {{baseUrl}}/food HTTP/1.1
 
 ###
 
-POST http://127.0.0.1:10080/api/food HTTP/1.1
+POST {{baseUrl}}/food HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -52,7 +61,8 @@ Content-Type: application/json
 
 ###
 
-POST http://127.0.0.1:10080/api/food HTTP/1.1
+POST {{baseUrl}}/food HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -69,9 +79,15 @@ Content-Type: application/json
     "storeName": "滝川パン"
 }
 
+###
+
+DELETE {{baseUrl}}/food/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
+
 ###[Trade-API]###
 
-POST http://127.0.0.1:10080/api/trade HTTP/1.1
+POST {{baseUrl}}/trade HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -85,11 +101,13 @@ Content-Type: application/json
 
 ###
 
-GET http://127.0.0.1:10080/api/trade/1 HTTP/1.1
+GET {{baseUrl}}/trade/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###
 
-PATCH  http://127.0.0.1:10080/api/trade/complete/2 HTTP/1.1
+PATCH  {{baseUrl}}/trade/complete/2 HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -99,16 +117,19 @@ Content-Type: application/json
 
 ###
 
-GET http://127.0.0.1:10080/api/trade/store/1 HTTP/1.1
+GET {{baseUrl}}/trade/store/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 
 ###[Favorite-API]###
 
-GET http://127.0.0.1:10080/api/favorite/1 HTTP/1.1
+GET {{baseUrl}}/favorite/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###
 
-POST http://127.0.0.1:10080/api/favorite HTTP/1.1
+POST {{baseUrl}}/favorite HTTP/1.1
+Authorization:Bearer {{authToken}}
 Content-Type: application/json
 
 {
@@ -119,11 +140,12 @@ Content-Type: application/json
 
 ###
 
-DELETE http://127.0.0.1:10080/api/favorite/11 HTTP/1.1
+DELETE {{baseUrl}}/favorite/11 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
 ###[User-API]###
 
-POST http://127.0.0.1:10080/api/user HTTP/1.1
+POST {{baseUrl}}/user HTTP/1.1
 Content-Type: application/json
 
 {
@@ -137,32 +159,56 @@ Content-Type: application/json
 
 ###
 
-POST http://127.0.0.1:10080/api/user/login HTTP/1.1
+# @name login
+POST {{baseUrl}}/user/login HTTP/1.1
 Content-Type: application/json
 
 {
     "id": "1",
     "mail": "k_yamashita@etaste-jp.com",
-    "password": "aa"
+    "password": "aaa"
+}
+
+@authToken = {{login.response.body.$.token}}
+
+###
+
+GET {{baseUrl}}/home HTTP/1.1
+Authorization:Bearer {{authToken}}
+
+###
+
+GET {{baseUrl}}/user/logout HTTP/1,1
+Authorization:Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "id": 1
 }
 
 ###
 
-POST http://127.0.0.1:10080/api/user/login HTTP/1.1
+POST {{baseUrl}}/user HTTP/1.1
 Content-Type: application/json
 
 {
-    "id": "5",
-    "mail": "test@etaste-jp.com",
-    "password": "testtest"
+    "firstName": "山下",
+    "lastName": "昂太",
+    "firstNameKana": "ヤマシタ",
+    "lastNameKana": "コウタ",
+    "mail": "mcz-0604-htt@outlook.com",
+    "password": "testtest"
 }
 
 ###
 
-GET http://127.0.0.1:10080/api/user/logout HTTP/1.1
-Content-Type: application/json
+DELETE {{baseUrl}}/user/1 HTTP/1.1
+Authorization:Bearer {{authToken}}
 
-{
-    "id": 2
-}
+###
 
+GET {{baseUrl}}/mail HTTP/1.1
+
+###
+
+GET {{baseUrl}}/verify/cbf4a8a92ece88f696a0aa822df86282e83835b54e7e0de9a7276f597f37e9c2 HTTP/1.1
