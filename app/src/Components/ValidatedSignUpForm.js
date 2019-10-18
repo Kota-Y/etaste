@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
+//import {BackorFirst} from './MailCheck';
 import SuperKlass from '../function/DefineConst';
 import "../CSS/LoginFeature.css";
 
@@ -12,11 +13,15 @@ class ValidatedSignUpForm extends React.Component{
         super(props);
         this.state = {
             isAgreed: false,
-
-            
             backSignUp:false,
+            name_sei:'',
+            name_mei:'',
+            name_kana_sei:'',
+            name_kana_mei:'',
+            email: '',
+            password: '',
+            password_check:''
         }
-
         this.handleToMailCheckPage = this.handleToMailCheckPage.bind(this)
     }
 
@@ -27,7 +32,8 @@ class ValidatedSignUpForm extends React.Component{
     handleToMailCheckPage = (values) => {
         this.props.history.push({
             pathname: "/mail-check",
-            state: { name_sei:values.name_sei,
+            state: { 
+                    name_sei:values.name_sei,
                     name_mei: values.name_mei,
                     name_kana_sei: values.name_kana_sei,
                     name_kana_mei: values.name_kana_mei,
@@ -37,7 +43,23 @@ class ValidatedSignUpForm extends React.Component{
             }
         });
     };
-    
+/*
+    componentDidMount(){
+        console.log(BackorFirst);
+        if(BackorFirst){
+            console.log('change');
+            this.setState({
+                name_sei: this.props.location.state.name_sei,
+                name_mei: this.props.location.state.name_mei,
+                name_kana_sei: this.props.location.state.name_kana_sei,
+                name_kana_mei: this.props.location.state.name_kana_mei,
+                email: this.props.location.state.email,
+                password: this.props.location.state.password,
+                password_check: this.props.location.state.password_check,
+            });
+        }
+    }
+*/
     render() {
         return(
             <Formik

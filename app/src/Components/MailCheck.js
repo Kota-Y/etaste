@@ -1,7 +1,21 @@
 import React from "react";
 import { withRouter } from "react-router";
 
+/*
+export let BackorFirst= (() =>{
+    return this.state.backSignUp
+});
+*/
+
+
 class MailCheck extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            backSignUp:true,
+        }
+    }
     handleToSignUpPage = () => {
         this.props.history.push({
         pathname: "/sign-up",
@@ -13,12 +27,11 @@ class MailCheck extends React.Component {
                 email: this.props.location.state.email,
                 password: this.props.location.state.password,
                 password_check: this.props.location.state.password_check,
-                backSignUp:true,
         }
     });
 };
     render() {
-        console.log(this.props.location.state.name_kana_mei);
+
         return (
             <div className='mailcheck-container'>
                 <h2>ご登録いただいたメールアドレスにメールが届いているか確認してください</h2>
