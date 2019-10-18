@@ -52,9 +52,19 @@ export const persistor = persistStore(store);
 class Login extends React.Component {
 
     handleToSignUpPage = () => {
-        this.props.history.push("/sign-up");
-    };
-  
+        this.props.history.push({
+        pathname: "/sign-up",
+        state: { 
+                name_sei: '',
+                name_mei: '',
+                name_kana_sei:'',
+                name_kana_mei: '',
+                email: '',
+                password:'',
+                password_check:'',
+        }
+    });
+};
     render() {
 
         return (
