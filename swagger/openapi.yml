@@ -40,6 +40,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      security:
+        - bearerAuth: []
       tags:
         - store
       summary: Delete Store.
@@ -81,6 +83,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      security:
+        - bearerAuth: []    
       tags:
         - food
       summary: Create Food.
@@ -127,6 +131,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
+      security:
+        - bearerAuth: []    
       tags:
         - food
       summary: Delete Food.
@@ -150,6 +156,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/trade':
     post:
+      security:
+        - bearerAuth: []    
       tags:
         - trade
       summary: Create Trade.
@@ -170,6 +178,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/trade/{userId}':
     get:
+      security:
+        - bearerAuth: []    
       tags:
         - trade
       summary: Get Trade by ID.
@@ -197,6 +207,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/trade/complete/{tradeId}':
     patch:
+      security:
+        - bearerAuth: []    
       tags:
         - trade
       summary: Update Trade is Completed.
@@ -225,6 +237,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/trade/store/{storeId}':
     get:
+      security:
+        - bearerAuth: []    
       tags:
         - trade
       summary: Get Trade for Store by ID.
@@ -252,6 +266,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/favorite/{userId}':
     get:
+      security:
+        - bearerAuth: []    
       tags:
         - favorite
       summary: Get favorite by ID.
@@ -279,6 +295,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/favorite':
     post:
+      security:
+        - bearerAuth: []    
       tags:
         - favorite
       summary: Create Favorite.
@@ -299,6 +317,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/favorite/{storeId}':
     delete:
+      security:
+        - bearerAuth: []    
       tags:
         - favorite
       summary: Delete Favorite.
@@ -362,6 +382,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/user/logout':
     get:
+      security:
+        - bearerAuth: []    
       tags:
         - user
       summary: Logout User.
@@ -369,8 +391,33 @@ paths:
       responses:
         '200':
           description: Success Logout.
+  '/verify/{active_code}':
+    get:
+      tags:
+        - user
+      summary: Verify User.
+      operationId: verifyUser
+      parameters:
+        - name: active_code
+          in: path
+          description: Active Code.
+          required: true
+          schema:
+            type: integer
+            format: int64      
+      responses:
+        '200':
+          description: Success Verify.
+        default:
+          description: Failed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'          
   '/user/{userId}':
     delete:
+      security:
+        - bearerAuth: []    
       tags:
         - user
       summary: Delete User.
@@ -393,6 +440,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  
   schemas:
     Allergy:
       type: object
@@ -1066,6 +1118,7 @@ components:
       example:
         code: 1
         message: Default Error.
+
 tags:
   - name: store
     description: About Store.
