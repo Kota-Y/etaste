@@ -374,6 +374,10 @@ paths:
       responses:
         '200':
           description: Success Login.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'          
         default:
           description: Failed.
           content:
@@ -770,7 +774,7 @@ components:
       required:
         - id
         - userId
-        - stodeId
+        - storeId
         - foodId
         - amount
         - receiveTime
@@ -781,7 +785,7 @@ components:
         userId:
           type: integer
           format: int64
-        stodeId:
+        storeId:
           type: integer
           format: int64
         foodId:
@@ -795,7 +799,7 @@ components:
       example:
         id: 111
         userId: 1
-        stodeId: 2
+        storeId: 2
         foodId: 3
         amount: 2
         receiveTime: '1830'
@@ -1105,6 +1109,15 @@ components:
       example:
         mail: 'etaste.food@gmail.com'
         password: 'KBa45fdg'
+    Token:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+      example:
+        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6MTAwODBcL2FwaVwvdXNlclwvbG9naW4iLCJpYXQiOjE1NzE4Mzc1NDksImV4cCI6MTU3MTg0MTE0OSwibmJmIjoxNTcxODM3NTQ5LCJqdGkiOiJCZHkyMUxGNG9Kb0V0c0EwIiwic3ViIjo1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1uR44AvMgjxffaBLhHL0nM4RrkN4aIaHAm_EH65aOUc'
     Error:
       required:
         - code

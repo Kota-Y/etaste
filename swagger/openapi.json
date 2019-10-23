@@ -63,6 +63,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "store"
         ],
@@ -128,6 +133,11 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "food"
         ],
@@ -202,6 +212,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "food"
         ],
@@ -238,6 +253,11 @@
     },
     "/trade": {
       "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "trade"
         ],
@@ -271,6 +291,11 @@
     },
     "/trade/{userId}": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "trade"
         ],
@@ -314,6 +339,11 @@
     },
     "/trade/complete/{tradeId}": {
       "patch": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "trade"
         ],
@@ -359,6 +389,11 @@
     },
     "/trade/store/{storeId}": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "trade"
         ],
@@ -402,6 +437,11 @@
     },
     "/favorite/{userId}": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "favorite"
         ],
@@ -445,6 +485,11 @@
     },
     "/favorite": {
       "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "favorite"
         ],
@@ -478,6 +523,11 @@
     },
     "/favorite/{storeId}": {
       "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "favorite"
         ],
@@ -563,7 +613,14 @@
         },
         "responses": {
           "200": {
-            "description": "Success Login."
+            "description": "Success Login.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                }
+              }
+            }
           },
           "default": {
             "description": "Failed.",
@@ -580,6 +637,11 @@
     },
     "/user/logout": {
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "user"
         ],
@@ -592,8 +654,49 @@
         }
       }
     },
+    "/verify/{active_code}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Verify User.",
+        "operationId": "verifyUser",
+        "parameters": [
+          {
+            "name": "active_code",
+            "in": "path",
+            "description": "Active Code.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Verify."
+          },
+          "default": {
+            "description": "Failed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user/{userId}": {
       "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": [
           "user"
         ],
@@ -630,6 +733,13 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
     "schemas": {
       "Allergy": {
         "type": "object",
@@ -1058,7 +1168,7 @@
         "required": [
           "id",
           "userId",
-          "stodeId",
+          "storeId",
           "foodId",
           "amount",
           "receiveTime"
@@ -1072,7 +1182,7 @@
             "type": "integer",
             "format": "int64"
           },
-          "stodeId": {
+          "storeId": {
             "type": "integer",
             "format": "int64"
           },
@@ -1091,7 +1201,7 @@
         "example": {
           "id": 111,
           "userId": 1,
-          "stodeId": 2,
+          "storeId": 2,
           "foodId": 3,
           "amount": 2,
           "receiveTime": "1830"
@@ -1507,6 +1617,20 @@
         "example": {
           "mail": "etaste.food@gmail.com",
           "password": "KBa45fdg"
+        }
+      },
+      "Token": {
+        "type": "object",
+        "required": [
+          "token"
+        ],
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6MTAwODBcL2FwaVwvdXNlclwvbG9naW4iLCJpYXQiOjE1NzE4Mzc1NDksImV4cCI6MTU3MTg0MTE0OSwibmJmIjoxNTcxODM3NTQ5LCJqdGkiOiJCZHkyMUxGNG9Kb0V0c0EwIiwic3ViIjo1LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.1uR44AvMgjxffaBLhHL0nM4RrkN4aIaHAm_EH65aOUc"
         }
       },
       "Error": {
