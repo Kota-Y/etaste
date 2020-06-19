@@ -1,11 +1,11 @@
 class SuperKlass {
     static get CONST() {
         return Object.assign(super.CONST || {}, {
-            DOMAIN : 'http://127.0.0.1:8084',
+            DOMAIN : 'http://127.0.0.1:10080',
+            // DOMAIN : 'http://127.0.0.1:8084',
         });
     }
-}
-
+ }
 export const maximanPrice = Number(700);
 export const minimamPrice = Number(250);
 
