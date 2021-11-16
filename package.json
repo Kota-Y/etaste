@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "aws-sdk": "^2.548.0",
+    "aws-sdk": "^2.814.0",
     "formik": "^1.5.8",
     "react-social-login-buttons": "^3.0.0",
     "redux-persist": "^6.0.0",
